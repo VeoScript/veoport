@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="flex flex-col justify-center mx-auto w-full h-screen items-center bg-white dark:bg-[#232733]">
+        <div className="flex flex-col md:m-0 -mt-5 justify-center mx-auto w-full h-screen items-center bg-white dark:bg-[#232733]">
           <div className="flex flex-col text-center space-y-3">
             <h1 className="name font-light md:text-5xl text-3xl text-[#333] dark:text-white tracking-wide uppercase">Jerome Villaruel</h1>
             <p className="typewriter font-extralight mx-auto tracking-wider md:text-lg text-xs text-[#333] dark:text-white uppercase">The odyssey of an aspiring web developer</p>
@@ -37,7 +37,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex font-medium md:text-lg text-sm">Welcome to my Landing Page ✈️</div>
-            <div className="flex w-full max-w-lg text-center md:text-sm text-xs">
+            <div className="flex w-full md:max-w-lg max-w-xs  text-center md:text-sm text-xs">
               I'm an IT and asiping Web Developer with an art & design background. I'm available for interesting freelance work projects.
             </div>
           </div>
