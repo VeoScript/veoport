@@ -10,8 +10,7 @@ export default function Navbar() {
 
   const { theme, setTheme } = useTheme()
   const toggleChange = () => theme === 'light' ? setTheme('dark') : setTheme('light')
-
-  const router = useRouter();
+  const router = useRouter()
 
   const links = [
     {
@@ -34,7 +33,30 @@ export default function Navbar() {
       title: 'Others',
       href: '/others'
     }
-  ];
+  ]
+
+  const iconLinks = [
+    {
+      icon: <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>,
+      href: '/'
+    },
+    {
+      icon: <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path></svg>,
+      href: '/about'
+    },
+    {
+      icon: <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg>,
+      href: '/portfolio'
+    },
+    {
+      icon: <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>,
+      href: '/contact'
+    },
+    {
+      icon: <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg>,
+      href: '/others'
+    }
+  ]
 
   const socialLinks = [
     {
@@ -53,14 +75,14 @@ export default function Navbar() {
       icon: <svg className="w-5 h-5 fill-current text-[#0A66C2] dark:text-white transition duration-300 transform hover:-translate-y-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>,
       href: 'https://www.linkedin.com/in/jerome-villaruel-6464271aa/'
     }
-  ];
+  ]
 
   return (
     <>
-      <nav className="fixed top-0 mx-auto w-full ">
-        <div className="md:flex hidden justify-around py-2.5 shadow-sm bg-gray-50 dark:bg-[#2C3141]">
+      <nav className="fixed md:top-0 bottom-0 mx-auto w-full">
+        <div className="md:flex hidden justify-between py-2.5 shadow-sm bg-gray-50 dark:bg-[#2C3141]">
           <div className="flex justify-center w-full max-w-sm">
-            <ul className="flex flex-row items-center space-x-5">
+            <ul className="flex flex-row items-center space-x-3">
               {socialLinks.map(({ icon, href }, i) => (
                 <li key={ i }>
                   <Link href={ href }>
@@ -87,6 +109,46 @@ export default function Navbar() {
               size={50}
             />
           </div>
+        </div>
+        <div className="flex md:hidden justify-around shadow-sm bg-gray-50 dark:bg-[#2C3141]">
+          <ul className="flex flex-row w-full justify-around items-center">
+            <li className={`flex justify-center py-3 w-full ${router.pathname == '/' ? 'bg-[#2C3141] dark:bg-[#003E62]'  : "bg-gray-50 dark:bg-[#2C3141]"}`}>
+              <Link href="/">
+                <a>
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                </a>
+              </Link>
+            </li>
+            <li className={`flex justify-center py-3 w-full ${router.pathname == '/portfolio' ? 'bg-[#2C3141] dark:bg-[#003E62]'  : "bg-gray-50 dark:bg-[#2C3141]"}`}>
+              <Link href="portfolio">
+                <a>
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg>
+                </a>
+              </Link>
+            </li>
+            <li className="flex flex-row items-center">
+              <DarkModeToggle
+                className="w-5 h-5 focus:outline-none"
+                onChange={toggleChange}
+                checked={theme === 'light' ? false : true}
+                size={50}
+              />
+            </li>
+            <li className={`flex justify-center py-3 w-full ${router.pathname == '/contact' ? 'bg-[#2C3141] dark:bg-[#003E62]'  : "bg-gray-50 dark:bg-[#2C3141]"}`}>
+              <Link href="contact">
+                <a>
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                </a>
+              </Link>
+            </li>
+            <li className={`flex justify-center py-3 w-full ${router.pathname == '/others' ? 'bg-[#2C3141] dark:bg-[#003E62]'  : "bg-gray-50 dark:bg-[#2C3141]"}`}>
+              <Link href="others">
+                <a>
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg>
+                </a>
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
     </>
