@@ -8,6 +8,7 @@ export default function Home() {
     <>
       <Head>
         <title>Jerome Villaruel</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
         <div className="flex flex-col justify-center w-full h-screen items-center bg-white dark:bg-[#232733]">
