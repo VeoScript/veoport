@@ -8,7 +8,7 @@ export default function Home() {
         <title>Jerome Villaruel</title>
       </Head>
       <Layout>
-        <div className="flex justify-center bg-white dark:bg-[#232733]">
+        <div className="flex justify-center">
           <h1>PUTANG INA MO</h1>
         </div>
       </Layout>
