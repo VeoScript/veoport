@@ -8,11 +8,10 @@ export default function Home() {
     <>
       <Head>
         <title>Jerome Villaruel</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="flex flex-col md:m-0 -mt-5 justify-center mx-auto w-full h-screen items-center bg-white dark:bg-[#232733]">
-          <div className="flex flex-col text-center space-y-3">
+        <div className="flex flex-col md:m-0 justify-center mx-auto w-full h-screen items-center bg-white dark:bg-[#232733]">
+          <div className="flex flex-col text-center space-y-1">
             <h1 className="name font-light md:text-5xl text-3xl text-[#333] dark:text-white tracking-wide uppercase">Jerome Villaruel</h1>
             <p className="typewriter font-extralight mx-auto tracking-wider md:text-lg text-xs text-[#333] dark:text-white uppercase">The odyssey of an aspiring web developer</p>
           </div>
@@ -22,8 +21,8 @@ export default function Home() {
                 className="rounded-full bg-gray-900 object-cover"
                 src="/pro.jpg"
                 alt="Picture of the author"
-                width={150}
-                height={150}
+                width={200}
+                height={200}
               />
             </div>
           </div>
