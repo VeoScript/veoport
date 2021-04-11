@@ -1,8 +1,23 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import Layout from '../layouts/default'
 
 export default function About() {
+  const experience = [
+    {
+      company: 'Specialty Pulp Manufacturing, Inc.',
+      website: 'https://www.spmi-pulp.com/',
+      position: 'IT Specialist',
+      hired: 'February 2020 - Present'
+    },
+    {
+      company: 'Puregold Price Club, Inc.',
+      website: 'https://www.puregold.com.ph/',
+      position: 'Graphic Artist',
+      hired: 'August 2019 - December 2019'
+    }
+  ]
   const skills = [
     {
       category: 'Web Development',
@@ -31,7 +46,7 @@ export default function About() {
         <title>About</title>
       </Head>
       <Layout>
-        <div className="md:flex hidden flex-col md:m-0 -mt-5 justify-center mx-auto px-5 pt-5 w-full h-screen items-center bg-white dark:bg-[#232733]">
+        <div className="md:flex hidden flex-col md:m-0 -mt-5 justify-center mx-auto w-full h-screen px-5 pt-5 items-center bg-white dark:bg-[#232733]">
           <div className="flex flex-row w-full max-w-5xl space-x-2">
             <div className="mx-auto w-1/2">
               <Image
@@ -54,20 +69,24 @@ export default function About() {
             <div className="flex flex-col justify-start w-full max-w-md space-y-3">
               <h1 className="text-lg ml-3">Work Experience</h1>
               <div className="flex flex-col space-y-2">
-                <div className="bg-gray-50 dark:bg-gray-900 px-5 py-3 rounded-full">
-                  <div className="font-semibold text-lg ml-3">Specialty Pulp Manufacturing, Inc.</div>
-                  <div className="font-light text-sm ml-3">
-                    IT Coordinator
-                    <span className="ml-2 px-2 bg-gray-100 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-bold text-xs">February 2020 - Present</span>
+                {experience.map(({ company, website, position, hired }, i) => (
+                  <div className="flex flex-row items -center justify-between bg-gray-50 dark:bg-gray-900 px-5 py-3 rounded-full" key={i}>
+                    <div className="flex flex-col justify-start">
+                      <div className="font-semibold text-base ml-3">{ company }</div>
+                      <div className="font-light text-sm ml-3">
+                        { position }
+                        <span className="ml-2 px-2 bg-gray-100 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-bold text-xs">{ hired }</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-row items-center">
+                      <Link href={ website }>
+                        <a target="_blank">
+                          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
+                        </a>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-                <div className="bg-gray-50 dark:bg-gray-900 px-5 py-3 rounded-full">
-                  <div className="font-semibold text-lg ml-3">Puregold Price Club, Inc.</div>
-                  <div className="font-light text-sm ml-3">
-                    Graphic Artist
-                    <span className="ml-2 px-2 bg-gray-100 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-bold text-xs">August 2019 - December 2019</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="flex flex-col justify-start w-full max-w-lg space-y-5">
