@@ -50,12 +50,12 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed md:top-0 bottom-0 mx-auto w-full">
+      <nav className="fixed md:top-0 mx-auto w-full">
         <div className="md:flex hidden justify-between py-2.5 shadow-sm bg-gray-50 dark:bg-[#2C3141]">
           <div className="flex justify-center w-full max-w-sm">
             <ul className="flex flex-row items-center space-x-5">
               {socialLinks.map(({ icon, href }, i) => (
-                <li key={ i }>
+                <li key={i}>
                   <Link href={ href }>
                     <a target="_blank">{icon}</a>
                   </Link>
@@ -65,7 +65,7 @@ export default function Navbar() {
           </div>
           <div className="flex justify-center w-full max-w-sm">
             {links.map(({ title, href }, i) => (
-              <div key={ i }>
+              <div key={i}>
                 <Link href={ href }>
                   <a className={`text-sm font-extralight tracking-tight py-2 px-8 border-b-4 transition duration-300 capitalize ${router.pathname == href ? 'border-[#2C3141] dark:border-gray-50'  : "border-gray-50 dark:border-[#2C3141]"}`}>{ title }</a>
                 </Link>
@@ -81,6 +81,8 @@ export default function Navbar() {
             />
           </div>
         </div>
+      </nav>
+      <nav className="fixed bottom-0 mx-auto w-full">
         <div className="flex md:hidden justify-around shadow-sm bg-gray-50 dark:bg-[#2C3141]">
           <ul className="flex flex-row w-full justify-around items-center">
             <li className={`flex justify-center py-3 w-full ${router.pathname == '/' ? 'bg-gray-200 dark:bg-gray-900'  : "bg-gray-50 dark:bg-[#2C3141]"}`}>
