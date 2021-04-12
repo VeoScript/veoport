@@ -19,7 +19,6 @@ export default function About() {
             <div className="mx-auto md:w-1/2 w-full space-y-2">
               <h1 className="font-bold text-xl">About Me</h1>
               <p className="text-justify text-base">
-                {/* <span className="text-2xl">👋</span> */}
                 Hello! My name is Jerome Villaruel, I'm twenty-two years old from Philippines. I create stunning & functional websites for small businesses remotely and I know how to setup LAN connection or other network services for your business.
               </p>
             </div>
@@ -75,7 +74,7 @@ export default function About() {
             <div className="mx-3 my-3">
               <h1 className="font-normal text-sm">About Me</h1>
               <p className="font-light text-justify text-xs">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque cupiditate facilis delectus nisi possimus necessitatibus iusto obcaecati pariatur dolorum libero dolorem, tempora modi doloribus! Eos accusamus nemo expedita sapiente aperiam.
+                Hello! My name is Jerome Villaruel, I'm twenty-two years old from Philippines. I create stunning & functional websites for small businesses remotely and I know how to setup LAN connection or other network services for your business.
               </p>
             </div>
             <hr className="w-11/12 my-1 border border-gray-100 dark:border-gray-700" />
