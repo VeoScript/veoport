@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
 
@@ -47,27 +46,22 @@ export default function About() {
       </Head>
       <Layout>
         <div className="hidden md:flex flex-col pb-10 mx-5 justify-center items-center w-full">
-          <div className="flex flex-row justify-between w-full max-w-5xl space-x-3 space-y-2">
+          <div className="flex flex-row justify-between w-full max-w-5xl space-x-10 space-y-2">
             <div className="flex justify-start mx-auto md:mt-0 mt-8 w-1/2">
-              <Image
-                className="bg-gray-900 object-contain text-white"
-                src="/pro.jpg"
-                alt="Picture of Jerome Villaruel"
-                width={450}
-                height={230}
-              />
+              <img className="w-full h-72 rounded-sm bg-gray-900 object-cover text-white" src="https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/IMG20210412172311.jpg?alt=media&token=1070baad-d9b0-4dab-98e4-75f1153d2ef8" alt="Picture of Jerome Villaruel" />
             </div>
             <div className="mx-auto md:w-1/2 w-full space-y-2">
               <h1 className="font-bold text-xl">About Me</h1>
               <p className="text-justify text-base">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque cupiditate facilis delectus nisi possimus necessitatibus iusto obcaecati pariatur dolorum libero dolorem, tempora modi doloribus! Eos accusamus nemo expedita sapiente aperiam.
+                {/* <span className="text-2xl">👋</span> */}
+                Hello! My name is Jerome Villaruel, I'm twenty-two years old from Philippines. I create stunning & functional websites for small businesses remotely and I know how to setup LAN connection or other network services for your business.
               </p>
             </div>
           </div>
-          <hr className="w-full max-w-5xl my-5 border border-gray-300 dark:border-gray-700" />
+          <hr className="w-full max-w-5xl my-5 border border-gray-100 dark:border-gray-700" />
           <div className="flex flex-row justify-between w-full max-w-5xl">
             <div className="flex flex-col justify-start w-full max-w-md space-y-3">
-              <h1 className="text-lg ml-3">Work Experience</h1>
+              <h1 className="text-base ml-3">Work Experience</h1>
               <div className="flex flex-col space-y-2">
                 {experience.map(({ company, website, position, hired }, i) => (
                   <div className="flex flex-row items-center justify-between bg-gray-100 dark:bg-gray-900 px-5 py-3 rounded-full" key={i}>
@@ -90,7 +84,7 @@ export default function About() {
               </div>
             </div>
             <div className="flex flex-col justify-start w-full max-w-lg space-y-3">
-              <h1 className="text-lg ml-3">Skills</h1>
+              <h1 className="text-base ml-3">Skills</h1>
               <div className="flex flex-col space-y-3">
                 {skills.map(({ category, percentage, width }, i) => (
                   <div className="percentage mx-3 space-y-1" key={i}>
@@ -110,22 +104,16 @@ export default function About() {
         <div className="md:hidden flex flex-col pb-10 mx-3 justify-center items-start h-screen w-full">
           <div className="flex flex-col items-center my-5 w-full h-full overflow-y-auto">
             <div className="mx-3">
-              <Image
-                className="bg-gray-900 object-cover mx-auto text-white"
-                src="/"
-                alt="Picture of Jerome Villaruel"
-                width={450}
-                height={230}
-              />
+              <img className="w-full h-72 rounded-sm bg-gray-900 object-cover text-white" src="https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/IMG20210412172311.jpg?alt=media&token=1070baad-d9b0-4dab-98e4-75f1153d2ef8" alt="Picture of Jerome Villaruel" />
             </div>
-            <div className="mx-3">
+            <div className="mx-3 my-3">
               <h1 className="font-normal text-sm">About Me</h1>
               <p className="font-light text-justify text-xs">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque cupiditate facilis delectus nisi possimus necessitatibus iusto obcaecati pariatur dolorum libero dolorem, tempora modi doloribus! Eos accusamus nemo expedita sapiente aperiam.
               </p>
             </div>
-            <hr className="w-11/12 my-5 border border-gray-300 dark:border-gray-700" />
-            <div className="mx-auto w-full space-y-3">
+            <hr className="w-11/12 my-1 border border-gray-100 dark:border-gray-700" />
+            <div className="mx-auto my-3 w-full space-y-3">
               <h1 className="font-normal text-sm mx-3">Skills</h1>
               {skills.map(({ category, percentage, width }, i) => (
                 <div className="percentage mx-3 space-y-1" key={i}>
