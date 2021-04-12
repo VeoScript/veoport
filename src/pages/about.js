@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Layout from '../layouts/default'
+import Layout from '~/layouts/default'
 
 export default function About() {
   const experience = [
@@ -50,8 +50,8 @@ export default function About() {
           <div className="flex flex-row justify-between w-full max-w-5xl space-x-3 space-y-2">
             <div className="flex justify-start mx-auto md:mt-0 mt-8 w-1/2">
               <Image
-                className="bg-gray-900 object-cover text-white"
-                src="/"
+                className="bg-gray-900 object-contain text-white"
+                src="/pro.jpg"
                 alt="Picture of Jerome Villaruel"
                 width={450}
                 height={230}
