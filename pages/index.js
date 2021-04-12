@@ -10,7 +10,7 @@ export default function Home() {
         <title>Jerome Villaruel</title>
       </Head>
       <Layout>
-        <div className="flex flex-col md:m-0 justify-center mx-auto w-full h-screen items-center bg-white dark:bg-[#232733]">
+        <div className="flex flex-col md:m-0 pb-10 justify-center items-center w-full">
           <div className="flex flex-col text-center space-y-1">
             <h1 className="name font-light md:text-5xl text-3xl text-[#333] dark:text-white tracking-wide uppercase">Jerome Villaruel</h1>
             <p className="typewriter font-extralight mx-auto tracking-wider md:text-lg text-xs text-[#333] dark:text-white uppercase">The odyssey of an aspiring web developer</p>
@@ -28,7 +28,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col justify-center items-center space-y-3">
             <div className="flex space-x-2">
-              <Link href="about">
+              <Link href="/about">
                 <a className="rounded-full font-bold text-white text-center md:text-sm text-xs bg-gray-900 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 transform hover:-translate-y-1">Know More</a>
               </Link>
               <Link href="/">
