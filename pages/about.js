@@ -47,14 +47,12 @@ export default function About() {
       </Head>
       <Layout>
         <div className="flex flex-col md:m-0 pb-10 justify-center items-center w-full">
-          <div className="flex flex-row w-full max-w-5xl space-x-2">
-            <div className="mx-auto w-1/2">
-              <Image
-                className="bg-gray-900 object-cover"
+          <div className="flex md:flex-row flex-col justify-center w-full max-w-5xl space-x-2">
+            <div className="flex justify-center mx-auto md:w-1/2 w-full">
+              <img 
                 src="/"
-                alt="Picture of Jerome Villaruel"
-                width={450}
-                height={230}
+                alt="Jerome Villaruel"
+                className="bg-gray-900 object-cover w-full h-56"
               />
             </div>
             <div className="mx-auto w-1/2 space-y-2">
@@ -70,7 +68,7 @@ export default function About() {
               <h1 className="text-lg ml-3">Work Experience</h1>
               <div className="flex flex-col space-y-2">
                 {experience.map(({ company, website, position, hired }, i) => (
-                  <div className="flex flex-row items -center justify-between bg-gray-100 dark:bg-gray-900 px-5 py-3 rounded-full" key={i}>
+                  <div className="flex flex-row items-center justify-between bg-gray-100 dark:bg-gray-900 px-5 py-3 rounded-full" key={i}>
                     <div className="flex flex-col justify-start">
                       <div className="font-semibold text-base ml-3">{ company }</div>
                       <div className="font-light text-sm ml-3">
