@@ -25,16 +25,16 @@ export default function Contact() {
             </div>
             <div className="w-full md:w-2/5 mx-auto space-y-3">
               <div className="form-control">
-                <input className="bg-gray-100 text-[#333] text-xs md:text-normal px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="text" placeholder="Name" />
+                <input className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="text" placeholder="Name" />
               </div>
               <div className="form-control">
-                <input className="bg-gray-100 text-[#333] text-xs md:text-normal px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="email" placeholder="Email" />
+                <input className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="email" placeholder="Email" />
               </div>
               <div className="form-control">
-                <textarea className="bg-gray-100 text-[#333] text-xs md:text-normal px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Message here..." rows="3"></textarea>
+                <textarea className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Message here..." rows="3"></textarea>
               </div>
               <div className="form-control flex justify-end">
-                <button className="bg-[#62A9FF] text-white text-xs md:text-normal px-5 py-2 md:px-10 md:py-3 -mt-2 rounded-lg  focus:outline-none">Send</button>
+                <button className="bg-[#62A9FF] text-white text-xs md:text-lg px-5 py-2 md:px-10 md:py-3 -mt-2 rounded-lg  focus:outline-none">Send</button>
               </div>
             </div>
           </div>
