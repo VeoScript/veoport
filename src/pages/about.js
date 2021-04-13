@@ -25,8 +25,8 @@ export default function About() {
                 </p>
               </div>
               <div className="space-y-2">
-                <h1 className="font-bold text-base">Technologies</h1>
-                <div className="flex flex-row text-sm space-x-3">
+                <h1 className="font-bold text-lg">Technologies</h1>
+                <div className="flex flex-row text-sm space-x-3 pt-2">
                   {technologies.map(({ name, icon }, i) => (
                     <div className={`${ name }`} key={i}>{ icon }</div>
                   ))}
@@ -34,33 +34,10 @@ export default function About() {
               </div>
             </div>
           </div>
-          <hr className="w-full max-w-5xl my-5 border border-gray-100 dark:border-gray-700" />
-          <div className="flex flex-row justify-between w-full max-w-5xl">
-            <div className="flex flex-col justify-start w-full max-w-md space-y-3">
-              <h1 className="text-base ml-3">Work Experience</h1>
-              <div className="flex flex-col space-y-2">
-                {experience.map(({ company, website, position, hired }, i) => (
-                  <div className="flex flex-row items-center justify-between bg-gray-100 dark:bg-gray-900 px-5 py-3 rounded-full" key={i}>
-                    <div className="flex flex-col justify-start">
-                      <div className="font-semibold text-base ml-3">{ company }</div>
-                      <div className="font-light text-sm ml-3">
-                        { position }
-                        <span className="ml-2 px-2 bg-gray-200 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-bold text-xs">{ hired }</span>
-                      </div>
-                    </div>
-                    <div className="flex flex-row items-center">
-                      <Link href={ website }>
-                        <a target="_blank">
-                          <svg className="w-5 h-5 text-[#333] dark:text-gray-200 transition ease-in-out duration-300 transform hover:rotate-45" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <hr className="w-full max-w-5xl my-3 border border-gray-100 dark:border-gray-700" />
+          <div className="flex flex-row justify-between w-full max-w-5xl space-x-10">
             <div className="flex flex-col justify-start w-full max-w-lg space-y-3">
-              <h1 className="text-base ml-3">Skills</h1>
+              <h1 className="font-bold text-lg ml-3">Skills</h1>
               <div className="flex flex-col space-y-3">
                 {skills.map(({ category, percentage, width }, i) => (
                   <div className="percentage mx-3 space-y-1" key={i}>
@@ -70,6 +47,29 @@ export default function About() {
                     </div>
                     <div className="relative w-full h-5 rounded-full bg-gray-300 dark:bg-gray-500">
                       <span className={`absolute h-5 rounded-full bg-[#62A9FF] ${ width }`}></span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col justify-start w-full max-w-lg space-y-3">
+              <h1 className="font-bold text-lg ml-3">Work Experience</h1>
+              <div className="flex flex-col space-y-2">
+                {experience.map(({ company, website, position, hired }, i) => (
+                  <div className="flex flex-row items-center justify-between bg-gray-200 dark:bg-gray-900 px-5 py-3 rounded-full" key={i}>
+                    <div className="flex flex-col justify-start">
+                      <div className="font-semibold text-base ml-3">{ company }</div>
+                      <div className="font-light text-sm ml-3">
+                        { position }
+                        <span className="ml-2 px-2 bg-gray-300 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-bold text-xs">{ hired }</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-row items-center">
+                      <Link href={ website }>
+                        <a target="_blank">
+                          <svg className="w-5 h-5 text-[#333] dark:text-gray-300 transition ease-in-out duration-300 transform hover:rotate-45" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 ))}
