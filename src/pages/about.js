@@ -77,7 +77,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="md:hidden flex flex-col pb-10 mx-3 justify-center items-start h-screen w-full">
+        <div className="md:hidden flex flex-col pb-10 justify-center items-center h-screen w-full">
           <div className="flex flex-col items-center my-5 w-full h-full overflow-y-auto">
             <div className="mx-3">
               <img className="w-full h-72 rounded-sm bg-gray-900 object-cover text-white" src="/me.jpg" alt="Picture of Jerome Villaruel" />
