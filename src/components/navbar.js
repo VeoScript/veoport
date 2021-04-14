@@ -12,9 +12,9 @@ export default function Navbar() {
   const router = useRouter()
 
   return (
-    <nav className="fixed bottom-0 mx-auto w-full">
-      <div className="md:flex hidden justify-between py-2.5 shadow-inner bg-gray-100 dark:bg-[#2C3141]">
-        <div className="flex justify-center w-full max-w-sm">
+    <nav className="fixed bottom-0 mx-auto w-full z-50 bg-gray-100 border-t-2 border-gray-300 dark:border-gray-700 dark:bg-[#2C3141]">
+      <div className="md:flex hidden justify-around mx-10 py-2.5 shadow-inner">
+        <div className="flex justify-center">
           <ul className="flex flex-row items-center space-x-5">
             {socialLinks.map(({ icon, href }, i) => (
               <li key={i}>
@@ -25,16 +25,16 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
-        <div className="flex justify-center w-full max-w-sm">
+        <div className="flex justify-center space-x-8">
           {links.map(({ title, href }, i) => (
             <div key={i}>
               <Link href={ href }>
-                <a className={`text-sm font-extralight tracking-tight py-2 px-8 border-b-4 transition duration-300 capitalize ${router.pathname == href ? 'border-[#2C3141] dark:border-gray-100'  : "border-gray-100 dark:border-[#2C3141]"}`}>{ title }</a>
+                <a className={`text-sm font-light tracking-tight py-2 px-3 border-b-4 transition duration-300 capitalize ${router.pathname == href ? 'border-[#2C3141] dark:border-gray-100'  : "border-gray-100 dark:border-[#2C3141]"}`}>{ title }</a>
               </Link>
             </div>
           ))}
         </div>
-        <div className="flex justify-center w-full max-w-sm">
+        <div className="flex justify-center">
           <DarkModeToggle
             className="w-5 h-5 focus:outline-none"
             onChange={toggleChange}
