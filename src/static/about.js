@@ -1,12 +1,14 @@
 export const experience = [
   {
     company: 'Specialty Pulp Manufacturing, Inc.',
+    icon: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/spmi_icon.svg?alt=media&token=9a8bc5d0-2b5d-4dee-93ff-278e46248f6c',
     website: 'https://www.spmi-pulp.com/',
     position: 'IT Specialist',
     hired: 'February 2020 - Present'
   },
   {
     company: 'Puregold Price Club, Inc.',
+    icon: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/Puregold_logo%20(1).svg?alt=media&token=2096d215-71f3-4434-a2f5-176d7f9a8583',
     website: 'https://www.puregold.com.ph/',
     position: 'Graphic Artist',
     hired: 'August 2019 - December 2019'
