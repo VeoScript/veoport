@@ -68,7 +68,7 @@ export default function About() {
                         </div>
                         <div className="font-light text-sm ml-3">
                           { position }
-                          <span className="ml-2 px-2 bg-gray-300 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-bold text-xs">{ hired }</span>
+                          <span className="ml-2 px-2 bg-gray-300 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-semibold text-xs">{ hired }</span>
                         </div>
                       </div>
                     </div>
@@ -119,22 +119,22 @@ export default function About() {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col mt-3 mx-auto w-full space-y-3">
+            <div className="flex flex-col mt-3 mb-5 mx-auto w-full space-y-3">
               <h1 className="font-normal text-sm mx-3">Work Experience</h1>
               {experience.map(({ company, icon, website, position, hired }, i) => (
-                <div className="flex flex-row items-center justify-between bg-gray-200 dark:bg-gray-900 mx-3 px-5 py-3 rounded-full" key={i}>
-                  <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center justify-between px-5 py-1" key={i}>
+                  <div className="flex flex-row items-center space-x-2">
                     <div>
                       <img className="w-10 h-10" src={icon} />
                     </div>
-                    <div className="flex flex-col justify-start">
+                    <div className="flex flex-col justify-start space-y-1">
                       <div className="font-semibold text-xs md:text-base ml-3">
                         { company }
                       </div>
                       <div className="font-light text-xs md:text-sm ml-3">
                         { position }
-                        <span className="ml-2 px-2 bg-gray-300 dark:bg-gray-800 text-[#333] dark:text-gray-300 rounded-full font-bold text-xs md:text-xs">{ hired }</span>
                       </div>
+                      <span className="ml-1 px-2 text-gray-400 rounded-full font-normal text-xs">{ hired }</span>
                     </div>
                   </div>
                   <div className="flex flex-row items-center">
