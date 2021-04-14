@@ -11,7 +11,8 @@ export default function About() {
         <title>About</title>
       </Head>
       <Layout>
-        <div className="hidden md:flex flex-col pb-10 mx-5 justify-center items-center w-full">
+        <div className="hidden md:flex pb-10 h-screen w-full">
+          <div className="flex flex-col justify-center items-center h-full w-full px-5">
           <div className="flex flex-row justify-between w-full max-w-5xl space-x-10 space-y-2">
             <div className="flex justify-start mx-auto md:mt-0 mt-8 w-1/2">
               <img className="w-full h-72 rounded-sm bg-gray-900 object-cover text-white" src="/me.jpg" alt="Picture of Jerome Villaruel" />
@@ -54,7 +55,7 @@ export default function About() {
             </div>
             <div className="flex flex-col justify-start w-full max-w-lg space-y-3">
               <h1 className="font-bold text-lg ml-3">Work Experience</h1>
-              <div className="flex flex-col space-y-2">
+              <div className="flex flex-col space-y-1.5">
                 {experience.map(({ company, website, position, hired }, i) => (
                   <div className="flex flex-row items-center justify-between bg-gray-200 dark:bg-gray-900 px-5 py-3 rounded-full" key={i}>
                     <div className="flex flex-col justify-start">
@@ -75,6 +76,7 @@ export default function About() {
                 ))}
               </div>
             </div>
+          </div>
           </div>
         </div>
         <div className="md:hidden flex flex-col pb-10 justify-center items-center h-screen w-full">
