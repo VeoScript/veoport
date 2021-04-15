@@ -1,8 +1,48 @@
 import Head from 'next/head'
 import Layout from '~/layouts/default'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { info } from '~/static/contact'
 
 export default function Contact() {
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('Sending')
+
+    let data = {
+      name,
+      email,
+      message
+    }
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then((res) => {
+      console.log('Response Recieved')
+      if(res.status === 200) {
+        console.log('Response Succeeded!')
+        setSubmitted(true)
+        setName('')
+        setEmail('')
+        setMessage('')
+        toast.info('You email was successfully sent! Thank you for reaching out.')
+      }
+    })
+  }
+
   return (
     <>
       <Head>
@@ -10,6 +50,7 @@ export default function Contact() {
       </Head>
       <Layout>
         <div className="flex justify-center items-center w-full h-screen overflow-y-auto py-10 space-x-0 space-y-5 md:space-x-5 md:space-y-0">
+          <ToastContainer draggablePercent={60} />
           <div className="flex flex-col md:flex-row justify-around items-center max-width-xl px-10 py-10">
             <div className="w-full mx-auto md:w-2/5 md:space-y-3 space-y-1">
               <h1 className="md:text-4xl text-lg text-[#333] font-bold dark:text-white">Get in touch</h1>
@@ -23,20 +64,20 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-            <div className="w-full md:w-2/5 mx-auto space-y-3">
+            <form className="w-full md:w-2/5 mx-auto space-y-3">
               <div className="form-control">
-                <input className="bg-gray-100 text-[#333] text-xs md:text-xl px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="text" placeholder="Name" />
+                <input onChange={(e)=>{setName(e.target.value)}} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="text" name="name" placeholder="Name" required />
               </div>
               <div className="form-control">
-                <input className="bg-gray-100 text-[#333] text-xs md:text-xl px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="email" placeholder="Email" />
+                <input onChange={(e)=>{setEmail(e.target.value)}} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="email" name="email" placeholder="Email" required />
               </div>
               <div className="form-control">
-                <textarea className="bg-gray-100 text-[#333] text-xs md:text-xl px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Message here..." rows="3"></textarea>
+                <textarea onChange={(e)=>{setMessage(e.target.value)}} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" name="message"  placeholder="Message here..." rows="3" required></textarea>
               </div>
               <div className="form-control flex justify-end">
-                <button className="bg-[#62A9FF] text-white text-xs md:text-lg px-5 py-2 md:px-10 md:py-2 -mt-2 rounded-lg  focus:outline-none">Send</button>
+                <button onClick={(e)=>{handleSubmit(e)}} type="submit" className="bg-[#62A9FF] text-white text-xs md:text-sm px-5 py-2 md:px-10 md:py-2 -mt-2 rounded-lg  focus:outline-none">Send</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </Layout>
