@@ -31,8 +31,8 @@ export default function Home() {
               <Link href="/about">
                 <a className="rounded-full font-bold text-white text-center md:text-sm text-xs bg-gray-900 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 transform hover:-translate-y-1">Know More</a>
               </Link>
-              <Link href="/">
-                <a className="rounded-full font-bold text-[#222] text-center md:text-sm text-xs bg-gray-300 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 transform hover:-translate-y-1">Resume</a>
+              <Link href="/files/resume.pdf">
+                <a target="_blank" className="rounded-full font-bold text-[#222] text-center md:text-sm text-xs bg-gray-300 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 transform hover:-translate-y-1">Resume</a>
               </Link>
             </div>
             <div className="flex font-medium md:text-lg text-sm">Welcome to my Landing Page ✈️</div>
