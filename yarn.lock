@@ -505,6 +505,11 @@ classnames@2.2.6:
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
+clsx@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
+
 color-convert@^1.9.0, color-convert@^1.9.1:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
@@ -740,6 +745,11 @@ domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
+
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 electron-to-chromium@^1.3.634, electron-to-chromium@^1.3.649:
   version "1.3.712"
@@ -1550,6 +1560,11 @@ node-releases@^1.1.69, node-releases@^1.1.70:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.71.tgz#cb1334b179896b1c89ecfdd4b725fb7bbdfc7dbb"
   integrity sha512-zR6HoT6LrLCRBwukmrVbHv0EpEQjksO6GmFcZQQuCAy139BEsoVKPYnf3jongYW83fAa1torLGYwxxky/p28sg==
 
+nodemailer@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.5.0.tgz#d12c28d8d48778918e25f1999d97910231b175d9"
+  integrity sha512-Tm4RPrrIZbnqDKAvX+/4M+zovEReiKlEXWDzG4iwtpL9X34MJY+D5LnQPH/+eghe8DLlAVshHAJZAZWBGhkguw==
+
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
@@ -1942,6 +1957,11 @@ react-dom@17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-hook-form@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.1.0.tgz#0261c5a63b2893e439804def5916cc751a97e012"
+  integrity sha512-mfkW5P9oUp/ebEuyV15UAULK93xS8IMpyc5SYLEp4ShQIOgJq2mTB/N0o8tX1YjBkLFjzi0nIin+kR1t928B2A==
+
 react-is@16.13.1, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -1959,6 +1979,13 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-toastify@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-7.0.3.tgz#93804c777ecf918872ba3b5be9c654db14547f85"
+  integrity sha512-cxZ5rfurC8LzcZQMTYc8RHIkQTs+BFur18Pzk6Loz6uS8OXUWm6nXVlH/wqglz4Z7UAE8xxcF5mRjfE13487uQ==
+  dependencies:
+    clsx "^1.1.1"
 
 react@17.0.2:
   version "17.0.2"
