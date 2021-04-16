@@ -3,6 +3,7 @@ import Layout from '~/layouts/default'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { motion } from 'framer-motion'
 import { info } from '~/static/contact'
 
 export default function Contact() {
@@ -12,9 +13,7 @@ export default function Contact() {
   const onSubmit = (formData) => {
     
     return new Promise((resolve) => {
-
       console.log('Sending')
-
       fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -29,7 +28,6 @@ export default function Contact() {
           toast.info('You email was successfully sent! Thank you for reaching out.')
           reset()
         }
-        
       })
       setTimeout(() => {
         resolve
@@ -72,14 +70,41 @@ export default function Contact() {
                 { errors.message && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Message is required!</span> }
               </div>
               <div className="form-control flex justify-end">
-                <button type="submit" className="bg-[#62A9FF] text-white text-xs md:text-sm px-5 py-2 md:px-10 md:py-2 -mt-2 rounded-lg transition ease-in-out duration-200 transform hover:-translate-y-0.5 focus:outline-none">
-                  { isSubmitting ? 'Loading' : 'Send' }
-                </button>
+                <motion.button
+                  className="bg-[#62A9FF] text-white text-xs md:text-sm px-5 py-2 md:px-5 md:py-2 -mt-2 rounded-lg transition ease-in-out duration-200 transform hover:-translate-y-0.5 focus:outline-none"
+                  whileHover={{ y: -4 }}
+                  disabled={ isSubmitting }
+                >
+                  { isSubmitting ? <LoadingButton /> : 'Send' }
+                </motion.button>
               </div>
             </form>
           </div>
         </div>
       </Layout>
     </>
+  )
+}
+
+function LoadingButton () {
+  return (
+    <div className="flex items-center text-xs space-x-3">
+      <svg className="w-5 h-5 fill-current text-white" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg" fill="currentColor" color="#000000">
+        <g transform="translate(1 1)" fill-rule="evenodd">
+          <circle cx="5" cy="50" r="5">
+            <animate attributeName="cy" begin="0s" dur="2.2s" values="50;5;50;50" calcMode="linear" repeatCount="indefinite"></animate>
+            <animate attributeName="cx" begin="0s" dur="2.2s" values="5;27;49;5" calcMode="linear" repeatCount="indefinite"></animate></circle>
+          <circle cx="27" cy="5" r="5">
+            <animate attributeName="cy" begin="0s" dur="2.2s" from="5" to="5" values="5;50;50;5" calcMode="linear" repeatCount="indefinite"></animate>
+            <animate attributeName="cx" begin="0s" dur="2.2s" from="27" to="27" values="27;49;5;27" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="49" cy="50" r="5">
+            <animate attributeName="cy" begin="0s" dur="2.2s" values="50;50;5;50" calcMode="linear" repeatCount="indefinite"></animate>
+            <animate attributeName="cx" from="49" to="49" begin="0s" dur="2.2s" values="49;5;27;49" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+        </g>
+      </svg>
+      <span>Sending...</span>
+    </div>
   )
 }
