@@ -3,6 +3,7 @@ import Layout from '~/layouts/default'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
 import { info } from '~/static/contact'
 
@@ -11,23 +12,16 @@ export default function Contact() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting }} = useForm()
 
   const onSubmit = (formData) => {
-    
     return new Promise((resolve) => {
-      console.log('Sending')
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      }).then((res) => {
-        console.log('Response Recieved')
-        if(res.status === 200) {
-          console.log('Response Succeeded!')
-          toast.info('You email was successfully sent! Thank you for reaching out.')
-          reset()
-        }
+      emailjs.send("service_qgx6gh5","template_i014bb9", formData, 'user_7nMpeK2S1XP8OhBYWh6gO')
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        toast.info('You email was successfully sent! Thank you for reaching out.')
+        reset()
+      }, (err) => {
+        console.log('FAILED...', err);
+        toast.info('Failed to send email! Try again.')
+        reset()
       })
       setTimeout(() => {
         resolve
@@ -90,7 +84,7 @@ function LoadingButton () {
   return (
     <div className="flex items-center text-xs space-x-3">
       <svg className="w-5 h-5 fill-current text-white" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg" fill="currentColor" color="#000000">
-        <g transform="translate(1 1)" fill-rule="evenodd">
+        <g transform="translate(1 1)" fillRule="evenodd">
           <circle cx="5" cy="50" r="5">
             <animate attributeName="cy" begin="0s" dur="2.2s" values="50;5;50;50" calcMode="linear" repeatCount="indefinite"></animate>
             <animate attributeName="cx" begin="0s" dur="2.2s" values="5;27;49;5" calcMode="linear" repeatCount="indefinite"></animate></circle>
