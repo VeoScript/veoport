@@ -35,7 +35,7 @@ export default function Home() {
                 <a target="_blank" className="rounded-sm font-bold text-[#333] text-center md:text-sm text-xs bg-gray-200 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 transform hover:-translate-y-0.5">Resume</a>
               </Link>
             </div>
-            <div className="flex flex-col items-center py-3 space-y-3">
+            <div className="flex flex-col items-center py-3 space-y-0.5">
               <div className="flex font-medium md:text-lg text-sm">Welcome to my Landing Page ✈️</div>
               <div className="flex w-full md:max-w-lg max-w-xs  text-center md:text-sm text-xs">
                 I'm an IT and asiping Web Developer with an art & design background. I'm available for interesting freelance work projects.

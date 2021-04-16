@@ -8,9 +8,7 @@ import { motion } from 'framer-motion'
 import { info } from '~/static/contact'
 
 export default function Contact() {
-
   const { register, handleSubmit, reset, formState: { errors, isSubmitting }} = useForm()
-
   const onSubmit = (formData) => {
     return new Promise((resolve) => {
       emailjs.send("service_qgx6gh5","template_i014bb9", formData, 'user_7nMpeK2S1XP8OhBYWh6gO')
@@ -20,7 +18,7 @@ export default function Contact() {
         reset()
       }, (err) => {
         console.log('FAILED...', err);
-        toast.info('Failed to send email! Try again.')
+        toast.error('Failed to send email! Try again.')
         reset()
       })
       setTimeout(() => {
@@ -28,7 +26,6 @@ export default function Contact() {
       }, 3000)
     })
   }
-
   return (
     <>
       <Head>
