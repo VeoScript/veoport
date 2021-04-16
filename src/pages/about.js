@@ -57,7 +57,7 @@ export default function About() {
               <h1 className="font-bold text-lg ml-3">Work Experience</h1>
               <div className="flex flex-col space-y-1.5">
                 {experience.map(({ company, icon, website, position, hired }, i) => (
-                  <div className="flex flex-row items-center justify-between border-2 border-gray-300 dark:border-gray-700 px-5 py-3 rounded-full" key={i}>
+                  <div className="flex flex-row items-center justify-between border border-gray-300 dark:border-gray-700 px-5 py-3 rounded-full" key={i}>
                     <div className="flex flex-row items-center">
                       <div>
                         <img className="w-10 h-10" src={icon} />
