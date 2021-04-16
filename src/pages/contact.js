@@ -7,25 +7,33 @@ import { info } from '~/static/contact'
 
 export default function Contact() {
 
-  const { register, handleSubmit, reset, formState:{ errors, isSubmitting, isSubmitSuccessful } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting }} = useForm()
 
   const onSubmit = (formData) => {
-    console.log('Sending')
+    
+    return new Promise((resolve) => {
 
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then((res) => {
-      console.log('Response Recieved')
-      if(res.status === 200) {
-        console.log('Response Succeeded!')
-        toast.info('You email was successfully sent! Thank you for reaching out.')
-        reset()
-      }
+      console.log('Sending')
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      }).then((res) => {
+        console.log('Response Recieved')
+        if(res.status === 200) {
+          console.log('Response Succeeded!')
+          toast.info('You email was successfully sent! Thank you for reaching out.')
+          reset()
+        }
+        
+      })
+      setTimeout(() => {
+        resolve
+      }, 3000)
     })
   }
 
@@ -52,19 +60,21 @@ export default function Contact() {
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full md:w-2/5 mx-auto space-y-3">
               <div className="form-control">
-                <input type="text" name="name" {...register("name", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Name" disabled={ isSubmitting } />
+                <input type="text" name="name" {...register("name", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Name" disabled={ isSubmitting } />
                 { errors.name && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Name is required!</span> }
               </div>
               <div className="form-control">
-                <input type="email" name="email" {...register("email", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Email" disabled={ isSubmitting } />
+                <input type="email" name="email" {...register("email", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email" disabled={ isSubmitting } />
                 { errors.email && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Email is required!</span> }
               </div>
               <div className="form-control">
-                <textarea name="message" {...register("message", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Message here..." rows="3" disabled={ isSubmitting }></textarea>
+                <textarea name="message" {...register("message", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Message here..." rows="3" disabled={ isSubmitting }></textarea>
                 { errors.message && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Message is required!</span> }
               </div>
               <div className="form-control flex justify-end">
-                <button type="submit" className="bg-[#62A9FF] text-white text-xs md:text-sm px-5 py-2 md:px-10 md:py-2 -mt-2 rounded-lg transition ease-in-out duration-200 transform hover:-translate-y-0.5 focus:outline-none">Send</button>
+                <button type="submit" className="bg-[#62A9FF] text-white text-xs md:text-sm px-5 py-2 md:px-10 md:py-2 -mt-2 rounded-lg transition ease-in-out duration-200 transform hover:-translate-y-0.5 focus:outline-none">
+                  { isSubmitting ? 'Loading' : 'Send' }
+                </button>
               </div>
             </form>
           </div>
