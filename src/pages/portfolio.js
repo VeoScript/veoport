@@ -21,7 +21,7 @@ export default function Portfolio() {
             </div>
             <div className="w-full h-full md:max-h-[450px] overflow-y-auto md:pr-2 pb-10 md:pb-0 space-y-2">
               {projects.map(({ name, image, description, link, demo }, i) => (
-                <div className="flex flex-col md:flex-row w-full items-start md:items-center justify-between space-y-5 md:space-y-0 p-0 md:px-5 md:py-3 rounded-none md:rounded-xl border border-gray-300 dark:border-gray-700" key={i}>
+                <div className="flex flex-col md:flex-row w-full items-start md:items-center justify-between space-y-5 md:space-y-0 p-0 md:px-5 md:py-3 overflow-hidden rounded-lg md:rounded-xl border border-gray-300 dark:border-gray-700" key={i}>
                   <div className="flex flex-col w-full md:max-w-lg">
                     <div className="flex flex-col md:flex-row items-start space-x-3 space-y-3 md:space-y-0">
                       <img className="w-full h-full md:w-32 md:h-20 rounded-none md:rounded-sm object-cover" src={image} />
