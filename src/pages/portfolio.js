@@ -24,7 +24,7 @@ export default function Portfolio() {
                 <div className="flex flex-col md:flex-row w-full items-start md:items-center justify-between space-y-5 md:space-y-0 p-0 md:px-5 md:py-3 overflow-hidden rounded-lg md:rounded-xl border border-gray-300 dark:border-gray-700" key={i}>
                   <div className="flex flex-col w-full md:max-w-lg">
                     <div className="flex flex-col md:flex-row items-start space-x-3 space-y-3 md:space-y-0">
-                      <img className="w-full h-full md:w-32 md:h-20 rounded-none md:rounded-sm object-cover" src={image} />
+                      <img className="w-full h-full md:w-32 md:h-20 rounded-none md:rounded-sm object-cover bg-gray-300 dark:bg-gray-900" src={image} />
                       <div className="flex flex-col pr-3 space-y-1">
                         <div className="flex flex-row space-x-1">
                           <span className="font-semibold">{ name }</span>
