@@ -42,3 +42,35 @@
   background-color: #B5B5B5;
   border-radius: 50px;
 }
+
+/* Tooltip */
+[data-tooltip]:before {
+  /* needed - ayaw labta */
+  content: attr(data-tooltip);
+  position: absolute;
+  opacity: 0;
+  
+  /* customizable dire ka mag edit */
+  transition: all 0.15s ease;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 10px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+[data-tooltip]:hover:before {
+  /* needed - ayaw labta */
+  opacity: 1;
+  
+  /* customizable dire ka mag edit */
+  background: #333;
+  margin-top: -33px;
+  margin-left: 20px;    
+}
+
+[data-tooltip]:not([data-tooltip-persistent]):before {
+  pointer-events: none;
+}
