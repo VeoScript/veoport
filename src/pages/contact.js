@@ -1,26 +1,16 @@
 import Head from 'next/head'
 import Layout from '~/layouts/default'
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { info } from '~/static/contact'
 
 export default function Contact() {
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const { register, handleSubmit, reset, formState:{ errors, isSubmitting, isSubmitSuccessful } } = useForm()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const onSubmit = (formData) => {
     console.log('Sending')
-
-    let data = {
-      name,
-      email,
-      message
-    }
 
     fetch('/api/contact', {
       method: 'POST',
@@ -28,16 +18,13 @@ export default function Contact() {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(formData)
     }).then((res) => {
       console.log('Response Recieved')
       if(res.status === 200) {
         console.log('Response Succeeded!')
-        setSubmitted(true)
-        setName('')
-        setEmail('')
-        setMessage('')
         toast.info('You email was successfully sent! Thank you for reaching out.')
+        reset()
       }
     })
   }
@@ -63,18 +50,21 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-            <form className="w-full md:w-2/5 mx-auto space-y-3">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full md:w-2/5 mx-auto space-y-3">
               <div className="form-control">
-                <input onChange={(e)=>{setName(e.target.value)}} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="text" name="name" placeholder="Name" required />
+                <input type="text" name="name" {...register("name", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Name" disabled={ isSubmitting } />
+                { errors.name && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Name is required!</span> }
               </div>
               <div className="form-control">
-                <input onChange={(e)=>{setEmail(e.target.value)}} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" type="email" name="email" placeholder="Email" required />
+                <input type="email" name="email" {...register("email", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Email" disabled={ isSubmitting } />
+                { errors.email && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Email is required!</span> }
               </div>
               <div className="form-control">
-                <textarea onChange={(e)=>{setMessage(e.target.value)}} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" name="message"  placeholder="Message here..." rows="3" required></textarea>
+                <textarea name="message" {...register("message", { required: true })} className="bg-gray-100 text-[#333] text-xs md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none" placeholder="Message here..." rows="3" disabled={ isSubmitting }></textarea>
+                { errors.message && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Message is required!</span> }
               </div>
               <div className="form-control flex justify-end">
-                <button onClick={(e)=>{handleSubmit(e)}} type="submit" className="bg-[#62A9FF] text-white text-xs md:text-sm px-5 py-2 md:px-10 md:py-2 -mt-2 rounded-lg  focus:outline-none">Send</button>
+                <button type="submit" className="bg-[#62A9FF] text-white text-xs md:text-sm px-5 py-2 md:px-10 md:py-2 -mt-2 rounded-lg transition ease-in-out duration-200 transform hover:-translate-y-0.5 focus:outline-none">Send</button>
               </div>
             </form>
           </div>
