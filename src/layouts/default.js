@@ -11,6 +11,7 @@ export default function Layout ({ children }) {
             <MessengerCustomerChat
               pageId="101914628707986"
               appId="3871367752945149"
+              themeColor="#E68585"
               minimized="true"
             />
           </div>
