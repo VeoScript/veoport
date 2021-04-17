@@ -38,7 +38,7 @@ export default function Home() {
             <div className="flex flex-col items-center py-3 space-y-0.5">
               <div className="flex font-medium md:text-lg text-sm">Welcome to my Landing Page ✈️</div>
               <div className="flex w-full md:max-w-lg max-w-xs  text-center md:text-sm text-xs">
-                I'm an IT and asiping Web Developer with an art & design background. I'm available for interesting freelance work projects.
+                I'm an IT and aspiring Web Developer with an art & design background. I'm available for interesting freelance work projects.
               </div>
             </div>
           </div>
