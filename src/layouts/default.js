@@ -8,6 +8,7 @@ export default function Layout ({ children }) {
       <div className="flex w-full h-auto">
         <div className="fixed top-0">
           <MessengerCustomerChat
+            className="fixed top-0"
             pageId="101914628707986"
             appId="3871367752945149"
           />
