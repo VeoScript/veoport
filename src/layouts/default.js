@@ -6,7 +6,7 @@ export default function Layout ({ children }) {
     <div className="flex flex-col justify-center items-center w-full h-screen transition ease-in-out duration-700 overflow-y-auto bg-white dark:bg-[#232733]">
       <Navbar />
       <div className="flex w-full h-auto">
-        <div className="flex">
+        <div className="fixed top-0">
           <MessengerCustomerChat
             pageId="101914628707986"
             appId="3871367752945149"
