@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
-import { links, socialLinks } from '~/static/navbar'
+import { socialLinks } from '~/static/navbar'
+import MessengerCustomerChat from 'react-messenger-customer-chat'
 
 export default function Home() {
   return (
@@ -11,6 +12,12 @@ export default function Home() {
         <title>Jerome Villaruel</title>
       </Head>
       <Layout>
+        <div className="hidden md:block">
+          <MessengerCustomerChat
+            pageId="101914628707986"
+            appId="3871367752945149"
+          />
+        </div>
         <div className="flex flex-col md:m-0 pb-10 justify-center items-center w-full">
           <div className="flex flex-col text-center space-y-1">
             <h1 className="name font-light md:text-5xl text-3xl text-[#333] dark:text-white tracking-wide uppercase">Jerome Villaruel</h1>
