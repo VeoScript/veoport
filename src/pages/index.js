@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
+import { links, socialLinks } from '~/static/navbar'
 
 export default function Home() {
   return (
@@ -25,6 +26,17 @@ export default function Home() {
                 height={200}
               />
             </div>
+            <div className="flex md:hidden justify-center mb-5">
+              <ul className="flex flex-row items-center space-x-5">
+                {socialLinks.map(({ icon, href }, i) => (
+                  <li key={i}>
+                    <Link href={ href }>
+                      <a target="_blank">{icon}</a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div className="flex flex-col justify-center items-center space-y-3">
             <div className="flex space-x-2">
@@ -35,7 +47,7 @@ export default function Home() {
                 <a target="_blank" className="rounded-sm font-bold text-[#333] text-center md:text-sm text-xs bg-gray-200 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 transform hover:-translate-y-0.5">Resume</a>
               </Link>
             </div>
-            <div className="flex flex-col items-center py-3 space-y-0.5">
+            <div className="flex flex-col items-center py-1 space-y-0.5">
               <div className="flex font-medium md:text-lg text-sm">Welcome to my Landing Page ✈️</div>
               <div className="flex w-full md:max-w-lg max-w-xs  text-center md:text-sm text-xs">
                 I'm an IT and aspiring Web Developer with an art & design background. I'm available for interesting freelance work projects.
