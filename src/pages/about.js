@@ -21,7 +21,7 @@ export default function About() {
               <div className="space-y-1">
                 <h1 className="font-bold text-lg">About Me</h1>
                 <p className="text-justify text-sm">
-                  Hello! My name is Jerome Villaruel, I'm a developer based Philippines. I create stunning & functional websites for small businesses remotely and I know how to set up LAN connection or other network services for your business.
+                  Hello! My name is Jerome Villaruel better known as Veoscript, I'm a developer based Philippines. I create stunning & functional websites for small businesses remotely and I know how to set up LAN connection or other network services for your business.
                   I'm hardworking  and work on my own initiative and available for interesting freelance work projects.
                 </p>
               </div>
@@ -94,7 +94,7 @@ export default function About() {
             <div className="mx-3 my-3">
               <h1 className="font-normal text-sm my-2">About Me</h1>
               <p className="font-light text-justify text-xs">
-                Hello! My name is Jerome Villaruel, I'm a developer based Philippines. I create stunning & functional websites for small businesses remotely and I know how to set up LAN connection or other network services for your business.
+                Hello! My name is Jerome Villaruel better known as Veoscript, I'm a developer based Philippines. I create stunning & functional websites for small businesses remotely and I know how to set up LAN connection or other network services for your business.
                 I'm hardworking  and work on my own initiative and available for interesting freelance work projects.
               </p>
               <h1 className="font-normal text-sm my-3">Technologies</h1>
