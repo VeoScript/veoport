@@ -31,6 +31,9 @@ export default function Post({ article }) {
       />
      </div>
      <div>
+      {article.content}
+     </div>
+     <div>
        {article.author.picture && (
          <Images image={article.author.picture} />
        )}
@@ -56,7 +59,7 @@ export async function getStaticPaths() {
         slug: article.slug
       }
     })),
-    fallback: false
+    fallback: true
   }
 }
 
