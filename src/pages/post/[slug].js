@@ -21,39 +21,40 @@ export default function Post({ article }) {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
-
-  return (
-    <Layout>
-      <Seo seo={seo} />
-      <div className="flex flex-col justify-center w-full h-screen" data-src={imageUrl} data-srcset={imageUrl}>
-        <h1>{article.title}</h1>
-        <Image 
-          src={imageUrl}
-          alt={article.name}
-          width={500}
-          height={300}
-          layout="intrinsic"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        {article.content}
-      </div>
-      <div>
-        {article.author.picture && (
-          <Images image={article.author.picture} />
-        )}
-      </div>
-      <div>
-        <p>By {article.author.name}</p>
-        <p>
-          <Moment format="DD, MMMM YYYY - hh:mm A">
-            {article.created_at}
-          </Moment>
-        </p>
-      </div>
-    </Layout>
-  )
+  else {
+    return (
+      <Layout>
+        <Seo seo={seo} />
+        <div className="flex flex-col justify-center w-full h-screen" data-src={imageUrl} data-srcset={imageUrl}>
+          <h1>{article.title}</h1>
+          <Image 
+            src={imageUrl}
+            alt={article.name}
+            width={500}
+            height={300}
+            layout="intrinsic"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          {article.content}
+        </div>
+        <div>
+          {article.author.picture && (
+            <Images image={article.author.picture} />
+          )}
+        </div>
+        <div>
+          <p>By {article.author.name}</p>
+          <p>
+            <Moment format="DD, MMMM YYYY - hh:mm A">
+              {article.created_at}
+            </Moment>
+          </p>
+        </div>
+      </Layout>
+    )
+  }
 }
 
 export async function getStaticPaths() {
