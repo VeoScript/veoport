@@ -59,7 +59,7 @@ export async function getStaticPaths() {
         slug: article.slug
       }
     })),
-    fallback: true
+    fallback: false
   }
 }
 
