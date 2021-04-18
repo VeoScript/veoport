@@ -16,7 +16,7 @@ export default function Card({ article }) {
           </div>
           <div className="font-light text-xs text-gray-500">
             <Moment format="MMMM DD, YYYY - hh:mm A">
-              {article.published_at}
+              {article.created_at}
             </Moment>
           </div>
         </div>
