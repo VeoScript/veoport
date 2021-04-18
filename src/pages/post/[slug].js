@@ -5,49 +5,55 @@ import Images from '~/components/images'
 import Image from 'next/image'
 import Seo from '~/components/seo'
 import { getStrapiMedia } from '~/lib/strapi/media' 
+import { useRouter } from 'next/router'
 
 export default function Post({ article }) {
- const imageUrl = getStrapiMedia(article.image)
- 
- const seo = {
-  metaTitle: article.title,
-  metaDescription: article.description,
-  shareImage: article.image,
-  article: true
- }
+  const router = useRouter()
+  const imageUrl = getStrapiMedia(article.image)
+  
+  const seo = {
+    metaTitle: article.title,
+    metaDescription: article.description,
+    shareImage: article.image,
+    article: true
+  }
 
- return (
-   <Layout>
-     <Seo seo={seo} />
-     <div data-src={imageUrl} data-srcset={imageUrl}>
-      <h1>{article.title}</h1>
-      <Image 
-        src={imageUrl}
-        alt={article.name}
-        width={500}
-        height={300}
-        layout="intrinsic"
-        loading="lazy"
-      />
-     </div>
-     <div>
-      {article.content}
-     </div>
-     <div>
-       {article.author.picture && (
-         <Images image={article.author.picture} />
-       )}
-     </div>
-     <div>
-       <p>By {article.author.name}</p>
-       <p>
-        <Moment format="DD, MMMM YYYY - hh:mm A">
-          {article.published_at}
-        </Moment>
-       </p>
-     </div>
-   </Layout>
- )
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <Layout>
+      <Seo seo={seo} />
+      <div className="flex flex-col justify-center w-full h-screen" data-src={imageUrl} data-srcset={imageUrl}>
+        <h1>{article.title}</h1>
+        <Image 
+          src={imageUrl}
+          alt={article.name}
+          width={500}
+          height={300}
+          layout="intrinsic"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        {article.content}
+      </div>
+      <div>
+        {article.author.picture && (
+          <Images image={article.author.picture} />
+        )}
+      </div>
+      <div>
+        <p>By {article.author.name}</p>
+        <p>
+          <Moment format="DD, MMMM YYYY - hh:mm A">
+            {article.created_at}
+          </Moment>
+        </p>
+      </div>
+    </Layout>
+  )
 }
 
 export async function getStaticPaths() {
@@ -59,7 +65,7 @@ export async function getStaticPaths() {
         slug: article.slug
       }
     })),
-    fallback: false
+    fallback: true,
   }
 }
 
