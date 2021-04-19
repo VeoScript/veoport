@@ -1,3 +1,4 @@
+import Moment from 'react-moment'
 import Head from 'next/head'
 import Layout from '~/layouts/default'
 import Link from 'next/link'
@@ -23,6 +24,7 @@ export async function getStaticProps() {
           name
         }
         date
+        createdAt
       }
     }
   `
@@ -42,37 +44,39 @@ export default function Others({ posts }) {
         <title>Blog</title>
       </Head>
       <Layout>
-        <div className="flex flex-col items-center h-screen w-full pt-5 space-y-5">
-          {posts.map((post) => {
-            return (
-              <div className="flex flex-row justify-start items-start rounded-md bg-gray-100 dark:bg-gray-900 w-1/2 h-96 space-x-2">
-                <div className="flex w-full">
-                  <img className="w-96 h-60 rounded-l-md object-cover" src={post.coverImage.url} alt={post.title} />
-                </div>
-                <div className="relative w-full my-5 px-14 space-y-1">
-                  <div className="absolute top-0 left-0">
-                    <h1 className="font-bold text-base">{post.title}</h1>
-                    <p className="font-light text-sm">{post.excerpt}</p>
-                  </div>
-                  <div className="absolute bottom-0 left-0 h-24 w-full">
-                   <div className="flex flex-row justify-between w-full">
-                    <div className="flex flex-col w-full">
-                      <p>{post.author.name}</p>
-                      <p className="font-ligth text-xs text-gray-500">{post.date}</p>
+        <div className="flex flex-col items-center h-screen w-full pt-5">
+          <div className="flex flex-col pb-20 space-y-3">
+            {posts.map((post) => {
+              return (
+                <Link key={post.id} as={`/post/${post.slug}`} href="/post/[slug]">
+                  <a className="flex flex-col items-center w-full">
+                    <div className="flex flex-col md:flex-row justify-start items-start rounded-md shadow-md bg-gray-100 dark:bg-gray-900 w-11/12 md:w-8/12 transition ease-in-out duration-300 md:transform hover:-translate-x-1">
+                      <div className="flex w-full">
+                        <img className="w-full md:w-11/12 h-60 rounded-t-md md:rounded-l-md md:rounded-r-none object-cover" src={post.coverImage.url} alt={post.title} />
+                      </div>
+                      <div className="flex flex-col justify-between w-full h-full py-8 mx-5 md:m-0 space-y-3 md:space-y-1">
+                        <div className="space-y-2">
+                          <h1 className="font-bold text-xl">{post.title}</h1>
+                          <p className="font-light text-sm">{post.excerpt}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-sm">{post.author.name}</p>
+                          <p className="font-ligth text-xs text-gray-500">
+                            <Moment format="MMMM DD, YYYY">
+                              {post.createdAt}
+                            </Moment>
+                          </p>
+                        </div>
+                      </div>   
+                      <div className="hidden md:flex flex-col h-full justify-center mx-10">
+                        <svg class="w-10 h-10 fill-current text-[#333] dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd"></path><path fillRule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
+                      </div> 
                     </div>
-                    <div className="flex flex-row items-center justify-end px-5 w-full">
-                      <Link as={`/post/${post.slug}`} href="/post/[slug]">
-                        <a className="flex px-5 py-3 bg-[#62A9FF] rounded-full font-light text-xs transition ease-in-out duration-200 transform hover:-translate-y-0.5">
-                          Read More...
-                        </a>
-                      </Link>
-                    </div>
-                   </div>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
+                  </a> 
+                </Link>
+              )
+            })}
+          </div>
         </div>
       </Layout>
     </>
