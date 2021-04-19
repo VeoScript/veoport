@@ -52,7 +52,7 @@ export default function Others({ posts }) {
                   <a className="flex flex-col items-center w-full">
                     <div className="flex flex-col md:flex-row justify-start items-start rounded-md shadow-md bg-gray-100 dark:bg-gray-900 w-11/12 md:w-8/12 transition ease-in-out duration-300 md:transform hover:-translate-x-1">
                       <div className="flex w-full">
-                        <img className="w-full md:w-11/12 h-60 rounded-t-md md:rounded-l-md md:rounded-r-none object-cover" src={post.coverImage.url} alt={post.title} />
+                        <img className="w-full md:w-11/12 h-60 rounded-t-md md:rounded-l-md md:rounded-r-none object-cover bg-gray-300 dark:bg-gray-800" src={post.coverImage.url} alt={post.title} />
                       </div>
                       <div className="flex flex-col justify-between w-full h-full py-8 mx-5 md:m-0 space-y-3 md:space-y-1">
                         <div className="space-y-2">
