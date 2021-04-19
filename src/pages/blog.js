@@ -24,7 +24,6 @@ export async function getStaticProps() {
           name
         }
         date
-        createdAt
       }
     }
   `
@@ -63,7 +62,7 @@ export default function Others({ posts }) {
                           <p className="font-semibold text-sm">{post.author.name}</p>
                           <p className="font-ligth text-xs text-gray-500">
                             <Moment format="MMMM DD, YYYY">
-                              {post.createdAt}
+                              {post.date}
                             </Moment>
                           </p>
                         </div>
