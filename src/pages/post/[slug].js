@@ -89,7 +89,7 @@ export default function Post ({ post }) {
                   style={{ backgroundImage: `url(${post.coverImage.url})` }}
                   title={post.title}
                 />
-                <div className="bg-gray-100 dark:bg-gray-900 rounded-b-lg p-4 flex flex-col items-end leading-normal">
+                <div className="bg-gray-100 dark:bg-gray-900 rounded-b-lg p-4 flex flex-col leading-normal">
                   <div className="mb-8 -space-y-2">
                     <div className="flex flex-col md:flex-row justify-start">
                       <div className="flex flex-row items-center space-x-2">
@@ -97,7 +97,7 @@ export default function Post ({ post }) {
                           <ReactTooltip effect="solid" />
                           <Link href="/blog">
                             <a data-tip="Back to Blog">
-                              <svg class="w-6 h-6 transition ease-in-out duration-300 transform hover:-translate-x-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                              <svg class="w-6 h-6 transition ease-in-out duration-300 transform hover:-translate-x-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                             </a>
                           </Link>
                         </div>
