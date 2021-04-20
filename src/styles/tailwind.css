@@ -8,6 +8,10 @@
   font-family: 'Poppins';
 }
 
+.capitalize-first::first-letter {
+  text-transform: uppercase;
+}
+
 .typewriter {
   overflow: hidden;
   border-right: .15em solid #4EB7DA;
