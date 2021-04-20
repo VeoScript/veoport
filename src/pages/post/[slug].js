@@ -106,7 +106,7 @@ export default function Post ({ post }) {
                         </div>
                       </div>
                     </div>
-                    <div className="flex-flex-col text-base text-justify space-y-1 w-full h-full normal-case px-3 pt-5 md:pt-8" dangerouslySetInnerHTML={{ __html: post.content.html}} />
+                    <div className="flex-flex-col text-base text-left md:text-justify space-y-1 w-full h-full normal-case px-3 pt-5 md:pt-8" dangerouslySetInnerHTML={{ __html: post.content.html}} />
                     <div className="flex flex-col items-start justify-center pl-3 pt-10 text-sm space-y-1">
                       <p className="font-semibold text-base leading-none">{post.author.name}</p>
                       <p className="font-light text-sm text-gray-500 ml-0.5">
