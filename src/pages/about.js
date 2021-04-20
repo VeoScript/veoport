@@ -29,7 +29,7 @@ export default function About() {
                 <h1 className="font-bold text-lg">Technologies</h1>
                 <div className="flex flex-row text-sm space-x-3 pt-2">
                   {technologies.map(({ name, icon }, i) => (
-                    <div className={`${ name }`} key={i}>{ icon }</div>
+                    <div data-tooltip={ name } className={`${ name }`} key={i}>{ icon }</div>
                   ))}
                 </div>
               </div>
