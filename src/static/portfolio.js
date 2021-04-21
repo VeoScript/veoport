@@ -2,7 +2,7 @@ export const projects = [
   {
     name: 'veoport',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/veoport.png?alt=media&token=e2101ac8-13df-404d-a406-905bc79af1f6',
-    description: 'Veo Portal, my official portfolio website. Using Next JS and GraphCMS',
+    description: 'Veo Portal, my official portfolio website. Using Next JS and GraphCMS.',
     link: 'https://github.com/VeoScript/veoport',
     demo: 'https://www.jeromevillaruel.ml'
   },
@@ -16,14 +16,14 @@ export const projects = [
   {
     name: 'spmi-health-declaration',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/chd.png?alt=media&token=a366ac29-a0d0-4f87-b47d-05559e124db5',
-    description: 'This webapp is for covid19 health declaration system for the employees of Specialty Pulp Manufacturing Inc. using Vue JS Single Page Application, Backend by Hasura GraphQL',
+    description: 'This webapp is for covid19 health declaration system for the employees of Specialty Pulp Manufacturing Inc. using Vue JS Single Page Application, Backend by Hasura GraphQL.',
     link: 'https://github.com/VeoScript/spmi-health-declaration',
     demo: 'https://spmi-health-declaration.vercel.app/'
   },
   {
     name: 'ESL-Learning-Center',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/airclass.png?alt=media&token=025e2ae8-7a02-4eb4-b8c4-1ab25e272a32',
-    description: 'Victor Air Class Solution, Inc. Learning English Language Through Video Calls. In Asia. Using Vue JS Single Page Application Backend by Hasura GraphQL',
+    description: 'Victor Air Class Solution, Inc. Learning English Language Through Video Calls. In Asia. Using Vue JS Single Page Application Backend by Hasura GraphQL.',
     link: 'https://github.com/VeoScript/ESL-Learning-Center',
     demo: 'https://airclass.ml/'
   },
@@ -74,6 +74,13 @@ export const projects = [
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/kphn.png?alt=media&token=e39de51a-0244-4674-84d7-3c3f07fcdc8c',
     description: 'Coffee shop inventory & POS. Using Visual Basic and SQL Server.',
     link: 'https://github.com/VeoScript/KPHN-Kapihan',
+    demo: '/'
+  },
+  {
+    name: 'slsu-hostel',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/hostellogin.png?alt=media&token=fdcf233e-5051-4098-9a4e-497ad772ea74',
+    description: 'Hotel Management System, using Visual Basic and SQL Server.',
+    link: 'https://github.com/VeoScript/slsu-hostel',
     demo: '/'
   }
 ]
