@@ -1,5 +1,4 @@
 import Moment from 'react-moment'
-import moment from 'moment'
 import Head from 'next/head'
 import Layout from '~/layouts/default'
 import Link from 'next/link'
@@ -52,8 +51,7 @@ export default function Others({ initialData }) {
                          <div>
                           <p className="font-semibold text-sm">{post.author.name}</p>
                           <p className="font-ligth text-xs text-gray-500">
-                            {/* <Moment date={post.date} format="MMMM DD, YYYY" /> */}
-                            { moment(post.date).fromNow() }
+                            <Moment date={post.date} format="MMMM DD, YYYY" />
                           </p>
                          </div>
                         </div>
