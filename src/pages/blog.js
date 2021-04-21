@@ -1,4 +1,5 @@
 import Moment from 'react-moment'
+import moment from 'moment'
 import Head from 'next/head'
 import Layout from '~/layouts/default'
 import Link from 'next/link'
@@ -31,6 +32,7 @@ export default function Others({ initialData }) {
         <div className="flex flex-col items-center h-screen w-full pt-5">
           <div className="flex flex-col pb-20 space-y-3">
             {data.posts.map((post) => {
+              const postTags = post.tags
               return (
                 <Link key={post.id} as={`/post/${post.slug}`} href="/post/[slug]">
                   <a className="flex flex-col items-center w-full">
@@ -43,13 +45,17 @@ export default function Others({ initialData }) {
                           <h1 className="font-bold text-xl">{post.title}</h1>
                           <p className="font-light text-sm">{post.excerpt}</p>
                         </div>
-                        <div>
+                        <div className="space-y-2">
+                          <div className="flex flex-row space-x-1">
+                            {postTags.map((tag) => <p className="font-semibold text-xs px-1.5 py-0.5 rounded-full bg-[#0D8CD9] text-[#B5E0FB] flex flex-row items-center">{tag}</p>)}
+                          </div>
+                         <div>
                           <p className="font-semibold text-sm">{post.author.name}</p>
                           <p className="font-ligth text-xs text-gray-500">
-                            <Moment format="MMMM DD, YYYY">
-                              {post.date}
-                            </Moment>
+                            {/* <Moment date={post.date} format="MMMM DD, YYYY" /> */}
+                            { moment(post.date).fromNow() }
                           </p>
+                         </div>
                         </div>
                       </div>   
                       <div className="hidden md:flex flex-col h-full justify-center mx-10">
