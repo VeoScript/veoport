@@ -2,41 +2,26 @@ import Moment from 'react-moment'
 import Head from 'next/head'
 import Layout from '~/layouts/default'
 import Link from 'next/link'
+import useSWR from 'swr'
 import { GraphQLClient } from 'graphql-request'
+import { GET_BLOG_POSTS_QUERY } from '~/graphql/queries'
 
 const graphcms = new GraphQLClient(process.env.GRAPHQL_URL_ENDPOINT)
 
 export async function getStaticProps() {
-  const { posts } = await graphcms.request(
-    `
-    query Posts() {
-      posts(orderBy: date_DESC) {
-        id
-        title
-        excerpt
-        slug
-        coverImage {
-          id
-          url
-        }
-        author {
-          id
-          name
-        }
-        date
-      }
-    }
-  `
-  );
-
+  const initialData = await graphcms.request(GET_BLOG_POSTS_QUERY)
   return {
     props: {
-      posts
+      initialData
     }
   }
 }
 
-export default function Others({ posts }) {
+export default function Others({ initialData }) {
+  const { data } = useSWR(GET_BLOG_POSTS_QUERY, (query) => graphcms.request(query), {
+    initialData,
+    revalidateOnMount: true
+  })
   return (
     <>
       <Head>
@@ -45,7 +30,7 @@ export default function Others({ posts }) {
       <Layout>
         <div className="flex flex-col items-center h-screen w-full pt-5">
           <div className="flex flex-col pb-20 space-y-3">
-            {posts.map((post) => {
+            {data.posts.map((post) => {
               return (
                 <Link key={post.id} as={`/post/${post.slug}`} href="/post/[slug]">
                   <a className="flex flex-col items-center w-full">
