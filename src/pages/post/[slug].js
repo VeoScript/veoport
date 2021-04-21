@@ -85,11 +85,7 @@ export default function Post ({ post }) {
           <div className="pt-5 mb-96 mx-5 w-full">
             <div className="pb-20 rounded-xl">
               <div className="max-w-3xl shadow-lg rounded-lg mx-auto">
-                <div
-                  className="h-80 rounded-t-lg flex-none bg-cover text-center overflow-hidden"
-                  style={{ backgroundImage: `url(${post.coverImage.url})` }}
-                  title={post.title}
-                />
+                <img className="h-80 rounded-t-lg flex-none w-full overflow-hidden object-cover bg-gray-300 dark:bg-gray-800" src={post.coverImage.url} alt={post.title} />
                 <div className="bg-gray-100 dark:bg-gray-900 rounded-b-lg p-4 flex flex-col leading-normal">
                   <div className="mb-8 -space-y-2">
                     <div className="flex flex-col md:flex-row justify-start">
