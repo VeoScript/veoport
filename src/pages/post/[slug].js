@@ -27,6 +27,7 @@ export async function getStaticProps({ params }) {
           name
         }
         date
+        tags
       }
     }
   `,
@@ -62,6 +63,7 @@ export async function getStaticPaths() {
           name
         }
         date
+        tags
       }
     }
   `);
@@ -82,8 +84,8 @@ export default function Post ({ post }) {
       </Head>
       <Layout>
         <div className="flex flex-row justify-center w-full h-screen text-[#333] dark:text-gray-300">
-          <div className="pt-5 mb-96 mx-5 w-full">
-            <div className="pb-20 rounded-xl">
+          <div className="pt-5 mb-20 mx-2 w-full">
+            <div className="pb-16 rounded-xl">
               <div className="max-w-3xl shadow-lg rounded-lg mx-auto">
                 <img className="h-80 rounded-t-lg flex-none w-full overflow-hidden object-cover bg-gray-300 dark:bg-gray-800" src={post.coverImage.url} alt={post.title} />
                 <div className="bg-gray-100 dark:bg-gray-900 rounded-b-lg p-4 flex flex-col leading-normal">
@@ -94,16 +96,21 @@ export default function Post ({ post }) {
                           <ReactTooltip effect="solid" />
                           <Link href="/blog">
                             <a data-tip="Back to Blog">
-                              <svg class="w-6 h-6 transition ease-in-out duration-300 transform hover:-translate-x-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                              <svg className="w-6 h-6 transition ease-in-out duration-300 transform hover:-translate-x-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                             </a>
                           </Link>
                         </div>
-                        <div className="font-bold text-2xl">
-                          {post.title}
+                        <div className="flex flex-col">
+                          <div className="font-bold text-2xl">
+                            {post.title}
+                          </div>
+                          <div className="flex flex-col w-full font-normal text-xs text-[#0D8CD9] space-x-3">
+                            {post.tags.join(', ')}
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="flex-flex-col text-base text-left md:text-justify space-y-1 w-full h-full normal-case px-3 pt-5 md:pt-8" dangerouslySetInnerHTML={{ __html: post.content.html}} />
+                    <div className="flex-flex-col text-sm md:text-base text-left md:text-justify space-y-1 w-full h-full normal-case px-3 pt-5 md:pt-8" dangerouslySetInnerHTML={{ __html: post.content.html}} />
                     <div className="flex flex-col items-start justify-center pl-3 pt-10 text-sm space-y-1">
                       <p className="font-semibold text-base leading-none">{post.author.name}</p>
                       <p className="font-light text-sm text-gray-500 ml-0.5">
