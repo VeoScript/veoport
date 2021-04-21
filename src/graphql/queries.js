@@ -14,8 +14,12 @@ export const GET_BLOG_POSTS_QUERY = gql`
       author {
         id
         name
+        picture {
+          url
+        }
       }
       date
+      tags
     }
   }
 `
