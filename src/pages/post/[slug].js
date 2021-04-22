@@ -26,6 +26,10 @@ export async function getStaticProps({ params }) {
           id
           name
         }
+        comments {
+          commentor
+          comment
+        }
         date
         tags
       }
@@ -62,6 +66,10 @@ export async function getStaticPaths() {
           id
           name
         }
+        comments {
+          commentor
+          comment
+        }
         date
         tags
       }
@@ -77,6 +85,7 @@ export async function getStaticPaths() {
 }
 
 export default function Post ({ post }) {
+  const getComments = post.comments
   return (
     <>
       <Head>
@@ -91,7 +100,7 @@ export default function Post ({ post }) {
                 <div className="bg-gray-100 dark:bg-gray-900 rounded-b-lg p-4 flex flex-col leading-normal">
                   <div className="mb-8 -space-y-2">
                     <div className="flex flex-col md:flex-row justify-start">
-                      <div className="flex flex-row items-center space-x-2">
+                      <div className="flex flex-row items-center space-x-3">
                         <div className="hidden md:block">
                           <ReactTooltip effect="solid" />
                           <Link href="/blog">
@@ -105,13 +114,13 @@ export default function Post ({ post }) {
                             {post.title}
                           </div>
                           <div className="flex flex-col w-full font-normal text-xs text-[#0D8CD9] space-x-3">
-                            {post.tags.join(', ')}
+                            {post.tags.join(',\n')}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="flex-flex-col text-sm md:text-base text-left md:text-justify space-y-1 w-full h-full normal-case px-3 pt-5 md:pt-8" dangerouslySetInnerHTML={{ __html: post.content.html}} />
-                    <div className="flex flex-col items-start justify-center pl-3 pt-10 text-sm space-y-1">
+                    <div className="flex flex-col items-start md:items-end justify-center pl-3 pt-10 text-sm space-y-1">
                       <p className="font-semibold text-base leading-none">{post.author.name}</p>
                       <p className="font-light text-sm text-gray-500 ml-0.5">
                         <Moment format="MMMM DD, YYYY">
@@ -122,6 +131,40 @@ export default function Post ({ post }) {
                         <Link href="/blog">
                           <a className="text-xs transition ease-in-out duration-200 transform hover:underline">Back to blog</a>
                         </Link>
+                      </div>
+                      <div className="flex flex-col w-full pt-10 space-y-3">
+                        <div className="flex flex-row items-center w-full space-x-2">
+                          <h1 className="text-sm ml-3">Comment Section</h1>
+                          <h5 className="text-xs font-light text-gray-500"><span>50</span>&nbsp;Comments</h5>
+                        </div>
+                        <div className="flex flex-row w-full">
+                          <form className="hidden md:flex flex-row w-full">
+                            <input className="max-w-xl px-5 py-3 bg-gray-200 dark:bg-gray-800 rounded-l-xl focus:outline-none" placeholder="Your Name" />
+                            <textarea className="w-full px-5 py-3 bg-gray-200 dark:bg-gray-800 rounded-none border-l border-gray-400 focus:outline-none resize-none" placeholder="Comment" rows="1" />
+                            <button  className="px-10 py-3 bg-gray-200 dark:bg-gray-800 rounded-r-xl border-l border-gray-400">
+                              Go
+                            </button>
+                          </form>
+                        </div>
+                        <div className="flex flex-col justify-center w-full pl-3 pt-5">
+                          <div className="flex flex-col justify-center space-y-3">
+                            {getComments.map((comm, i) => {
+                              return (
+                                <div className="flex flex-row items-center space-x-3">
+                                  <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                                    </svg>
+                                  </div>
+                                  <div className="flex flex-col" key={i}>
+                                    <div className="font-bold text-sm">{comm.commentor}</div>
+                                    <div className="font-normal text-xs">{comm.comment}</div>
+                                  </div>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
