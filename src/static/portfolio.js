@@ -49,6 +49,13 @@ export const projects = [
     demo: '/'
   },
   {
+    name: 'leyecoiv-pos-and-inventory',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/inventorysystem.png?alt=media&token=c729dc11-6737-4ee7-9cee-c9ceb23cb1d4',
+    description: 'LEYECO IV Canteen Point of Sales and Inventory System. Using C# and SQL Server.',
+    link: 'https://github.com/VeoScript/leyecoiv-pos-and-inventory',
+    demo: '/'
+  },
+  {
     name: 'GoRehab',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/gorehab.png?alt=media&token=40091b26-c055-4bf2-8c62-86f0fd4e3998',
     description: 'GoRehab official website of a private sector rehabilitation center, using PHP and MySQL.',
