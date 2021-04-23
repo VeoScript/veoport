@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { GraphQLClient } from "graphql-request"
 import Layout from '~/layouts/default'
 import ReactTooltip from 'react-tooltip'
-import CommentsSection from '~/components/Comments'
+import CommentsSection from '~/components/comments'
 
 const graphcms = new GraphQLClient(process.env.GRAPHQL_URL_ENDPOINT);
 
