@@ -1,4 +1,4 @@
-import Navbar from '~/components/navbar'
+import Navbar from '~/components/Navbar'
 import MessengerCustomerChat from 'react-messenger-customer-chat'
 
 export default function Layout ({ children }) {
