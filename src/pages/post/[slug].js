@@ -1,9 +1,10 @@
 import Moment from 'react-moment'
 import Head from 'next/head'
-import Link from "next/link"
+import Link from 'next/link'
 import { GraphQLClient } from "graphql-request"
 import Layout from '~/layouts/default'
 import ReactTooltip from 'react-tooltip'
+import CommentsSection from '~/components/Comments'
 
 const graphcms = new GraphQLClient(process.env.GRAPHQL_URL_ENDPOINT);
 
@@ -27,6 +28,7 @@ export async function getStaticProps({ params }) {
           name
         }
         comments {
+          id
           commentor
           comment
         }
@@ -67,6 +69,7 @@ export async function getStaticPaths() {
           name
         }
         comments {
+          id
           commentor
           comment
         }
@@ -133,33 +136,24 @@ export default function Post ({ post }) {
                         </Link>
                       </div>
                       <div className="flex flex-col w-full pt-10 space-y-3">
-                        <div className="flex flex-row items-center w-full space-x-2">
-                          <h1 className="text-sm ml-3">Comment Section</h1>
-                          <h5 className="text-xs font-light text-gray-500"><span>50</span>&nbsp;Comments</h5>
-                        </div>
-                        <div className="flex flex-row w-full">
-                          <form className="hidden md:flex flex-row w-full">
-                            <input className="max-w-xl px-5 py-3 bg-gray-200 dark:bg-gray-800 rounded-l-xl focus:outline-none" placeholder="Your Name" />
-                            <textarea className="w-full px-5 py-3 bg-gray-200 dark:bg-gray-800 rounded-none border-l border-gray-400 focus:outline-none resize-none" placeholder="Comment" rows="1" />
-                            <button  className="px-10 py-3 bg-gray-200 dark:bg-gray-800 rounded-r-xl border-l border-gray-400">
-                              Go
-                            </button>
-                          </form>
-                        </div>
+                        <CommentsSection postID={post.id} />
                         <div className="flex flex-col justify-center w-full pl-3 pt-5">
                           <div className="flex flex-col justify-center space-y-3">
                             {getComments.map((comm, i) => {
                               return (
-                                <div className="flex flex-row items-center space-x-3">
-                                  <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                                      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-                                    </svg>
+                                <div>
+                                  <div className="flex flex-row items-center space-x-3" key={i}>
+                                    <div>
+                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
+                                      </svg>
+                                    </div>
+                                    <div className="flex flex-col space-y-1">
+                                      <div className="font-bold text-sm">{comm.commentor}</div>
+                                      <div className="font-semibold text-gray-500 text-xs">{comm.comment}</div>
+                                    </div>
                                   </div>
-                                  <div className="flex flex-col" key={i}>
-                                    <div className="font-bold text-sm">{comm.commentor}</div>
-                                    <div className="font-normal text-xs">{comm.comment}</div>
-                                  </div>
+                                  <div className="flex flex-row mt-3 border-t border-gray-200 dark:border-gray-800"></div>
                                 </div>
                               )
                             })}
