@@ -15,6 +15,19 @@ export default function Comments ({ postID }) {
     } catch (err) {
       console.log(err)
     }
+
+    try {
+      const response = await fetch('/api/comment-stage', {
+        method: 'POST',
+        body: JSON.stringify({ postID })
+      })
+      console.log(JSON.stringify({ postID }))
+      reset()
+      if (!response.ok)
+        throw new Error(`Something went wrong publishing comment. Try to comment again.`)  
+    } catch (err) {
+      console.log(err)
+    }
   }
   return (
     <>
@@ -48,7 +61,7 @@ export default function Comments ({ postID }) {
 function LoadingButton () {
   return (
     <div className="flex items-center text-xs space-x-3">
-      <svg className="w-5 h-5 fill-current text-white" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg" fill="currentColor" color="#000000">
+      <svg className="w-5 h-5 fill-current" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg" fill="currentColor" color="#000000">
         <g transform="translate(1 1)" fillRule="evenodd">
           <circle cx="5" cy="50" r="5">
             <animate attributeName="cy" begin="0s" dur="2.2s" values="50;5;50;50" calcMode="linear" repeatCount="indefinite"></animate>
