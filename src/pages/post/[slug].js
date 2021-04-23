@@ -32,6 +32,7 @@ export async function getStaticProps({ params }) {
           id
           commentor
           comment
+          createdAt
         }
         date
         tags
@@ -73,6 +74,7 @@ export async function getStaticPaths() {
           id
           commentor
           comment
+          createdAt
         }
         date
         tags
@@ -90,8 +92,6 @@ export async function getStaticPaths() {
 
 export default function Post ({ post }) {
   const getComments = post.comments
-  // const getOneComment = getComments[getComments.length - 1]
-  // console.log(getOneComment.id)
   return (
     <>
       <Head>
@@ -138,15 +138,14 @@ export default function Post ({ post }) {
                           <a className="text-xs transition ease-in-out duration-200 transform hover:underline">Back to blog</a>
                         </Link>
                       </div>
-                      <div className="flex flex-col w-full pt-10 space-y-3">
+                      <div className="flex flex-col w-full pt-10 -ml-2 space-y-3">
                         <CommentsSection postID={post.id} />
                         <div className="flex flex-col justify-center w-full pl-3 pt-5">
                           <div className="flex flex-col justify-center space-y-3">
                             {getComments.map((comm) => {
                               console.log(comm.id)
                               return (
-                                // Comment Display
-                                <CommentsDisplay commentID={comm.id} comment={comm.comment} commentor={comm.commentor} />
+                                <CommentsDisplay createdAt={comm.createdAt} comment={comm.comment} commentor={comm.commentor} />
                               )
                             })}
                           </div>
