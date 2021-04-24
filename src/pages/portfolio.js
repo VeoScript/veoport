@@ -28,7 +28,7 @@ export default function Portfolio() {
                       <img className="w-full h-full md:w-48 md:h-32 rounded-none md:rounded-sm object-cover bg-gray-300 dark:bg-gray-900" src={image} />
                       <div className="flex flex-col justify-center pr-3 space-y-3">
                         <div className="flex flex-row space-x-1">
-                          <span className="font-semibold text-base md:text-2xl text-gray-800">{ name }</span>
+                          <span className="font-semibold text-base md:text-2xl text-gray-800 dark:text-white">{ name }</span>
                           <ReactTooltip effect="solid" />
                           <Link href={ demo }>
                             <a data-tip="View Demo" target="_blank">
@@ -36,7 +36,7 @@ export default function Portfolio() {
                             </a>
                           </Link>
                         </div>
-                        <p className="text-xs md:text-base text-gray-500">{ description }</p>
+                        <p className="text-xs md:text-base text-gray-500 dark:text-gray-400">{ description }</p>
                       </div>
                     </div>
                   </div>
