@@ -36,7 +36,7 @@ export default function Contact() {
       <Layout>
         <div className="flex justify-center items-center w-full h-screen overflow-y-auto py-10 space-x-0 space-y-5 md:space-x-5 md:space-y-0">
           <ToastContainer draggablePercent={60} />
-          <div className="flex flex-col md:flex-row justify-around items-center w-full md:w-11/12 px-5 py-10 md:px-10 md:py-10 space-y-3 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-around items-center w-full md:w-11/12 px-5 pb-10 md:px-10 md:py-10 space-y-3 md:space-y-0">
             <div className="w-full mx-auto md:w-2/5 md:space-y-3 space-y-1">
               <div className="md:hidden flex flex-col py-5">
                 {info.map(({ icon, content }, i) => (
@@ -60,17 +60,17 @@ export default function Contact() {
             <form onSubmit={handleSubmit(sendEmail)} className="w-full md:w-2/5 mx-auto space-y-3">
               <div className="form-control">
                 <input type="text" name="name" {...register("name", { required: true })} className="bg-gray-100 text-[#333] text-base md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Name" disabled={ isSubmitting } />
-                { errors.name && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Name is required!</span> }
+                { errors.name && <span className="font-medium text-xs tracking-wide text-red-600 mx-1">Name is required!</span> }
               </div>
               <div className="form-control">
                 <input type="email" name="email" {...register("email", { required: true })} className="bg-gray-100 text-[#333] text-base md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email" disabled={ isSubmitting } />
-                { errors.email && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Email is required!</span> }
+                { errors.email && <span className="font-medium text-xs tracking-wide text-red-600 mx-1">Email is required!</span> }
               </div>
               <div className="form-control">
                 <textarea name="message" {...register("message", { required: true })} className="bg-gray-100 text-[#333] text-base md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Message here..." rows="3" disabled={ isSubmitting }></textarea>
-                { errors.message && <span className="font-medium text-xs tracking-wide text-red-500 mx-3">Message is required!</span> }
+                { errors.message && <span className="font-medium text-xs tracking-wide text-red-600 mx-1">Message is required!</span> }
               </div>
-              <div className="form-control flex justify-end">
+              <div className="form-control flex flex-col items-start md:items-end">
                 <motion.button
                   className="bg-[#62A9FF] text-white text-base md:text-sm px-5 py-2 md:px-5 md:py-2 -mt-2 rounded-lg transition ease-in-out duration-200 transform hover:-translate-y-0.5 focus:outline-none"
                   whileHover={{ y: -4 }}
