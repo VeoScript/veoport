@@ -21,18 +21,18 @@ export default function Portfolio() {
               </p>
             </div>
             <div className="w-full h-full md:max-h-[450px] overflow-y-auto md:pr-2 pb-10 md:pb-0 space-y-2">
+              <ReactTooltip effect="solid" />
               {projects.map(({ name, image, description, link, demo }, i) => (
                 <div className="flex flex-col md:flex-row w-full items-start md:items-center justify-between space-y-5 md:space-y-0 p-0 md:px-5 md:py-3 overflow-hidden rounded-lg md:rounded-xl border border-gray-300 dark:border-gray-700" key={i}>
                   <div className="flex flex-col w-full md:w-9/12">
                     <div className="flex flex-col md:flex-row items-start space-x-3 space-y-3 md:space-y-0">
                       <img className="w-full h-full md:w-48 md:h-32 rounded-none md:rounded-sm object-cover bg-gray-300 dark:bg-gray-900" src={image} />
-                      <div className="flex flex-col justify-center pr-3 space-y-3">
+                      <div className="flex flex-col justify-center pr-3 space-y-1 md:space-y-3">
                         <div className="flex flex-row space-x-1">
                           <span className="font-semibold text-base md:text-2xl text-gray-800 dark:text-white">{ name }</span>
-                          <ReactTooltip effect="solid" />
                           <Link href={ demo }>
                             <a data-tip="View Demo" target="_blank">
-                              <svg className={`w-7 h-7 ${demo == '/' ? 'hidden' : 'block'}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
+                              <svg className={`w-5 h-5 md:w-7 md:h-7 ${demo == '/' ? 'hidden' : 'block'}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
                             </a>
                           </Link>
                         </div>
