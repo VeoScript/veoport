@@ -35,7 +35,7 @@ export default function Others({ initialData }) {
               return (
                 <Link key={post.id} as={`/post/${post.slug}`} href="/post/[slug]">
                   <a className="flex flex-col items-center w-full">
-                    <div className="flex flex-col md:flex-row justify-start items-start rounded-md h-auto md:h-60 overflow-y-hidden shadow-md bg-gray-100 dark:bg-gray-900 w-11/12 md:w-8/12 transition ease-in-out duration-300 md:transform hover:translate-x-2">
+                    <div className="flex flex-col md:flex-row justify-start items-start rounded-md h-auto md:h-60 overflow-y-hidden shadow-md bg-gray-100 dark:bg-gray-900 w-full md:w-9/12 transition ease-in-out duration-300 md:transform hover:translate-x-2">
                       <div className="flex w-full">
                         <img className="w-full md:w-11/12 h-60 my-auto rounded-t-md md:rounded-l-md md:rounded-r-none object-cover bg-gray-300 dark:bg-gray-800" src={post.coverImage.url} alt={post.title} />
                       </div>
