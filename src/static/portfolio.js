@@ -21,6 +21,13 @@ export const projects = [
     demo: 'https://spmi-health-declaration.vercel.app/'
   },
   {
+    name: 'leyecoiv-pos-and-inventory',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/POS.png?alt=media&token=b2f9e362-0741-4bce-bee9-947db24e3dd0',
+    description: 'LEYECO IV Canteen Point of Sales and Inventory System. Using C# and SQL Server.',
+    link: 'https://github.com/VeoScript/leyecoiv-pos-and-inventory',
+    demo: '/'
+  },
+  {
     name: 'ESL-Learning-Center',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/airclass.png?alt=media&token=025e2ae8-7a02-4eb4-b8c4-1ab25e272a32',
     description: 'Victor Air Class Solution, Inc. Learning English Language Through Video Calls. In Asia. Using Vue JS Single Page Application Backend by Hasura GraphQL.',
@@ -46,13 +53,6 @@ export const projects = [
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/contax.png?alt=media&token=e2a636fc-ff1f-4a77-9036-6aad5dfcd842',
     description: 'Introduction to Contax on Web. Run on your local machine phonebook like webapp with notes and photo gallery features.',
     link: 'https://github.com/VeoScript/contax-web',
-    demo: '/'
-  },
-  {
-    name: 'leyecoiv-pos-and-inventory',
-    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/inventorysystem.png?alt=media&token=c729dc11-6737-4ee7-9cee-c9ceb23cb1d4',
-    description: 'LEYECO IV Canteen Point of Sales and Inventory System. Using C# and SQL Server.',
-    link: 'https://github.com/VeoScript/leyecoiv-pos-and-inventory',
     demo: '/'
   },
   {
