@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   purge: [
     './public/**/*.html',
@@ -5,7 +7,11 @@ module.exports = {
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', ...defaultTheme.fontFamily.serif]
+      }
+    },
   },
   variants: {
     extend: {
