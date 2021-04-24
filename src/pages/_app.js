@@ -1,4 +1,3 @@
-import '~/styles/globals.css'
 import '~/styles/tailwind.css'
 import { ThemeProvider } from 'next-themes'
 import NextNProgress from '~/lib/nprogress'
