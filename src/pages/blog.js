@@ -29,7 +29,7 @@ export default function Others({ initialData }) {
       </Head>
       <Layout>
         <div className="flex flex-col items-center h-screen w-full pt-5">
-          <div className="flex flex-col pb-20 space-y-3">
+          <div className="flex flex-col px-3 pb-20 space-y-3">
             {data.posts.map((post) => {
               const postTags = post.tags
               return (
