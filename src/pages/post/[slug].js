@@ -1,7 +1,10 @@
 import Moment from 'react-moment'
 import Head from 'next/head'
 import Link from 'next/link'
+import useSWR from 'swr'
 import { GraphQLClient } from "graphql-request"
+import { GET_BLOG_POSTS_SLUG_QUERY } from '~/graphql/queries'
+import { GET_BLOG_POST_SLUG_QUERY } from '~/graphql/queries'
 import Layout from '~/layouts/default'
 import ReactTooltip from 'react-tooltip'
 import CommentsSection from '~/components/commentview'
@@ -10,99 +13,47 @@ import CommentsDisplay from '~/components/commentdisplay'
 const graphcms = new GraphQLClient(process.env.GRAPHQL_URL_ENDPOINT);
 
 export async function getStaticProps({ params }) {
-  const { post } = await graphcms.request(
-    `
-    query Post($slug: String!) {
-      post(where: { slug: $slug }) {
-        id
-        title
-        content{
-          html
-        }
-        slug
-        coverImage {
-          id
-          url
-        }
-        author {
-          id
-          name
-        }
-        comments {
-          id
-          commentor
-          comment
-          createdAt
-        }
-        date
-        tags
-      }
-    }
-  `,
+  const initialData = await graphcms.request(
+    GET_BLOG_POSTS_SLUG_QUERY,
     {
       slug: params.slug,
     }
-  );
-
+  )
   return {
     props: {
-      post
+      initialData
     },
     revalidate: 1
-  };
+  }
 }
 
 export async function getStaticPaths() {
-  const { posts } = await graphcms.request(`
-    {
-      posts {
-        id
-        title
-        content{
-          html
-        }
-        slug
-        coverImage {
-          id
-          url
-        }
-        author {
-          id
-          name
-        }
-        comments {
-          id
-          commentor
-          comment
-          createdAt
-        }
-        date
-        tags
-      }
-    }
-  `);
-
+  const { posts } = await graphcms.request(GET_BLOG_POST_SLUG_QUERY)
   return {
     paths: posts.map(({ slug }) => ({
       params: { slug },
     })),
     fallback: false,
-  };
+  }
 }
 
-export default function Post ({ post }) {
-  const getComments = post.comments
+export default function Post ({ initialData }) {
+  const { data } = useSWR(GET_BLOG_POSTS_SLUG_QUERY, (query) => graphcms.request(query), {
+    initialData,
+    revalidateOnMount: false
+  })
+  const getComments = data.post.comments
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <title>{data.post.title}</title>
       </Head>
       <Layout>
         <div className="flex flex-row justify-center w-full h-screen text-[#333] dark:text-gray-300">
           <div className="pt-5 mb-20 mx-2 w-full">
             <div className="pb-16 rounded-xl">
               <div className="max-w-3xl shadow-lg rounded-lg mx-auto">
-                <img className="h-80 rounded-t-lg flex-none w-full overflow-hidden object-cover bg-gray-300 dark:bg-gray-800" src={post.coverImage.url} alt={post.title} />
+                <img className="h-80 rounded-t-lg flex-none w-full overflow-hidden object-cover bg-gray-300 dark:bg-gray-800" src={data.post.coverImage.url} alt={data.post.title} />
                 <div className="bg-gray-100 dark:bg-gray-900 rounded-b-lg p-4 flex flex-col leading-normal">
                   <div className="mb-8 -space-y-2">
                     <div className="flex flex-col md:flex-row justify-start">
@@ -117,20 +68,20 @@ export default function Post ({ post }) {
                         </div>
                         <div className="flex flex-col">
                           <div className="font-bold text-2xl">
-                            {post.title}
+                            {data.post.title}
                           </div>
                           <div className="flex flex-col w-full font-normal text-xs text-[#0D8CD9] space-x-3">
-                            {post.tags.join(',\n')}
+                            {data.post.tags.join(',\n')}
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="flex-flex-col text-sm md:text-base text-left md:text-justify space-y-1 w-full h-full normal-case px-3 pt-5 md:pt-8" dangerouslySetInnerHTML={{ __html: post.content.html}} />
+                    <div className="flex-flex-col text-sm md:text-base text-left md:text-justify space-y-1 w-full h-full normal-case px-3 pt-5 md:pt-8" dangerouslySetInnerHTML={{ __html: data.post.content.html}} />
                     <div className="flex flex-col items-start md:items-end justify-center pl-3 pt-10 text-sm space-y-1">
-                      <p className="font-semibold text-base leading-none">{post.author.name}</p>
+                      <p className="font-semibold text-base leading-none">{data.post.author.name}</p>
                       <p className="font-light text-sm text-gray-500 ml-0.5">
                         <Moment format="MMMM DD, YYYY">
-                          {post.date}
+                          {data.post.date}
                         </Moment>
                       </p>
                       <div className="block md:hidden -mt-3 max-w-lg ml-0.5">
@@ -139,11 +90,10 @@ export default function Post ({ post }) {
                         </Link>
                       </div>
                       <div className="flex flex-col w-full pt-10 -ml-2 space-y-3">
-                        <CommentsSection postID={post.id} />
+                        <CommentsSection postID={data.post.id} />
                         <div className="flex flex-col justify-center w-full pl-3 pt-5">
                           <div className="flex flex-col justify-center space-y-3">
                             {getComments.map((comm) => {
-                              console.log(comm.id)
                               return (
                                 <CommentsDisplay createdAt={comm.createdAt} comment={comm.comment} commentor={comm.commentor} />
                               )
@@ -160,5 +110,5 @@ export default function Post ({ post }) {
         </div>
       </Layout>
     </>
-  );
-};
+  )
+}
