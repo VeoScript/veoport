@@ -23,3 +23,62 @@ export const GET_BLOG_POSTS_QUERY = gql`
     }
   }
 `
+// For Post Slug getStaticProps
+export const GET_BLOG_POSTS_SLUG_QUERY = gql`
+  query Post($slug: String!) {
+    post(where: { slug: $slug }) {
+      id
+      title
+      content{
+        html
+      }
+      slug
+      coverImage {
+        id
+        url
+      }
+      author {
+        id
+        name
+      }
+      comments {
+        id
+        commentor
+        comment
+        createdAt
+      }
+      date
+      tags
+    }
+  }
+`
+
+// For Post Slug getStaticPaths
+export const GET_BLOG_POST_SLUG_QUERY = gql`
+  {
+    posts {
+      id
+      title
+      content{
+        html
+      }
+      slug
+      coverImage {
+        id
+        url
+      }
+      author {
+        id
+        name
+      }
+      comments {
+        id
+        commentor
+        comment
+        createdAt
+      }
+      date
+      tags
+    }
+  }
+`
