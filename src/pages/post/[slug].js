@@ -40,7 +40,12 @@ export async function getStaticPaths() {
 export default function Post ({ initialData }) {
   const { data } = useSWR(GET_BLOG_POSTS_SLUG_QUERY, (query) => graphcms.request(query), {
     initialData,
-    revalidateOnMount: true
+    revalidateOnFocus: false,
+    revalidateOnMount:false,
+    revalidateOnReconnect: false,
+    refreshWhenOffline: false,
+    refreshWhenHidden: false,
+    refreshInterval: 0,
   })
   const getComments = data.post.comments
   return (
