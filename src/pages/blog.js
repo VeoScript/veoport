@@ -20,7 +20,7 @@ export async function getStaticProps() {
 export default function Others({ initialData }) {
   const { data } = useSWR(GET_BLOG_POSTS_QUERY, (query) => graphcms.request(query), {
     initialData,
-    revalidateOnMount: true
+    revalidateOnMount: false
   })
   return (
     <>
