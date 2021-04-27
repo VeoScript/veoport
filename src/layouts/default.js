@@ -7,10 +7,29 @@ export default function Layout ({ children }) {
       <Navbar />
       <div className="flex w-full h-auto">
         { children }
-        <MessengerCustomerChat
-          pageId="101914628707986"
-          appId="3871367752945149"
-        />
+        {/**
+         * This will insure that the 
+         * feature show up only when the 
+         * node environment is production
+         */}
+        {process.env.NODE_ENV === 'production' && (
+          /**
+           * Protect page ID
+           * & APP ID inside the
+           * Environement Variables
+           * 1. Create file .env.local
+           * 2. ADD these inside the file 
+           *    - MESSENGER_PAGE_ID=YOUR-ACTUAL-VALUE-HERE
+           *    - MESSENGER_APP_ID=YOUR-ACTUAL-VALUE-HERE
+           * 
+           * This helps to prevent the error
+           * occured  during development!
+           */
+          <MessengerCustomerChat
+            pageId={process.env.MESSENGER_PAGE_ID}
+            appId={process.env.MESSENGER_APP_ID}
+          />
+        )}
       </div>
     </div>
   )
