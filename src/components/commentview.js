@@ -34,7 +34,6 @@ export default function Comments ({ postID }) {
       <form className="space-y-3" onSubmit={handleSubmit(onSubmit)} >
         <div className="flex flex-row items-center w-full space-x-2">
           <h1 className="text-sm ml-3">Comment Section</h1>
-          <h5 className="text-xs font-light text-gray-500"><span>50</span>&nbsp;Comments</h5>
         </div>
         <div className="flex flex-col w-full">
           <div className="flex flex-col md:flex-row w-full space-y-1 md:space-y-0">
