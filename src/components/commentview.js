@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 
-export default function Comments ({ postID }) {
+export default function Comments ({ postID, href }) {
   const router = useRouter()
   const refreshData = () => {
-    router.replace(router.asPath)
+    router.replace(href)
   }
   const { register, handleSubmit, reset, formState: { errors, isSubmitting }} = useForm()
   const onSubmit = async ({ comment, commentor }) => {

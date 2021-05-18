@@ -41,11 +41,6 @@ export default function Post ({ initialData }) {
   const { data } = useSWR(GET_BLOG_POSTS_SLUG_QUERY, (query) => graphcms.request(query), {
     initialData,
     revalidateOnFocus: false,
-    revalidateOnMount:false,
-    revalidateOnReconnect: false,
-    refreshWhenOffline: false,
-    refreshWhenHidden: false,
-    refreshInterval: 0,
   })
   const getComments = data.post.comments
   return (
@@ -95,7 +90,7 @@ export default function Post ({ initialData }) {
                         </Link>
                       </div>
                       <div className="flex flex-col w-full pt-10 -ml-2 space-y-3">
-                        <CommentsSection postID={data.post.id} />
+                        <CommentsSection href={`/post/${data.post.slug}`} postID={data.post.id} />
                         <div className="flex flex-col justify-center w-full pl-3 pt-5">
                           <div className="flex flex-col justify-center space-y-3">
                             {getComments.map((comm) => {
