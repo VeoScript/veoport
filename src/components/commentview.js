@@ -1,27 +1,35 @@
+import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 
 export default function Comments ({ postID }) {
+  const router = useRouter()
+  const refreshData = () => {
+    router.replace(router.asPath)
+  }
   const { register, handleSubmit, reset, formState: { errors, isSubmitting }} = useForm()
   const onSubmit = async ({ comment, commentor }) => {
+    //Insert comment in GraphCMS
     try {
       const response = await fetch('/api/comment-trigger', {
         method: 'POST',
         body: JSON.stringify({ postID, comment, commentor })
       })
       console.log(JSON.stringify({ postID, comment, commentor }))
+      refreshData()
       reset()
       if (!response.ok)
         throw new Error(`Something went wrong submitting the form. Try to comment again.`)  
     } catch (err) {
       console.log(err)
     }
-
+    //Published comment in GraphCMS
     try {
       const response = await fetch('/api/comment-stage', {
         method: 'POST',
         body: JSON.stringify({ postID })
       })
       console.log(JSON.stringify({ postID }))
+      refreshData()
       reset()
       if (!response.ok)
         throw new Error(`Something went wrong publishing comment. Try to comment again.`)  
@@ -34,6 +42,7 @@ export default function Comments ({ postID }) {
       <form className="space-y-3" onSubmit={handleSubmit(onSubmit)} >
         <div className="flex flex-row items-center w-full space-x-2">
           <h1 className="text-sm ml-3">Comment Section</h1>
+          {/* <h5 className="text-xs font-light text-gray-500"><span>50</span>&nbsp;Comments</h5> */}
         </div>
         <div className="flex flex-col w-full">
           <div className="flex flex-col md:flex-row w-full space-y-1 md:space-y-0">
