@@ -7,6 +7,13 @@ export const projects = [
     demo: 'https://www.jeromevillaruel.ml'
   },
   {
+    name: 'ictmr',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/ictmr_dashboard.png?alt=media&token=c1392de1-57b7-47e6-bd9a-b5560871fe37',
+    description: 'This system is intended for SPMI - Information & Communications Technology Department for the Monthly Reports Management System. All of this features are originally inspired by my own conceptions. ICTMR is an open source project here is the source code, everyone can clone or update this project if they want.  This system was built in React powered by NextJS and Prisma with PostgreSQL.',
+    link: 'https://github.com/VeoScript/ictmr',
+    demo: '/'
+  },
+  {
     name: 'spmi-health-declaration-android',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/spmi-android-full.jpg?alt=media&token=4dfebb5b-5230-49d1-a396-2cf300e0a635',
     description: 'SPMI Covid-19 Health Declaration System in Android & iOS mobile application version, using Xamarin C#.',
