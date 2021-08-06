@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  mode: 'jit',
   purge: [
     './public/**/*.html',
     './src/**/*.{js,jsx,ts,tsx,vue}'
@@ -9,7 +10,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.serif]
+        poppins: ['Poppins', ...defaultTheme.fontFamily.serif],
+        nunito: ['Nunito', ...defaultTheme.fontFamily.serif]
       }
     },
   },
@@ -18,5 +20,8 @@ module.exports = {
       opacity: ['disabled'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography')
+  ],
 }

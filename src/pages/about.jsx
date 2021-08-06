@@ -11,7 +11,7 @@ export default function About() {
         <title>About</title>
       </Head>
       <Layout>
-        <div className="hidden md:flex pb-10 h-screen w-full">
+        <div className="hidden md:flex pb-10 h-screen w-full max-w-[2400px]">
           <div className="flex flex-col justify-center items-center h-full w-full px-5">
             <div className="flex flex-row justify-between w-full max-w-5xl space-x-10 space-y-2">
               <div className="flex justify-start mx-auto md:mt-0 mt-8 w-1/2">
@@ -87,7 +87,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="md:hidden flex flex-col pb-10 justify-center items-center h-screen w-full">
+        <div className="md:hidden flex flex-col pb-10 justify-center items-center h-screen w-full max-w-[2400px]">
           <div className="flex flex-col items-center my-5 w-full h-full overflow-y-auto overflow-x-hidden">
             <div className="mx-3">
               <img className="w-full h-72 rounded-sm bg-gray-900 object-cover text-white" src="/me.jpg" alt="Picture of Jerome Villaruel" />
