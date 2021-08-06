@@ -8,7 +8,7 @@ import Scrollbar from 'react-smooth-scrollbar'
 import withSession from '~/lib/session'
 import { useRouter } from 'next/router'
 import { Tab } from '@headlessui/react'
-import { PrismaClient } from '@prisma/client'
+import prisma from '~/lib/prisma'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -170,8 +170,6 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
 }
 
 export const getServerSideProps = withSession(async function ({ req, query }) {
-  const prisma = new PrismaClient()
-
   const { username } = query
 
   const user_session = req.session.get('user')
