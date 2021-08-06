@@ -1,7 +1,5 @@
 import { withIronSession } from 'next-iron-session'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import prisma from '~/lib/prisma'
 
 async function handler(req, res) {
   const findUser = await prisma.user.findMany({

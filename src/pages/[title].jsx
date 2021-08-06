@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
@@ -11,8 +12,7 @@ import ReactMarkdown from 'react-markdown'
 import Scrollbar from 'react-smooth-scrollbar'
 import useSWR from 'swr'
 import withSession from '~/lib/session'
-import { useState } from 'react'
-import { PrismaClient } from '@prisma/client'
+import prisma from '~/lib/prisma'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -171,8 +171,6 @@ export default function BlogContent({ title, all_users, online_user, get_blog_po
 }
 
 export const getServerSideProps = withSession(async function ({ req, query }) {
-  const prisma = new PrismaClient()
-
   const { title } = query
 
   const user_session = req.session.get('user')
