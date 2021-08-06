@@ -18,7 +18,7 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
   const [like, setLike] = useState(detectLiked)
 
   //function for liking the post
-  async function onLike(title) {
+  async function onLike(title) {    
     const postTitle = title
     const userId = online_user.id
 
@@ -34,7 +34,7 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
   }
 
   //function for unliking the post
-  async function onUnlike(title) {
+  async function onUnlike(title) {    
     const postTitle = title
     const userId = online_user.id
 
@@ -53,15 +53,15 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
     <>
       {online_user && (
         <>
-          {detectLiked && (
-            <button className="focus:outline-none" type="button" onClick={async () => await onUnlike(title)}>
+          {like && (
+            <button className={`${detectLiked ? 'block' : 'hidden'} focus:outline-none`} type="button" onClick={async () => await onUnlike(title)}>
               <svg className="w-5 h-5 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
               </svg>
             </button>
           )}
-          {!detectLiked && (
-            <button className="focus:outline-none" type="button" onClick={async () => await onLike(title)}>
+          {!like && (
+            <button className={`${!detectLiked ? 'block' : 'hidden'} focus:outline-none`} type="button" onClick={async () => await onLike(title)}>
               <svg className="w-5 h-5 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
               </svg>
