@@ -11,7 +11,7 @@ export default function Portfolio() {
         <title>Portfolio</title>
       </Head>
       <Layout>
-        <div className="flex justify-center items-start md:items-center py-5 md:-mt-16 w-full h-screen overflow-y-auto md:overflow-hidden space-x-0 space-y-5 md:space-x-5 md:space-y-0">
+        <div className="flex justify-center items-start md:items-center py-5 md:-mt-16 w-full max-w-[2400px] h-screen overflow-y-auto md:overflow-hidden space-x-0 space-y-5 md:space-x-5 md:space-y-0">
           <div className="flex flex-col w-full md:w-9/12 items-center mx-5 space-y-5">
             <div className="flex flex-col text-center p-0 md:pl-3 w-full space-y-2">
               <h1 className="font-bold text-2xl text-left">Projects</h1>

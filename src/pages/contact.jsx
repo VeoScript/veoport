@@ -34,7 +34,7 @@ export default function Contact() {
         <title>Contact</title>
       </Head>
       <Layout>
-        <div className="flex flex-row justify-center items-center w-full h-screen overflow-y-auto pb-10 space-x-0 space-y-5 md:space-x-5 md:space-y-0">
+        <div className="flex flex-row justify-center items-center w-full max-w-[2400px] h-screen overflow-y-auto pb-10 space-x-0 space-y-5 md:space-x-5 md:space-y-0">
           <ToastContainer draggablePercent={60} />
           <div className="flex flex-col md:flex-row justify-around items-center w-full md:w-11/12 px-5 pb-10 md:px-10 md:py-10 space-y-3 md:space-y-0">
             <div className="w-full mx-auto md:w-2/5 md:space-y-3 space-y-1">

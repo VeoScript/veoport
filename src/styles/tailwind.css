@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+[contenteditable][placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #949494;
+}
+
 .capitalize-first::first-letter {
   text-transform: uppercase;
 }
