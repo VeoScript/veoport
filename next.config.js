@@ -1,7 +1,5 @@
 module.exports = {
-  future: {
-    webpack5: true,
-  },
+  reactStrictMode: true,
   env: {
     GRAPHQL_URL_ENDPOINT: process.env.GRAPHQL_URL_ENDPOINT,
     VEOPORTAL_MUTATIONS: process.env.VEOPORTAL_MUTATIONS,
