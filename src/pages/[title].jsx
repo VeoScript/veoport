@@ -47,7 +47,7 @@ export default function BlogContent({ title, all_users, online_user, get_blog_po
                       </div>
                       <div className="flex flex-row items-center justify-between w-full">
                         <div className="flex flex-row items-center w-full space-x-2">
-                          <img src={ get_blog_post_details.user.image } alt="creator" className="w-9 h-9 object-cover rounded-full bg-gray-400 dark:bg-[#151820]" />
+                          <img src={ get_blog_post_details.user.image } alt="creator" className="w-9 h-9 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" />
                           <div className="flex flex-col">
                             <span className="font-normal text-[12px] text-[#62A9FF]">{ get_blog_post_details.user.name }</span>
                             <span className="font-light text-[10px] text-gray-400 -mt-1">{ get_blog_post_details.user.bio }</span>
@@ -133,7 +133,7 @@ export default function BlogContent({ title, all_users, online_user, get_blog_po
                         <div className="flex flex-col w-full mt-4" key={i}>
                           <div className="flex flex-row justify-between w-full">
                             <div className="flex flex-row space-x-2">
-                              <img className="w-10 h-10 object-cover rounded-full" src={ user.image } alt="commentor" />
+                              <img className="w-10 h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="commentor" />
                               <div className="flex flex-col">
                                 <span className="font-normal text-[14px] text-[#333] dark:text-gray-300">{ user.name }</span>
                                 <span className="font-light text-[11px] text-gray-400 -mt-1">{ user.bio }</span>
