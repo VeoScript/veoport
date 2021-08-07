@@ -71,7 +71,12 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                 />
               </div>
               <Scrollbar>
-                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1 }} className="flex flex-col w-full px-6 pt-3 pb-16 space-y-3">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1 }}
+                  className="flex flex-col w-full px-6 pt-3 pb-16 space-y-3"
+                >
                   {!data && (
                     <div className="flex flex-row justify-center w-full">
                       <Spinner />
