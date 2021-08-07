@@ -71,7 +71,12 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                 />
               </div>
               <Scrollbar>
-                <div className="flex flex-col w-full px-6 pt-3 pb-16 space-y-3">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1 }}
+                  className="flex flex-col w-full px-6 pt-3 pb-16 space-y-3"
+                >
                   {!data && (
                     <div className="flex flex-row justify-center w-full">
                       <Spinner />
@@ -80,50 +85,48 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                   {!isDisplay && (
                     <>
                       {data.map(({ image, title, content, date, tags, user, likes, comment }, i) => (
-                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1 }} key={i}>
-                          <Link href={`/${ title }`}>
-                            <a className="flex flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]">
-                              <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
-                                <div className="flex flex-row items-center w-full space-x-2">
-                                  <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="avatar" />
-                                  <div className="flex flex-col">
-                                    <span className="font-medium text-sm">{ user.name }</span>
-                                    <span className="font-normal text-xs text-gray-400">{ user.email }</span>
-                                  </div>
-                                </div>
-                                <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ title }</span>
-                                <span className="font-light text-sm line-clamp-2">
-                                  <ReactMarkdown>
-                                    {!content ? 'No content available' : content}
-                                  </ReactMarkdown> 
-                                </span>
-                                <div className="flex flex-row items-center text-gray-400 space-x-1">
-                                  <span className="font-medium text-[10px]"><Moment date={ date } format='LLLL' /></span>
-                                  <span>&bull;</span>
-                                  <span className="font-medium text-[10px]">{ tags }</span>
-                                </div>
-                                <div className="flex flex-row items-center text-gray-400 space-x-2">
-                                  <div className="flex items-center space-x-1">
-                                    <svg className="w-4 h-4 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                      <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
-                                    </svg>
-                                    <span className="font-medium text-[10px]">{ likes.length }</span>
-                                  </div>
-                                  <span>&bull;</span>
-                                  <div className="flex items-center space-x-1">
-                                    <svg className="w-4 h-4 text-[#555] dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
-                                    </svg>
-                                    <span className="font-medium text-[10px]">{ comment.length }</span>
-                                  </div>
+                        <Link href={`/${ title }`} key={i}>
+                          <a className="flex flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]">
+                            <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
+                              <div className="flex flex-row items-center w-full space-x-2">
+                                <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="avatar" />
+                                <div className="flex flex-col">
+                                  <span className="font-medium text-sm">{ user.name }</span>
+                                  <span className="font-normal text-xs text-gray-400">{ user.email }</span>
                                 </div>
                               </div>
-                              <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
+                              <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ title }</span>
+                              <span className="font-light text-sm line-clamp-2">
+                                <ReactMarkdown>
+                                  {!content ? 'No content available' : content}
+                                </ReactMarkdown> 
+                              </span>
+                              <div className="flex flex-row items-center text-gray-400 space-x-1">
+                                <span className="font-medium text-[10px]"><Moment date={ date } format='LLLL' /></span>
+                                <span>&bull;</span>
+                                <span className="font-medium text-[10px]">{ tags }</span>
                               </div>
-                            </a>
-                          </Link>
-                        </motion.div>
+                              <div className="flex flex-row items-center text-gray-400 space-x-2">
+                                <div className="flex items-center space-x-1">
+                                  <svg className="w-4 h-4 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
+                                  </svg>
+                                  <span className="font-medium text-[10px]">{ likes.length }</span>
+                                </div>
+                                <span>&bull;</span>
+                                <div className="flex items-center space-x-1">
+                                  <svg className="w-4 h-4 text-[#555] dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                                  </svg>
+                                  <span className="font-medium text-[10px]">{ comment.length }</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
+                              <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
+                            </div>
+                          </a>
+                        </Link>
                       ))}
                     </>
                   )}
@@ -175,7 +178,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                       ))}
                     </>
                   )}
-                </div>
+                </motion.div>
               </Scrollbar>
             </div>
           </div>
