@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
-import { mutate } from 'swr'
 
 export default function SignIn({ all_users, closeModal }) {
 
