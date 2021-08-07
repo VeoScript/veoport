@@ -64,7 +64,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                 <input
                   type="text"
                   name="search_blogs"
-                  className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-sm px-5 py-3 w-full max-w-xs rounded-md focus:outline-none"
+                  className="bg-gray-100 dark:bg-[#111319] text-[#333] dark:text-white text-sm px-5 py-3 w-full max-w-xs rounded-xl border-2 border-gray-100 dark:border-[#111319] focus:border-[#62A9FF] dark:focus:border-[#62A9FF] focus:outline-none"
                   placeholder="Search blog"
                   value={searchTerm}
                   onChange={handleSearch}
