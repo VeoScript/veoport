@@ -5,12 +5,13 @@ import { useRouter } from 'next/router'
 import { useForm, Controller } from 'react-hook-form'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function CreateBlog({ online_user }) {
   
   const router = useRouter()
 
-  const { register, handleSubmit, reset, control, formState: { errors, isSubmitting } } = useForm()
+  const { register, handleSubmit, reset, setError, control, formState: { errors, isSubmitting } } = useForm()
 
   //For RichText selectedTab useState
   const [selectedTab, setSelectedTab] = useState('write')
@@ -34,6 +35,11 @@ export default function CreateBlog({ online_user }) {
     const content = formData.content
     const status = formData.status
 
+    if (!image.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)) {
+      document.getElementById('custom_toast').innerText = 'Invalid image url'
+      return
+    }
+
     await fetch('/api/posts/create_post', {
       method: 'POST',
       headers: {
@@ -50,10 +56,23 @@ export default function CreateBlog({ online_user }) {
     })
     closeModal()
     router.replace('/blog')
+
+    toast.success('Your post was saved successfully. Thank you for your blogging.', {
+      style: {
+        borderRadius: '10px',
+        background: '#222222',
+        color: '#fff',
+      }
+    })
   }
 
   return (
     <>
+      <Toaster
+        position="top-right"
+        reverseOrder={true}
+      />
+
       <button
         type="button"
         className="w-full px-3 py-3 rounded-tl-2xl rounded-bl-lg rounded-tr-lg rounded-br-2xl border-2 border-[#62A9FF] text-[#333] dark:text-gray-200 hover:opacity-50 transition ease-in-out duration-200 focus:outline-none"
@@ -119,6 +138,7 @@ export default function CreateBlog({ online_user }) {
                       <label htmlFor="image" className="font-normal text-xs text-gray-400 ml-2">Image URL</label>
                       <input type="text" name="image" id="image" {...register("image", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Image URL" disabled={ isSubmitting } />
                       { errors.image && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+                      <span id="custom_toast" className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1"></span>
                     </div>
                     <div className="form-control flex flex-col space-y-1">
                       <label htmlFor="title" className="font-normal text-xs text-gray-400 ml-2">Title</label>

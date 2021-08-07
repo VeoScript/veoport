@@ -41,6 +41,11 @@ export default function SignUp({ all_users, closeModal }) {
       return
     }
 
+    if (!image.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)) {
+      document.getElementById('custom_toast').innerText = 'Invalid image url'
+      return
+    }
+
     await fetch('/api/auth/signup', {
       method: 'POST',
       headers: {
@@ -69,6 +74,7 @@ export default function SignUp({ all_users, closeModal }) {
         <div className="form-control">
           <input type="text" name="avatar" {...register("avatar", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Avatar URL" disabled={ isSubmitting } />
           { errors.avatar && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+          <span id="custom_toast" className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1"></span>
         </div>
         <div className="form-control">
           <input type="text" name="name" {...register("name", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Name" disabled={ isSubmitting } />

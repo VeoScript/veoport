@@ -112,7 +112,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                                 </div>
                               </div>
                               <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                <img className="w-full max-w-sm h-auto object-cover bg-gray-400 dark:bg-[#151820]" src={ blog.image } alt="post_image" />
+                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-400 dark:bg-[#151820]" src={ blog.image } alt="post_image" />
                               </div>
                             </a>
                           </Link>
@@ -160,7 +160,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                                 </div>
                               </div>
                               <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                <img className="w-full max-w-sm h-auto object-cover bg-gray-400 dark:bg-[#151820]" src={ image } alt="post_image" />
+                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-400 dark:bg-[#151820]" src={ image } alt="post_image" />
                               </div>
                             </a>
                           </Link>
