@@ -78,7 +78,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                             <a className="flex flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]">
                               <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
                                 <div className="flex flex-row items-center w-full space-x-2">
-                                  <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-400 dark:bg-[#151820]" src={ user.image } alt="avatar" />
+                                  <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="avatar" />
                                   <div className="flex flex-col">
                                     <span className="font-medium text-sm">{ user.name }</span>
                                     <span className="font-normal text-xs text-gray-400">{ user.email }</span>
@@ -112,7 +112,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                                 </div>
                               </div>
                               <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-400 dark:bg-[#151820]" src={ image } alt="post_image" />
+                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
                               </div>
                             </a>
                           </Link>
@@ -126,7 +126,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                             <a className={`${isDisplay ? 'flex' :'hidden'} flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]`}>
                               <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
                                 <div className="flex flex-row items-center w-full space-x-2">
-                                  <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-400 dark:bg-[#151820]" src={ blog.user.image } alt="avatar" />
+                                  <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ blog.user.image } alt="avatar" />
                                   <div className="flex flex-col">
                                     <span className="font-medium text-sm">{ blog.user.name }</span>
                                     <span className="font-normal text-xs text-gray-400">{ blog.user.email }</span>
@@ -160,7 +160,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                                 </div>
                               </div>
                               <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-400 dark:bg-[#151820]" src={ blog.image } alt="post_image" />
+                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ blog.image } alt="post_image" />
                               </div>
                             </a>
                           </Link>

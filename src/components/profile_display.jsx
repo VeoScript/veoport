@@ -46,7 +46,7 @@ export default function ProfileDisplay({ all_users, online_user, get_post_likes 
         {online_user && (
           <div className="flex flex-col w-full pt-5 space-y-3 pb-20">
             <div className="flex flex-row items-center space-x-5">
-              <img className="w-32 h-32 object-cover rounded-full ring-4 ring-[#62A9FF]" src={ online_user.image } alt="user_profile" />
+              <img className="w-32 h-32 object-cover rounded-full ring-4 ring-[#62A9FF] bg-gray-100 dark:bg-[#1E212D]" src={ online_user.image } alt="user_profile" />
               <div className="flex flex-col">
                 <span className="font-medium text-xl">{ online_user.name }</span>
                 <span className="font-light text-xs text-gray-400">@{ online_user.username }</span>
