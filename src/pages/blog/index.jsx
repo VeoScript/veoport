@@ -70,55 +70,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
               </div>
               <div className="flex flex-col w-full h-full overflow-y-auto pb-10">
                 <Scrollbar>
-                  <div className="flex flex-col w-full px-6 py-3 space-y-5">
-                    {setIsDisplay && (
-                      <>
-                        {search_results.map(blog => (
-                          <Link href={`/${ blog.title }`} key={blog.id}>
-                            <a className={`${isDisplay ? 'flex' :'hidden'} flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]`}>
-                              <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
-                                <div className="flex flex-row items-center w-full space-x-2">
-                                  <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-400 dark:bg-[#151820]" src={ blog.user.image } alt="avatar" />
-                                  <div className="flex flex-col">
-                                    <span className="font-medium text-sm">{ blog.user.name }</span>
-                                    <span className="font-normal text-xs text-gray-400">{ blog.user.email }</span>
-                                  </div>
-                                </div>
-                                <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ blog.title }</span>
-                                <span className="font-light text-sm line-clamp-2">
-                                  <ReactMarkdown>
-                                    {!blog.content ? 'No content available' : blog.content}
-                                  </ReactMarkdown> 
-                                </span>
-                                <div className="flex flex-row items-center text-gray-400 space-x-1">
-                                  <span className="font-medium text-[10px]"><Moment date={ blog.date } format='LLLL' /></span>
-                                  <span>&bull;</span>
-                                  <span className="font-medium text-[10px]">{ blog.tags }</span>
-                                </div>
-                                <div className="flex flex-row items-center text-gray-400 space-x-2">
-                                  <div className="flex items-center space-x-1">
-                                    <svg className="w-4 h-4 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                      <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
-                                    </svg>
-                                    <span className="font-medium text-[10px]">{ blog.likes.length }</span>
-                                  </div>
-                                  <span>&bull;</span>
-                                  <div className="flex items-center space-x-1">
-                                    <svg className="w-4 h-4 text-[#555] dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
-                                    </svg>
-                                    <span className="font-medium text-[10px]">{ blog.comment.length }</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-400 dark:bg-[#151820]" src={ blog.image } alt="post_image" />
-                              </div>
-                            </a>
-                          </Link>
-                        ))}
-                      </>
-                    )}
+                  <div className="flex flex-col w-full px-6 py-3 space-y-3">
                     {!isDisplay && (
                       <>
                         {data.map(({ image, title, content, date, tags, user, likes, comment }, i) => (
@@ -161,6 +113,54 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                               </div>
                               <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
                                 <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-400 dark:bg-[#151820]" src={ image } alt="post_image" />
+                              </div>
+                            </a>
+                          </Link>
+                        ))}
+                      </>
+                    )}
+                    {setIsDisplay && (
+                      <>
+                        {search_results.map(blog => (
+                          <Link href={`/${ blog.title }`} key={blog.id}>
+                            <a className={`${isDisplay ? 'flex' :'hidden'} flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]`}>
+                              <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
+                                <div className="flex flex-row items-center w-full space-x-2">
+                                  <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-400 dark:bg-[#151820]" src={ blog.user.image } alt="avatar" />
+                                  <div className="flex flex-col">
+                                    <span className="font-medium text-sm">{ blog.user.name }</span>
+                                    <span className="font-normal text-xs text-gray-400">{ blog.user.email }</span>
+                                  </div>
+                                </div>
+                                <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ blog.title }</span>
+                                <span className="font-light text-sm line-clamp-2">
+                                  <ReactMarkdown>
+                                    {!blog.content ? 'No content available' : blog.content}
+                                  </ReactMarkdown> 
+                                </span>
+                                <div className="flex flex-row items-center text-gray-400 space-x-1">
+                                  <span className="font-medium text-[10px]"><Moment date={ blog.date } format='LLLL' /></span>
+                                  <span>&bull;</span>
+                                  <span className="font-medium text-[10px]">{ blog.tags }</span>
+                                </div>
+                                <div className="flex flex-row items-center text-gray-400 space-x-2">
+                                  <div className="flex items-center space-x-1">
+                                    <svg className="w-4 h-4 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                      <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
+                                    </svg>
+                                    <span className="font-medium text-[10px]">{ blog.likes.length }</span>
+                                  </div>
+                                  <span>&bull;</span>
+                                  <div className="flex items-center space-x-1">
+                                    <svg className="w-4 h-4 text-[#555] dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                                    </svg>
+                                    <span className="font-medium text-[10px]">{ blog.comment.length }</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
+                                <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-400 dark:bg-[#151820]" src={ blog.image } alt="post_image" />
                               </div>
                             </a>
                           </Link>
