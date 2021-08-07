@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useForm, Controller } from 'react-hook-form'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function EditBlog({ online_user, get_blog_post_details }) {
   
@@ -44,6 +45,11 @@ export default function EditBlog({ online_user, get_blog_post_details }) {
     const content = formData.content
     const status = formData.status
 
+    if (!image.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)) {
+      document.getElementById('custom_toast').innerText = 'Invalid image url'
+      return
+    }
+
     await fetch('/api/posts/update_post', {
       method: 'PUT',
       headers: {
@@ -62,10 +68,23 @@ export default function EditBlog({ online_user, get_blog_post_details }) {
     reset(defaultValues)
     closeModal()
     router.replace(`/blog/${ online_user.username }`)
+
+    toast.success('Updated Successfully. Thank you for your blogging.', {
+      style: {
+        borderRadius: '10px',
+        background: '#222222',
+        color: '#fff',
+      }
+    })
   }
 
   return (
     <>
+      <Toaster
+        position="top-right"
+        reverseOrder={true}
+      />
+
       <button
         type="button"
         className="flex flex-row items-center space-x-2 focus:outline-none"
@@ -134,6 +153,7 @@ export default function EditBlog({ online_user, get_blog_post_details }) {
                       <label htmlFor="image" className="font-normal text-xs text-gray-400 ml-2">Image URL</label>
                       <input type="text" name="image" id="image" {...register("image", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Image URL" disabled={ isSubmitting } />
                       { errors.image && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+                      <span id="custom_toast" className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1"></span>
                     </div>
                     <div className="form-control flex flex-col space-y-1">
                       <label htmlFor="title" className="font-normal text-xs text-gray-400 ml-2">Title</label>
