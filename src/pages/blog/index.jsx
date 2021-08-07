@@ -44,12 +44,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
   return (
     <>
       <Head>
-        {!online_user && (
-          <title>Blog</title>
-        )}
-        {online_user && (
-          <title>Blog | { online_user.name }</title>
-        )}
+        <title>Blog</title>
       </Head>
       <Layout>
         <div className="flex flex-col items-center justify-center w-full max-w-[2400px] h-screen overflow-hidden text-[#333] dark:text-white">
