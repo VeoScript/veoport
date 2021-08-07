@@ -82,7 +82,7 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                     </Tab.List>
                     <Tab.Panels>
                       <Tab.Panel>
-                        <div className="flex flex-col w-full space-y-5">
+                        <div className="flex flex-col w-full space-y-3">
                           {user_published_posts.length == 0 && (
                             <div className="flex flex-row items-center justify-center w-full z-10 -mt-20 h-screen overflow-hidden">
                               <div className="flex flex-row items-center justify-center w-full h-full">
@@ -135,7 +135,7 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                         </div>
                       </Tab.Panel>
                       <Tab.Panel>
-                        <div className="flex flex-col w-full space-y-5">
+                        <div className="flex flex-col w-full space-y-3">
                           {user_draft_posts.length == 0 && (
                             <div className="flex flex-row items-center justify-center w-full z-10 -mt-20 h-screen overflow-hidden">
                               <div className="flex flex-row items-center justify-center w-full h-full">
