@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
 import ProfileDisplay from '~/components/profile_display'
+import MenuDisplay from '~/components/menu_display'
 import Moment from 'react-moment'
 import ReactMarkdown from 'react-markdown'
 import Scrollbar from 'react-smooth-scrollbar'
@@ -53,13 +54,20 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
               all_users={all_users}
               online_user={online_user}
             />
-            <div className="flex flex-col w-full h-full overflow-hidden">
-              <div className="flex flex-row items-center justify-between w-full px-6 py-3 border-b border-black border-opacity-10">
-                <span>Discover and Browse</span>
+            <MenuDisplay
+              all_users={all_users}
+              online_user={online_user}
+            />
+            <div className="relative flex flex-col w-full h-full overflow-hidden">
+              <div className="flex flex-col md:flex-row items-center justify-between w-full px-6 py-3 border-b border-black border-opacity-10">
+                <div className="flex flex-col items-center">
+                  <span className="block md:hidden font-bold text-2xl text-[#62A9FF]">VEO PORTAL</span>
+                  <span className="text-sm md:text-base text-[#333] dark:text-gray-300">Discover and Browse</span>
+                </div>
                 <input
                   type="text"
                   name="search_blogs"
-                  className="bg-gray-100 dark:bg-[#111319] text-[#333] dark:text-white text-sm px-5 py-3 w-full max-w-xs rounded-xl border-2 border-gray-100 dark:border-[#111319] focus:border-[#62A9FF] dark:focus:border-[#62A9FF] focus:outline-none"
+                  className="bg-gray-50 dark:bg-[#111319] text-[#333] dark:text-white text-sm mt-3 px-5 py-3 w-full max-w-full md:max-w-xs rounded-xl border-2 border-gray-50 dark:border-[#111319] focus:border-[#62A9FF] dark:focus:border-[#62A9FF] focus:outline-none"
                   placeholder="Search blog"
                   value={searchTerm}
                   onChange={handleSearch}
@@ -70,7 +78,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1 }}
-                  className="flex flex-col w-full px-6 pt-3 pb-16 space-y-3"
+                  className="flex flex-col w-full px-3 pt-3 pb-16 space-y-3 overflow-y-auto"
                 >
                   {!data && (
                     <div className="flex flex-row justify-center w-full">
@@ -81,8 +89,8 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                     <>
                       {data.map(({ image, title, content, date, tags, user, likes, comment }, i) => (
                         <Link href={`/${ title }`} key={i}>
-                          <a className="flex flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]">
-                            <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
+                          <a className="flex flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-[#62A9FF]">
+                            <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white px-5 py-3 space-y-2">
                               <div className="flex flex-row items-center w-full space-x-2">
                                 <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="avatar" />
                                 <div className="flex flex-col">
@@ -117,8 +125,8 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                              <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
+                            <div className="flex flex-row justify-end w-full max-w-full md:max-w-lg">
+                              <img className="w-full max-w-full md:max-w-sm h-[10rem] md:h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
                             </div>
                           </a>
                         </Link>
@@ -129,8 +137,8 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                     <>
                       {search_results.map(blog => (
                         <Link href={`/${ blog.title }`} key={blog.id}>
-                          <a className={`${isDisplay ? 'flex' :'hidden'} flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]`}>
-                            <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
+                          <a className={`${isDisplay ? 'flex' :'hidden'} flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-[#62A9FF]`}>
+                            <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white px-5 py-3 space-y-2">
                               <div className="flex flex-row items-center w-full space-x-2">
                                 <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ blog.user.image } alt="avatar" />
                                 <div className="flex flex-col">
@@ -165,8 +173,8 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                              <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ blog.image } alt="post_image" />
+                            <div className="flex flex-row justify-end w-full max-w-full md:max-w-lg">
+                              <img className="w-full max-w-full md:max-w-sm h-[10rem] md:h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ blog.image } alt="post_image" />
                             </div>
                           </a>
                         </Link>

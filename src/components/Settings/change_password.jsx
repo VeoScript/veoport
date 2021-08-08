@@ -48,7 +48,7 @@ export default function ChangePassword({ online_user, closeModal }) {
     })
     reset()
     closeModal()
-    router.replace('/blog')
+    router.replace(router.asPath)
   }
 
   return (

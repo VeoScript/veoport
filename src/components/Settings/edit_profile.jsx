@@ -45,12 +45,12 @@ export default function EditProfile({ online_user, closeModal }) {
     })
     reset(defaultValues)
     closeModal()
-    router.replace('/blog')
+    router.replace(router.asPath)
   }
 
   return (
     <form onSubmit={handleSubmit(handleEditProfile)} className="flex flex-col w-full mt-5 space-y-1">
-      <div className="flex flex-row items-center w-full space-x-2">
+      <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
         <div className="flex flex-col w-full space-y-2">
           <div className="form-control flex flex-col space-y-1">
             <label htmlFor="avatar" className="font-normal text-xs text-gray-400 ml-2">Avatar URL</label>

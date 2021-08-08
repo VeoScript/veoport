@@ -34,6 +34,7 @@ export default function DeleteComment({ online_user, commentId }) {
   return (
     <>
       <button
+        className="focus:outline-none"
         type="button"
         onClick={openModal}
       >

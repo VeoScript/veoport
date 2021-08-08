@@ -4,7 +4,7 @@ import Authenticate from '~/components/authenticate'
 import CreateBlog from './create_blog'
 import Settings from './Settings/settings'
 
-export default function ProfileDisplay({ all_users, online_user, get_post_likes }) {
+export default function ProfileDisplay({ all_users, online_user }) {
 
   const router = useRouter()
 
@@ -19,7 +19,7 @@ export default function ProfileDisplay({ all_users, online_user, get_post_likes 
   }
 
   return (
-    <div className="flex flex-col items-center w-full max-w-md h-full overflow-y-auto transition ease-in-out duration-300 bg-gray-100 dark:bg-[#262B37]">
+    <div className="hidden md:flex flex-col items-center w-full max-w-md h-full overflow-y-auto transition ease-in-out duration-300 bg-gray-100 dark:bg-[#262B37]">
       <div className="flex flex-col items-center w-full h-full px-10 py-10 space-y-5">
         <div className="flex flex-col w-full">
           <span className="font-bold text-2xl text-[#62A9FF]">VEO PORTAL</span>
@@ -38,7 +38,6 @@ export default function ProfileDisplay({ all_users, online_user, get_post_likes 
             <div className="flex items-center w-full space-x-2">
               <Authenticate
                 all_users={all_users}
-                get_post_likes={get_post_likes}
               />
             </div>
           </div>
