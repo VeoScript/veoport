@@ -24,7 +24,7 @@ export default function MenuDisplay({ all_users, online_user }) {
   return (
     <>
       <div onClick={() => setIsDisplay(true) } className="fixed md:hidden z-10 right-6 top-5">
-        <button className="px-2 py-1 rounded-md hover:scale-95 text-[#333] dark:text-gray-300 border border-[#333] dark:border-gray-300 focus:outline-none">
+        <button className="px-2 py-1 rounded-md hover:scale-95 text-[#878787] dark:text-gray-300 border-2 border-[#878787] dark:border-gray-300 focus:outline-none">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8h16M4 16h16"></path>
           </svg>
