@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
 import ProfileDisplay from '~/components/profile_display'
+import MenuDisplay from '~/components/menu_display'
 import Moment from 'react-moment'
 import ReactMarkdown from 'react-markdown'
 import Scrollbar from 'react-smooth-scrollbar'
@@ -35,11 +36,15 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
               all_users={all_users}
               online_user={online_user}
             />
+            <MenuDisplay
+              all_users={all_users}
+              online_user={online_user}
+            />
             <div className="flex flex-col w-full h-full overflow-y-auto pb-10">
               <Scrollbar>
                 <div className="flex flex-col w-full h-full p-6 space-y-5">
                   <Tab.Group>
-                    <Tab.List className="flex flex-row items-center z-30 w-full">
+                    <Tab.List className="flex flex-col md:flex-row items-center z-30 w-full">
                       <div className="flex flex-row w-full space-x-5">
                         <button
                           className="focus:outline-none"
@@ -55,30 +60,32 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                           <span className="font-light text-sm">My Blogs</span>
                         </div>
                       </div>
-                      <Tab
-                        className={({ selected }) =>
-                          classNames(
-                            'w-full max-w-[12rem] py-3 px-5 rounded-md transition ease-in-out duration-200',
-                            selected
-                              ? 'border-2 border-[#62A9FF] text-center text-[#333] dark:text-gray-200'
-                              : 'border-none text-center text-[#333] dark:text-gray-200'
-                          )
-                        }
-                      >
-                        Published Posts
-                      </Tab>
-                      <Tab
-                        className={({ selected }) =>
-                          classNames(
-                            'w-full max-w-[12rem] py-3 px-5 rounded-md transition ease-in-out duration-200',
-                            selected
-                              ? 'border-2 border-[#62A9FF] text-center text-[#333] dark:text-gray-200'
-                              : 'border-none text-center text-[#333] dark:text-gray-200'
-                          )
-                        }
-                      >
-                        Draft Posts
-                      </Tab>
+                      <div className="flex flex-row items-center justify-center md:justify-end w-full mt-5 md:mt-0">
+                        <Tab
+                          className={({ selected }) =>
+                            classNames(
+                              'w-full max-w-full md:max-w-[12rem] text-xs md:text-base py-3 px-5 rounded-md transition ease-in-out duration-200',
+                              selected
+                                ? 'border-2 border-[#62A9FF] text-center text-[#333] dark:text-gray-200'
+                                : 'border-none text-center text-[#333] dark:text-gray-200'
+                            )
+                          }
+                        >
+                          Published Posts
+                        </Tab>
+                        <Tab
+                          className={({ selected }) =>
+                            classNames(
+                              'w-full max-w-full md:max-w-[12rem] text-xs md:text-base py-3 px-5 rounded-md transition ease-in-out duration-200',
+                              selected
+                                ? 'border-2 border-[#62A9FF] text-center text-[#333] dark:text-gray-200'
+                                : 'border-none text-center text-[#333] dark:text-gray-200'
+                            )
+                          }
+                        >
+                          Draft Posts
+                        </Tab>
+                      </div>
                     </Tab.List>
                     <Tab.Panels>
                       <Tab.Panel>
@@ -92,8 +99,8 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                           )}
                           {user_published_posts.map(({ image, title, content, date, tags, user, likes, comment }, i) => (
                             <Link href={`/${ title }`} key={i}>
-                              <a className="flex flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]">
-                                <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
+                              <a className="flex flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-[#62A9FF]">
+                                <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white px-5 py-3 space-y-2">
                                   <div className="flex flex-row items-center w-full space-x-2">
                                     <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="avatar" />
                                     <div className="flex flex-col">
@@ -103,7 +110,9 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                                   </div>
                                   <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ title }</span>
                                   <span className="font-light text-sm line-clamp-2">
-                                    <ReactMarkdown>{!content ? 'No content available' : content}</ReactMarkdown> 
+                                    <ReactMarkdown>
+                                      {!content ? 'No content available' : content}
+                                    </ReactMarkdown> 
                                   </span>
                                   <div className="flex flex-row items-center text-gray-400 space-x-1">
                                     <span className="font-medium text-[10px]"><Moment date={ date } format='LLLL' /></span>
@@ -126,8 +135,8 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                                     </div>
                                   </div>
                                 </div>
-                                <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                  <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
+                                <div className="flex flex-row justify-end w-full max-w-full md:max-w-lg">
+                                  <img className="w-full max-w-full md:max-w-sm h-[10rem] md:h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
                                 </div>
                               </a>
                             </Link>
@@ -145,8 +154,8 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                           )}
                           {user_draft_posts.map(({ image, title, content, date, tags, user }, i) => (
                             <Link href={`/${ title }`} key={i}>
-                              <a className="flex flex-row items-center justify-between w-full h-full max-h-60 overflow-hidden border border-[#62A9FF]">
-                                <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white mx-5 space-y-2">
+                              <a className="flex flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-[#62A9FF]">
+                                <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white px-5 py-3 space-y-2">
                                   <div className="flex flex-row items-center w-full space-x-2">
                                     <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="avatar" />
                                     <div className="flex flex-col">
@@ -156,7 +165,9 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                                   </div>
                                   <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ title }</span>
                                   <span className="font-light text-sm line-clamp-2">
-                                    <ReactMarkdown>{!content ? 'No content available' : content}</ReactMarkdown> 
+                                    <ReactMarkdown>
+                                      {!content ? 'No content available' : content}
+                                    </ReactMarkdown> 
                                   </span>
                                   <div className="flex flex-row items-center text-gray-400 space-x-1">
                                     <span className="font-medium text-[10px]"><Moment date={ date } format='LLLL' /></span>
@@ -164,8 +175,8 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                                     <span className="font-medium text-[10px]">{ tags }</span>
                                   </div>
                                 </div>
-                                <div className="flex flex-row justify-end w-full max-w-lg h-full overflow-auto">
-                                  <img className="w-full max-w-sm h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
+                                <div className="flex flex-row justify-end w-full max-w-full md:max-w-lg">
+                                  <img className="w-full max-w-full md:max-w-sm h-[10rem] md:h-[20rem] object-cover bg-gray-100 dark:bg-[#1E212D]" src={ image } alt="post_image" />
                                 </div>
                               </a>
                             </Link>

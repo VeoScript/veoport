@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
 import ProfileDisplay from '~/components/profile_display'
+import MenuDisplay from '~/components/menu_display'
 import EditBlog from '~/components/edit_blog'
 import ReactionTriggerButton from '~/components/reaction_button'
 import CommentBox from '~/components/comment_box'
@@ -36,29 +36,43 @@ export default function BlogContent({ title, all_users, online_user, get_blog_po
             <ProfileDisplay
               all_users={all_users}
               online_user={online_user}
+              get_post_likes={get_post_likes}
             />
             <div className="flex flex-col w-full h-full overflow-y-auto pb-10">
+              <div className="relative md:hidden z-10 flex flex-row items-center w-full px-5 py-5 bg-[#fff] dark:bg-[#232733]">
+                <span className="font-bold text-xl text-[#62A9FF]">VEO PORTAL</span>
+                <MenuDisplay
+                  all_users={all_users}
+                  online_user={online_user}
+                />
+              </div>
               <Scrollbar>
                 <div className="flex flex-col w-full p-6 space-y-5">
                   <div className="flex flex-row items-center justify-between w-full space-x-5">
-                    <div className="flex flex-col w-full max-w-full space-y-3">
-                      <div className="flex w-full">
+                    <div className="flex flex-col-reverse md:flex-col w-full max-w-full space-y-0 md:space-y-3">
+                      <div className="flex justify-center md:justify-start w-full mt-5 md:mt-0">
                         <span className="font-bold text-3xl">{ title }</span>
                       </div>
-                      <div className="flex flex-row items-center justify-between w-full">
-                        <div className="flex flex-row items-center w-full space-x-2">
-                          <img src={ get_blog_post_details.user.image } alt="creator" className="w-9 h-9 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" />
-                          <div className="flex flex-col">
-                            <span className="font-normal text-[12px] text-[#62A9FF]">{ get_blog_post_details.user.name }</span>
-                            <span className="font-light text-[10px] text-gray-400 -mt-1">{ get_blog_post_details.user.bio }</span>
+                      <div className="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
+                          <div className="flex flex-col md:flex-row items-center space-x-0 md:space-x-2 space-y-2 md:space-y-0">
+                            <img src={ get_blog_post_details.user.image } alt="creator" className="w-20 h-20 md:w-9 md:h-9 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" />
+                            <div className="flex flex-col items-center md:items-start">
+                              <span className="font-normal text-[12px] text-[#62A9FF]">{ get_blog_post_details.user.name }</span>
+                              <span className="font-light text-[10px] text-gray-400 -mt-1">{ get_blog_post_details.user.bio }</span>
+                            </div>
                           </div>
-                          <span className="font-light text-xs text-gray-400 pl-3">
-                            <Moment date={ get_blog_post_details.date } format='LL' />  
-                          </span>
-                          <span className="text-xs text-gray-400">&bull;</span>
-                          <span className="font-light text-xs text-gray-400">{ get_blog_post_details.tags }</span>
+                          <div className="flex flex-col md:flex-row items-center space-x-0 md:space-x-2 space-y-2 md:space-y-0">
+                            <span className="font-light text-xs text-gray-400 p-0 md:pl-3">
+                              <Moment date={ get_blog_post_details.date } format='LL' />  
+                            </span>
+                            <div className="flex flex-row items-center space-x-2">
+                              <span className="hidden md:block text-xs text-gray-400">&bull;</span>
+                              <span className="font-light text-xs text-gray-400">{ get_blog_post_details.tags }</span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex flex-row items-center justify-end w-full max-w-sm space-x-3">
+                        <div className="flex flex-row items-center justify-center md:justify-end w-full max-w-sm mt-5 md:mt-0 space-x-3">
                           {get_blog_post_details.published === 'published' && (
                             <>
                               <div className="flex flex-row items-center space-x-1">
