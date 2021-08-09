@@ -4,6 +4,7 @@ import Layout from '~/layouts/default'
 import ProfileDisplay from '~/components/profile_display'
 import MenuDisplay from '~/components/menu_display'
 import EditBlog from '~/components/edit_blog'
+import DeleteBlog from '~/components/delete_blog'
 import ReactionTriggerButton from '~/components/reaction_button'
 import CommentBox from '~/components/comment_box'
 import DeleteComment from '~/components/delete_comment'
@@ -100,6 +101,12 @@ export default function BlogContent({ title, all_users, online_user, get_blog_po
                               <EditBlog
                                 online_user={online_user}
                                 get_blog_post_details={get_blog_post_details}
+                              />
+                              <span className="text-xs text-gray-400">&bull;</span>
+                              <DeleteBlog
+                                online_user={online_user}
+                                get_blog_post_details={get_blog_post_details}
+                                get_post_comments={get_post_comments}
                               />
                             </>
                           )}
