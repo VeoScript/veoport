@@ -54,14 +54,14 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
       {online_user && (
         <>
           {like && (
-            <button className={`${detectLiked ? 'block' : 'hidden'} focus:outline-none`} type="button" onClick={async () => await onUnlike(title)}>
+            <button className="focus:outline-none" type="button" onClick={async () => await onUnlike(title)}>
               <svg className="w-5 h-5 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
               </svg>
             </button>
           )}
           {!like && (
-            <button className={`${!detectLiked ? 'block' : 'hidden'} focus:outline-none`} type="button" onClick={async () => await onLike(title)}>
+            <button className="focus:outline-none" type="button" onClick={async () => await onLike(title)}>
               <svg className="w-5 h-5 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
               </svg>
