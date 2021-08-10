@@ -36,8 +36,8 @@ export default function Contact() {
       <Layout>
         <div className="flex flex-row justify-center items-center w-full max-w-[2400px] h-screen overflow-y-auto pb-10 space-x-0 space-y-5 md:space-x-5 md:space-y-0">
           <ToastContainer draggablePercent={60} />
-          <div className="flex flex-col md:flex-row justify-around items-center w-full md:w-11/12 px-5 pb-10 md:px-10 md:py-10 space-y-3 md:space-y-0">
-            <div className="w-full mx-auto md:w-2/5 md:space-y-3 space-y-1">
+          <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-4xl px-5 pb-10 md:px-0 md:py-10 space-x-0 md:space-x-10 space-y-3 md:space-y-0">
+            <div className="w-full mx-auto md:max-w-full md:space-y-3 space-y-1">
               <div className="md:hidden flex flex-col py-5">
                 {info.map(({ icon, content }, i) => (
                   <div className="flex flex-row items-center space-x-3" key={i}>
@@ -47,7 +47,7 @@ export default function Contact() {
                 ))}
               </div>
               <h1 className="md:text-4xl text-2xl text-[#333] font-bold dark:text-white">Get in touch</h1>
-              <p className="md:text-xl text-base text-[#333] dark:text-white">If you got a project in mind, why not get in touch. Let's work together, I'm available for interesting freelance work projects.</p>
+              <p className="md:text-base text-base text-[#333] dark:text-white">If you got a project in mind, why not get in touch. Let's work together, I'm available for interesting freelance work projects.</p>
               <div className="hidden md:flex flex-col space-y-1 md:space-y-3 py-5">
                 {info.map(({ icon, content }, i) => (
                   <div className="flex flex-row items-center space-x-3" key={i}>
@@ -57,7 +57,7 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-            <form onSubmit={handleSubmit(sendEmail)} className="w-full md:w-2/5 mx-auto space-y-3">
+            <form onSubmit={handleSubmit(sendEmail)} className="w-full md:max-w-xl mx-auto space-y-3">
               <div className="form-control">
                 <input type="text" name="name" {...register("name", { required: true })} className="bg-gray-100 text-[#333] text-base md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Name" disabled={ isSubmitting } />
                 { errors.name && <span className="font-medium text-xs tracking-wide text-red-600 mx-1">Name is required!</span> }

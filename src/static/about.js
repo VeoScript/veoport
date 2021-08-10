@@ -15,6 +15,24 @@ export const experience = [
   }
 ]
 
+export const services = [
+  {
+    icon: <svg className="w-7 h-7 fill-current text-[#62A9FF]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 17v-11.8c0-.663-.537-1.2-1.2-1.2h-17.6c-.663 0-1.2.537-1.2 1.2v11.8h20zm-18-11h16v9h-16v-9zm20 12v.8c0 .663-.537 1.2-1.2 1.2h-21.6c-.663 0-1.2-.537-1.2-1.2v-.8h10c0 .276.224.5.5.5h3c.276 0 .5-.224.5-.5h10z"/></svg>,
+    title: 'WEB DEVELOPMENT',
+    description: 'Consider as a full-stack developer using Git, NextJS, Prisma, GraphQL, PostgreSQL, MySQL and REST-API.'
+  },
+  {
+    icon: <svg className="w-7 h-7 fill-current text-[#62A9FF]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 17.162l-2 .838v-12.972l12-5.028v2.507l-10 4.19v10.465zm18-11.162l-12 5.028v12.972l12-5.028v-12.972zm-14 3.697l10-4.19v-2.507l-12 5.028v12.972l2-.838v-10.465z"/></svg>,
+    title: 'SOFTWARE DEVELOPMENT',
+    description: 'Can create desktop applications and mobile applications, using C#, XAMARIN, Ionic and Flutter'
+  },
+  {
+    icon: <svg className="w-7 h-7 fill-current text-[#62A9FF]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 24h2.948c1-.923 2.004-2 3.55-2 1.547 0 2.55 1.077 3.55 2h2.948l-6.498-6-6.498 6zm20-8.042c0 3.269-5.858 3.387-9.787 1.79-6.835-2.779-9.629-9.79-7.817-15.17.84-2.496 1.852-3.84 6.333-.922 1.101.716 2.27 1.649 3.437 2.722l-1.72 1.152c-7.717-7.009-6.992-2.036-.983 4.55 5.858 6.417 11.668 8.615 5.767.717l1.199-1.745c1.223 1.634 3.571 4.873 3.571 6.906zm-1.026-12.437c-.004.829-.68 1.497-1.508 1.492-.225-.001-.436-.056-.628-.146l-3.829 5.646c-.784-.555-1.994-1.768-2.548-2.554l5.682-3.77c-.104-.207-.169-.437-.168-.684.005-.829.68-1.497 1.507-1.492.828.005 1.497.68 1.492 1.508z"/></svg>,
+    title: 'I.T. NETWORKING',
+    description: 'Handle network topology, network security, database administrator and local area network.'
+  }
+]
+
 export const skills = [
   {
     category: 'Web Development',
