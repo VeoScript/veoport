@@ -53,6 +53,10 @@ export default function ChangePassword({ online_user, closeModal }) {
 
   return (
     <>
+      <Toaster
+        position="top-center"
+        reverseOrder={true}
+      />
       <form onSubmit={handleSubmit(handleChangePassword)} className="flex flex-col w-full mt-5 space-y-1">
         <div className="flex flex-col justify-center w-full space-y-1">
           <div className="form-control flex flex-col w-full space-y-1">
