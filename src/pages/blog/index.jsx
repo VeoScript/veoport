@@ -90,7 +90,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                       {data.map(({ image, title, content, date, tags, user, likes, comment }, i) => (
                         <Link href={`/${ title }`} key={i}>
                           <a className="flex flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-gray-300 dark:border-gray-700">
-                            <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white px-5 py-3 space-y-2">
+                            <div className="flex flex-col w-full max-w-full md:max-w-sm text-gray-600 dark:text-white px-5 py-3 space-y-2">
                               <div className="flex flex-row items-center w-full space-x-2">
                                 <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ user.image } alt="avatar" />
                                 <div className="flex flex-col">
@@ -138,7 +138,7 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
                       {search_results.map(blog => (
                         <Link href={`/${ blog.title }`} key={blog.id}>
                           <a className={`${isDisplay ? 'flex' :'hidden'} flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-gray-300 dark:border-gray-700`}>
-                            <div className="flex flex-col w-full max-w-full text-gray-600 dark:text-white px-5 py-3 space-y-2">
+                            <div className="flex flex-col w-full max-w-full md:max-w-sm text-gray-600 dark:text-white px-5 py-3 space-y-2">
                               <div className="flex flex-row items-center w-full space-x-2">
                                 <img className="w-10 h-full max-h-10 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]" src={ blog.user.image } alt="avatar" />
                                 <div className="flex flex-col">
