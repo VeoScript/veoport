@@ -53,7 +53,7 @@ export default function About() {
                 <span className="font-bold text-lg text-[#333] dark:text-white">Skills & Services</span>
                 <div className="flex flex-col w-full space-y-2">
                   {services.map(({ icon, title, description }, i) => (
-                    <div className="flex flex-row items-center w-full px-5 py-3 space-x-5 rounded-md border-2 border-[#62A9FF]" key={i}>
+                    <div className="flex flex-row items-center w-full px-5 py-3 space-x-5 rounded-md border border-gray-300 dark:border-gray-700" key={i}>
                       <div className="flex">
                         <span>{ icon }</span>
                       </div>
