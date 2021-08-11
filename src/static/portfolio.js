@@ -7,6 +7,13 @@ export const projects = [
     demo: 'https://www.jeromevillaruel.ml'
   },
   {
+    name: 'cozy',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/veocozy.png?alt=media&token=ba99cfe3-d747-49c0-a79a-c3c03f5f1f2f',
+    description: 'Your online address book for the future with realtime room chatting feature. Created with Next JS, Prisma ORM, TailwindCSS, PostgreSQL and powered by Heroku.',
+    link: 'https://github.com/VeoScript/cozy',
+    demo: 'https://www.veocozy.ml'
+  },
+  {
     name: 'ictmr',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/ictmr_dashboard.png?alt=media&token=c1392de1-57b7-47e6-bd9a-b5560871fe37',
     description: 'Generate monthly reports, internet status and downtime reports monitoring. ICTMR managed all of computers that registered inside the plant and it can be used as your daily journal and notebook. Using NextJS and Prisma PostgreSQL',
