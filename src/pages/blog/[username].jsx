@@ -115,7 +115,7 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                                     </ReactMarkdown> 
                                   </span>
                                   <div className="flex flex-row items-center text-gray-400 space-x-1">
-                                    <span className="font-medium text-[10px]"><Moment date={ date } format='LLLL' /></span>
+                                    <span className="font-medium text-[10px]">Updated <Moment date={ date } format='LL' /></span>
                                     <span>&bull;</span>
                                     <span className="font-medium text-[10px]">{ tags }</span>
                                   </div>
@@ -170,7 +170,7 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
                                     </ReactMarkdown> 
                                   </span>
                                   <div className="flex flex-row items-center text-gray-400 space-x-1">
-                                    <span className="font-medium text-[10px]"><Moment date={ date } format='LLLL' /></span>
+                                    <span className="font-medium text-[10px]">Updated <Moment date={ date } format='LL' /></span>
                                     <span>&bull;</span>
                                     <span className="font-medium text-[10px]">{ tags }</span>
                                   </div>
