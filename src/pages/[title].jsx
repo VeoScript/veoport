@@ -162,7 +162,7 @@ export default function BlogContent({ title, all_users, online_user, get_blog_po
                                   { comment }
                                 </span>
                                 <span className="font-light text-[11px] text-gray-400 mt-2">
-                                  <Moment date={ date } format='LLLL' />
+                                  <Moment date={ date } format='LLL' />
                                 </span>
                               </div>
                             </div>
