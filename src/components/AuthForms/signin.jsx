@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
+import bcrypt from 'bcryptjs'
 import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -33,7 +34,10 @@ export default function SignIn({ closeModal }) {
       return
     }
 
-    if (checkUser.password !== password) {
+    const hashPassword = checkUser.password
+    const matchPassword = await bcrypt.compare(password, hashPassword)
+
+    if (!matchPassword) {
       toast.error('Incorrect password!', {
         style: {
           borderRadius: '10px',

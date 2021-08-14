@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
+import bcrypt from 'bcryptjs'
 
 export default function ChangePassword({ online_user, closeModal }) {
 
@@ -14,7 +15,10 @@ export default function ChangePassword({ online_user, closeModal }) {
     const new_password = formData.new_password
     const repassword = formData.repassword
 
-    if (old_password !== online_user.password) {
+    const hash_password = online_user.password
+    const match_old_password = await bcrypt.compare(old_password, hash_password)
+
+    if (!match_old_password) {
       toast.error('Old password did not match!', {
         style: {
           borderRadius: '10px',

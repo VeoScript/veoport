@@ -16,8 +16,7 @@ export default function SignUp({ closeModal }) {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
 
   async function handleSignUp(formData) {
-    const image = formData.avatar
-    const name = formData.name
+    const image = formData.image
     const email = formData.email
     const username = formData.username
     const password = formData.password
@@ -55,16 +54,7 @@ export default function SignUp({ closeModal }) {
 
     await fetch('/api/auth/signup', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        image,
-        name,
-        email,
-        username,
-        password
-      })
+      body: JSON.stringify(formData)
     })
     reset()
     closeModal()
@@ -79,8 +69,8 @@ export default function SignUp({ closeModal }) {
       />
       <form onSubmit={handleSubmit(handleSignUp)} className="flex flex-col w-full mt-5 space-y-1">
         <div className="form-control">
-          <input type="text" name="avatar" {...register("avatar", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Avatar URL" disabled={ isSubmitting } />
-          { errors.avatar && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+          <input type="text" name="image" {...register("image", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Avatar URL" disabled={ isSubmitting } />
+          { errors.image && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
           <span id="custom_toast" className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1"></span>
         </div>
         <div className="form-control">
