@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react'
 import SignIn from './AuthForms/signin'
 import SignUp from './AuthForms/signup'
 
-export default function Authenticate({ all_users }) {
+export default function Authenticate() {
 
   let [isOpen, setIsOpen] = useState(false)
 
@@ -97,13 +97,11 @@ export default function Authenticate({ all_users }) {
                       <Tab.Panel>
                         <SignIn
                           closeModal={closeModal}
-                          all_users={all_users}
                         />
                       </Tab.Panel>
                       <Tab.Panel>
                         <SignUp
                           closeModal={closeModal}
-                          all_users={all_users}
                         />
                       </Tab.Panel>
                     </Tab.Panels>

@@ -17,7 +17,7 @@ import prisma from '~/lib/prisma'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function BlogContent({ title, all_users, online_user, get_blog_post_details, get_post_comments, get_post_likes }) {
+export default function BlogContent({ title, online_user, get_blog_post_details, get_post_comments, get_post_likes }) {
 
   const initialData = get_post_comments
 
@@ -35,15 +35,12 @@ export default function BlogContent({ title, all_users, online_user, get_blog_po
         <div className="flex flex-col items-center justify-center w-full max-w-[2400px] h-screen overflow-hidden text-[#333] dark:text-white">
           <div className="flex flex-row items-center justify-center w-full h-full overflow-hidden">
             <ProfileDisplay
-              all_users={all_users}
               online_user={online_user}
-              get_post_likes={get_post_likes}
             />
             <div className="flex flex-col w-full h-full overflow-y-auto pb-10">
               <div className="relative md:hidden z-10 flex flex-row items-center w-full px-5 py-5 bg-[#fff] dark:bg-[#232733]">
                 <span className="font-bold text-xl text-[#62A9FF]">VEO PORTAL</span>
                 <MenuDisplay
-                  all_users={all_users}
                   online_user={online_user}
                 />
               </div>
@@ -202,8 +199,6 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
     }
   })
 
-  const all_users = await prisma.user.findMany()
-
   const get_blog_post_details = await prisma.posts.findFirst({
     where: {
       title: title
@@ -288,7 +283,6 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
   return {
     props: {
       title,
-      all_users,
       online_user,
       get_blog_post_details,
       get_post_comments,

@@ -5,7 +5,7 @@ import Authenticate from '~/components/authenticate'
 import CreateBlog from './create_blog'
 import Settings from './Settings/settings'
 
-export default function MenuDisplay({ all_users, online_user }) {
+export default function MenuDisplay({ online_user }) {
 
   const router = useRouter()
 
@@ -53,9 +53,7 @@ export default function MenuDisplay({ all_users, online_user }) {
                         Join to start sharing your thoughts and interact here in my portal.
                       </span>
                       <div className="flex items-center w-full space-x-2">
-                        <Authenticate
-                          all_users={all_users}
-                        />
+                        <Authenticate />
                       </div>
                     </div>
                   )}
