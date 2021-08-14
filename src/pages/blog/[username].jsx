@@ -15,7 +15,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function UserBlogs({ all_users, online_user, user_published_posts, user_draft_posts }) {
+export default function UserBlogs({ online_user, user_published_posts, user_draft_posts }) {
 
   const router = useRouter()
 
@@ -33,11 +33,9 @@ export default function UserBlogs({ all_users, online_user, user_published_posts
         <div className="flex flex-col items-center justify-center w-full max-w-[2400px] h-screen overflow-hidden text-[#333] dark:text-white">
           <div className="flex flex-row items-center justify-center w-full h-full overflow-hidden">
             <ProfileDisplay
-              all_users={all_users}
               online_user={online_user}
             />
             <MenuDisplay
-              all_users={all_users}
               online_user={online_user}
             />
             <div className="flex flex-col w-full h-full overflow-y-auto pb-10">
@@ -224,8 +222,6 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
     }
   })
 
-  const all_users = await prisma.user.findMany()
-
   const user_published_posts = await prisma.posts.findMany({
     where: {
       user: {
@@ -290,7 +286,6 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
 
   return {
     props: {
-      all_users,
       online_user,
       user_published_posts,
       user_draft_posts

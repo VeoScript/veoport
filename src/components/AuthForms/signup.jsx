@@ -1,8 +1,15 @@
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
+import useSWR from 'swr'
 
-export default function SignUp({ all_users, closeModal }) {
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+export default function SignUp({ closeModal }) {
+
+  const { data: all_users } = useSWR('/api/auth/users', fetcher, {
+    refreshInterval: 1000
+  })
 
   const router = useRouter()
 

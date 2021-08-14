@@ -15,7 +15,7 @@ import prisma from '~/lib/prisma'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function Blog({ all_users, online_user, get_published_posts }) {
+export default function Blog({ online_user, get_published_posts }) {
 
   const initialData = get_published_posts
 
@@ -51,11 +51,9 @@ export default function Blog({ all_users, online_user, get_published_posts }) {
         <div className="flex flex-col items-center justify-center w-full max-w-[2400px] h-screen overflow-hidden text-[#333] dark:text-white">
           <div className="flex flex-row items-center justify-center w-full h-full overflow-hidden">
             <ProfileDisplay
-              all_users={all_users}
               online_user={online_user}
             />
             <MenuDisplay
-              all_users={all_users}
               online_user={online_user}
             />
             <div className="relative flex flex-col w-full h-full overflow-hidden">
@@ -200,8 +198,6 @@ export const getServerSideProps = withSession(async function ({ req }) {
     }
   })
 
-  const all_users = await prisma.user.findMany()
-
   const get_published_posts = await prisma.posts.findMany({
     where: {
       published: 'published'
@@ -236,7 +232,6 @@ export const getServerSideProps = withSession(async function ({ req }) {
 
   return {
     props: {
-      all_users,
       online_user,
       get_published_posts
     }
