@@ -2,7 +2,7 @@ export const projects = [
   {
     name: 'veoport',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/veoport.png?alt=media&token=e2101ac8-13df-404d-a406-905bc79af1f6',
-    description: 'Veo Portal, my official portfolio website. Using Next JS and GraphCMS.',
+    description: 'Veo Portal, my official portfolio website. Using Next JS and Prisma ORM & PostgreSQL',
     link: 'https://github.com/VeoScript/veoport',
     demo: 'https://www.jeromevillaruel.ml'
   },
