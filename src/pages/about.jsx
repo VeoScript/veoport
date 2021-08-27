@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Layout from '~/layouts/default'
 import { experience, services } from '~/static/about'
 
@@ -37,7 +38,18 @@ export default function About() {
                 {experience.map(({ company, icon, position, hired }, i) => (
                   <div className="flex flex-row items-center w-full space-x-2" key={i}>
                     <div className="flex">
-                      <img className="w-8 h-8 object-center" src={icon} alt="company" />
+                      <div className="flex flex-col w-[30px]">
+                        <Image
+                          src={icon}
+                          width={1000}
+                          height={1000}
+                          alt={company}
+                          blurDataURL={icon}
+                          placeholder="blur"
+                          layout="responsive"
+                          className="rounded-full"
+                        />
+                      </div>
                     </div>
                     <div className="flex flex-col">
                       <span className="font-bold text-[14px]">{ company }</span>
