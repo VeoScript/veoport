@@ -18,7 +18,7 @@ export default function Contact() {
         process.env.GMAIL_USER_ID
       )
       if (mail) {
-        toast.info('You email was successfully sent! Thank you for reaching out.')
+        toast.info('Your email was successfully sent! Thank you for reaching out.')
         reset()
       } else {
         toast.error('Something went wrong try again.')
@@ -58,17 +58,17 @@ export default function Contact() {
               </div>
             </div>
             <form onSubmit={handleSubmit(sendEmail)} className="w-full md:max-w-xl mx-auto space-y-3">
-              <div className="form-control">
+              <div className="form-control flex flex-col space-y-2">
                 <input type="text" name="name" {...register("name", { required: true })} className="bg-gray-100 text-[#333] text-base md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Name" disabled={ isSubmitting } />
-                { errors.name && <span className="font-medium text-xs tracking-wide text-red-600 mx-1">Name is required!</span> }
+                { errors.name && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-1">Name is required!</span> }
               </div>
-              <div className="form-control">
+              <div className="form-control flex flex-col space-y-2">
                 <input type="email" name="email" {...register("email", { required: true })} className="bg-gray-100 text-[#333] text-base md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email" disabled={ isSubmitting } />
-                { errors.email && <span className="font-medium text-xs tracking-wide text-red-600 mx-1">Email is required!</span> }
+                { errors.email && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-1">Email is required!</span> }
               </div>
-              <div className="form-control">
+              <div className="form-control flex flex-col space-y-2">
                 <textarea name="message" {...register("message", { required: true })} className="bg-gray-100 text-[#333] text-base md:text-lg px-3 py-2 md:px-5 md:py-3 w-full rounded-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Message here..." rows="3" disabled={ isSubmitting }></textarea>
-                { errors.message && <span className="font-medium text-xs tracking-wide text-red-600 mx-1">Message is required!</span> }
+                { errors.message && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-1">Message is required!</span> }
               </div>
               <div className="form-control flex flex-col items-start md:items-end">
                 <motion.button
