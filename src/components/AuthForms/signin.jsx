@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
+import Link from 'next/link'
 import toast, { Toaster } from 'react-hot-toast'
 import bcrypt from 'bcryptjs'
 import useSWR from 'swr'
@@ -75,7 +76,10 @@ export default function SignIn({ closeModal }) {
           <input type="password" name="password" {...register("password", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Password" disabled={ isSubmitting } />
           { errors.password && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
         </div>
-        <div className="flex flex-row justify-end w-full">
+        <div className="flex flex-row items-center justify-between w-full">
+          <Link href="/blog">
+            <a className="font-light text-xs text-[#333] dark:text-gray-200 ml-3 hover:underline">Forgot Password?</a>
+          </Link>
           {!isSubmitting && (
             <button
               type="submit"

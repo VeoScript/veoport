@@ -1,5 +1,8 @@
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['firebasestorage.googleapis.com']
+  },
   env: {
     GRAPHQL_URL_ENDPOINT: process.env.GRAPHQL_URL_ENDPOINT,
     VEOPORTAL_MUTATIONS: process.env.VEOPORTAL_MUTATIONS,

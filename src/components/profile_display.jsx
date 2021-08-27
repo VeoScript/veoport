@@ -41,7 +41,7 @@ export default function ProfileDisplay({ online_user }) {
           </div>
         )}
         {online_user && (
-          <div className="flex flex-col w-full pt-5 space-y-3 pb-20">
+          <div className="flex flex-col w-full pt-5 space-y-3">
             <div className="flex flex-row items-center space-x-5">
               <img className="w-32 h-32 object-cover rounded-full ring-4 ring-[#62A9FF] bg-gray-100 dark:bg-[#1E212D]" src={ online_user.image } alt="user_profile" />
               <div className="flex flex-col">
@@ -95,6 +95,9 @@ export default function ProfileDisplay({ online_user }) {
             </div>
           </div>
         )}
+      </div>
+      <div className="flex items-center justify-center w-full px-10 pb-16">
+        <span className="font-light text-[11px] text-[#333] dark:text-gray-200">&copy; { new Date().getFullYear() }, Jerome Villaruel (Veoscript). All rights reserved.</span>
       </div>
     </div>
   )
