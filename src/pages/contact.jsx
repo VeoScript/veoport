@@ -72,8 +72,7 @@ export default function Contact() {
               </div>
               <div className="form-control flex flex-col items-start md:items-end">
                 <motion.button
-                  className="bg-[#62A9FF] text-white text-base md:text-sm px-5 py-2 md:px-5 md:py-2 -mt-2 rounded-lg transition ease-in-out duration-200 transform hover:-translate-y-0.5 focus:outline-none"
-                  whileHover={{ y: -4 }}
+                  className="w-full max-w-[8rem] bg-[#62A9FF] text-white text-base md:text-sm px-5 py-2 md:px-5 md:py-3 rounded-lg transition ease-in-out duration-200 transform hover:scale-95 focus:outline-none"
                   disabled={ isSubmitting }
                 >
                   { isSubmitting ? <LoadingButton /> : 'Send' }
