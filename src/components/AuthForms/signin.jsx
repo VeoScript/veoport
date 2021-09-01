@@ -77,7 +77,7 @@ export default function SignIn({ closeModal }) {
           { errors.password && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
         </div>
         <div className="flex flex-row items-center justify-between w-full">
-          <Link href="/blog">
+          <Link href="/forgot-password">
             <a className="font-light text-xs text-[#333] dark:text-gray-200 ml-3 hover:underline">Forgot Password?</a>
           </Link>
           {!isSubmitting && (
