@@ -78,8 +78,8 @@ export default function SignUp({ closeModal }) {
           { errors.name && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
         </div>
         <div className="form-control">
-          <input type="email" name="email" {...register("email", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email" disabled={ isSubmitting } />
-          { errors.email && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+          <input type="text" name="email" {...register("email", { required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: "Invalid Email" } })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email" disabled={ isSubmitting } />
+          { errors.email && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">{errors.email.message || 'Required'}</span> }
         </div>
         <div className="form-control">
           <input type="text" name="username" {...register("username", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Username" disabled={ isSubmitting } />
