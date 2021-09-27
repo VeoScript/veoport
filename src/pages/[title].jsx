@@ -30,6 +30,11 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
     <>
       <Head>
         <title>{ title }</title>
+        <meta name="description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
+        <meta name="og:title" content={`${title}`} />
+        <meta name="og:description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
+        <meta name="og:url" content={`https://www.jeromevillaruel.ml/${title}`} />
+        <meta name="og:type" content="website" />
       </Head>
       <Layout>
         <div className="flex flex-col items-center justify-center w-full max-w-[2400px] h-screen overflow-hidden text-[#333] dark:text-white">

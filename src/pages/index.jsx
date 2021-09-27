@@ -9,6 +9,11 @@ export default function Home() {
     <>
       <Head>
         <title>Jerome Villaruel</title>
+        <meta name="description" content="Jerome Vilaruel Web Portal" />
+        <meta name="og:title" content="Jerome Villaruel (VEOSCRIPT) Official Website" />
+        <meta name="og:description" content="Jerome Vilaruel Web Portal" />
+        <meta name="og:url" content="https://www.jeromevillaruel.ml/" />
+        <meta name="og:type" content="website" />
       </Head>
       <Layout>
         <div className="flex flex-col md:m-0 pb-10 justify-center items-center w-full">
