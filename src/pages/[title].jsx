@@ -30,7 +30,7 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
     <>
       <Head>
         <title>{ title }</title>
-        <meta name="description" content="Jerome Vilaruel Web Portal" />
+        <meta name="description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
         <meta name="og:title" content={`${title}`} />
         <meta name="og:description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
         <meta name="og:url" content={`https://www.jeromevillaruel.ml/${title}`} />
