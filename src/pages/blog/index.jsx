@@ -73,9 +73,9 @@ export default function Blog({ online_user, get_published_posts }) {
               </div>
               <Scrollbar>
                 <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 1 }}
+                  initial={{ y: -500 }}
+                  animate={{ y: 0 }}
+                  transition={{ ease: "easeOut", duration: 1 }}
                   className="flex flex-col w-full px-3 pt-3 pb-16 space-y-3 overflow-y-auto"
                 >
                   {!data && (
