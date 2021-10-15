@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -12,10 +12,14 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
     refreshInterval: 1000 
   })
 
+  //useState check if the post is liked
+  const [like, setLike] = useState(false)
+
   const detectLiked = online_user ? data.some(liked => liked.userId === online_user.id) : false
 
-  //useState check if the post is liked
-  const [like, setLike] = useState(detectLiked)
+  useEffect(() => {
+    setLike(detectLiked)
+  }, [detectLiked])
 
   //function for liking the post
   async function onLike(title) {    
@@ -52,22 +56,20 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
   return (
     <>
       {online_user && (
-        <>
-          {detectLiked && (
-            <button className="focus:outline-none" type="button" onClick={async () => await onUnlike(title)}>
-              <svg className="w-5 h-5 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
-              </svg>
-            </button>
+        <button className="outline-none" onClick={async () => {
+          like ? await onUnlike(title) : await onLike(title)
+          setLike(!like)
+        }}>
+          {like ? (
+            <svg className="w-5 h-5 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
+            </svg>
+          ) : (
+            <svg className="w-5 h-5 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
+            </svg>
           )}
-          {!detectLiked && (
-            <button className="focus:outline-none" type="button" onClick={async () => await onLike(title)}>
-              <svg className="w-5 h-5 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
-              </svg>
-            </button>
-          )}
-        </>
+        </button>
       )}
       {!online_user && (
         <svg className="w-5 h-5 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
