@@ -70,11 +70,11 @@ export default function SignIn({ closeModal }) {
       <form onSubmit={handleSubmit(handleSignIn)} className="flex flex-col w-full mt-5 space-y-1">
         <div className="form-control">
           <input type="text" name="username" {...register("username", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Username" disabled={ isSubmitting } />
-          { errors.username && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+          { errors.username && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-2">Username is required!</span> }
         </div>
         <div className="form-control">
           <input type="password" name="password" {...register("password", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Password" disabled={ isSubmitting } />
-          { errors.password && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+          { errors.password && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-2">Password is required!</span> }
         </div>
         <div className="flex flex-row items-center justify-between w-full">
           <Link href="/forgot-password">

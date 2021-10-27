@@ -99,7 +99,7 @@ export default function ForgotPassword() {
             <form onSubmit={handleSubmit(forgotPassword)} className="flex flex-col items-center w-full max-w-xs space-y-2">
               <div className="form-control w-full">
                 <input type="text" name="email" {...register("email", { required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: "Invalid Email" } })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Enter your email" disabled={ isSubmitting } />
-                { errors.email && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">{errors.email.message || 'Required'}</span> }
+                { errors.email && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-2">{errors.email.message || 'Email is required!'}</span> }
               </div>
               {!isSubmitting && (
                 <div className="form-control w-full">

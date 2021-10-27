@@ -75,11 +75,11 @@ export default function ResetPassword({ token }) {
             <form onSubmit={handleSubmit(resetPassword)} className="flex flex-col items-center w-full max-w-xs space-y-2">
               <div className="form-control w-full">
                 <input type="password" name="password" {...register("password", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="New password" disabled={ isSubmitting } />
-                { errors.password && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+                { errors.password && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-2">Password is required!</span> }
               </div>
               <div className="form-control w-full">
                 <input type="password" name="repassword" {...register("repassword", { required: true })} className="bg-gray-100 text-[#333] dark:bg-[#111319] dark:text-white text-base px-5 py-3 w-full rounded-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-50" placeholder="Re-enter password" disabled={ isSubmitting } />
-                { errors.repassword && <span className="font-medium text-xs tracking-wide text-[#62A9FF] mx-1">Required</span> }
+                { errors.repassword && <span className="font-light text-xs tracking-wide text-gray-600 dark:text-gray-400 mx-2">Re-enter password is required!</span> }
               </div>
               {!isSubmitting && (
                 <div className="form-control w-full">
