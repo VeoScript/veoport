@@ -1,10 +1,17 @@
 export const projects = [
   {
     name: 'veoport',
-    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/veoport.png?alt=media&token=e2101ac8-13df-404d-a406-905bc79af1f6',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/veoportal.png?alt=media&token=08bdcd20-8a61-478d-b786-413448801b52',
     description: 'Veo Portal, my official portfolio website. Using Next JS and Prisma ORM & PostgreSQL',
     link: 'https://github.com/VeoScript/veoport',
     demo: 'https://www.jeromevillaruel.ml'
+  },
+  {
+    name: 'fixrhythm',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/fixrhythm-login.png?alt=media&token=b174b80b-30df-40ce-a1ab-4767693d1caf',
+    description: 'Fixrhythm is a social media whose goal is for people to share their thoughts around the world through music and poetry. And to inspire other music artist and lyricists to compose their own compositions.',
+    link: 'https://github.com/VeoScript/fixrhythm',
+    demo: 'https://fixrhythm.tk'
   },
   {
     name: 'cozy',
@@ -54,13 +61,6 @@ export const projects = [
     description: 'My official website with Freedom Wall features, using Vue JS and backend by Hasura GraphQL.',
     link: 'https://github.com/VeoScript/jeromevillaruel-official',
     demo: 'https://jeromevillaruel.vercel.app/'
-  },
-  {
-    name: 'fixrhythm',
-    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/Fixrhythm.png?alt=media&token=a98c8d6d-07f4-4697-9e6f-1b6129e3eff8',
-    description: 'Introduction to Fixrhythm. Social media for musicians and poets.',
-    link: 'https://github.com/VeoScript/fixrhythm',
-    demo: 'https://fixrhythm.vercel.app/'
   },
   {
     name: 'contax-web',
