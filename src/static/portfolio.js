@@ -7,6 +7,13 @@ export const projects = [
     demo: 'https://www.jeromevillaruel.ml'
   },
   {
+    name: 'budgie',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/budgie_ss.png?alt=media&token=b3a5e01f-2741-4328-90c6-25b5c6dd4bf9',
+    description: 'Budgie is an open-source project a free personal finance, budget and expense tracking app to monitor your budget plan and daily expenses.',
+    link: 'https://github.com/VeoScript/budgie',
+    demo: 'https://budgie.vercel.app/'
+  },
+  {
     name: 'fixrhythm',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/fixrhythm-login.png?alt=media&token=b174b80b-30df-40ce-a1ab-4767693d1caf',
     description: 'Fixrhythm is a social media whose goal is for people to share their thoughts around the world through music and poetry. And to inspire other music artist and lyricists to compose their own compositions.',
