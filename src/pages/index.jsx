@@ -19,7 +19,7 @@ export default function Home() {
         <div className="flex flex-col md:m-0 pb-10 justify-center items-center w-full">
           <div className="flex flex-col text-center space-y-1">
             <h1 className="name font-light md:text-5xl text-3xl text-[#333] dark:text-white tracking-wide uppercase">Jerome Villaruel</h1>
-            <p className="typewriter font-extralight mx-auto tracking-wider md:text-lg text-xs text-[#333] dark:text-white uppercase">The odyssey of an aspiring web developer</p>
+            <p className="typewriter font-extralight mx-auto tracking-wider md:text-lg text-xs text-[#333] dark:text-white uppercase">The odyssey of a full-stack developer</p>
           </div>
           <div className="flex flex-col justify-center mx-auto items-center">
             <div className="my-5">
