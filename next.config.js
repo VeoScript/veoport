@@ -13,6 +13,7 @@ module.exports = {
     RP_TEMPLATE_ID: process.env.RP_TEMPLATE_ID,
     RP_USER_ID: process.env.RP_USER_ID,
     RP_SERVICE_ID: process.env.RP_SERVICE_ID,
-    DATABASE_URL: process.env.DATABASE_URL
+    DATABASE_URL: process.env.DATABASE_URL,
+    IMGBB_API_KEY: process.env.IMGBB_API_KEY
   }
 }

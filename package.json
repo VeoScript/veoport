@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
+    "@mantine/core": "^4.0.8",
+    "@mantine/hooks": "^4.0.8",
+    "@mantine/rte": "^4.0.8",
     "@prisma/client": "^3.3.0",
     "@tailwindcss/line-clamp": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
-    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "emailjs-com": "^2.6.4",

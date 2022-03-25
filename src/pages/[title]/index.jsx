@@ -1,15 +1,15 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '~/layouts/default'
 import ProfileDisplay from '~/components/profile_display'
 import MenuDisplay from '~/components/menu_display'
-import EditBlog from '~/components/edit_blog'
 import DeleteBlog from '~/components/delete_blog'
 import ReactionTriggerButton from '~/components/reaction_button'
 import CommentBox from '~/components/comment_box'
 import DeleteComment from '~/components/delete_comment'
 import Moment from 'react-moment'
-import ReactMarkdown from 'react-markdown'
+import RichTextEditor from '~/lib/richtexteditor'
 import Scrollbar from 'react-smooth-scrollbar'
 import useSWR from 'swr'
 import withSession from '~/lib/session'
@@ -100,10 +100,14 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
                           {online_user && online_user.username === get_blog_post_details.user.username && (
                             <>
                               <span className="text-xs text-gray-400">&bull;</span>
-                              <EditBlog
-                                online_user={online_user}
-                                get_blog_post_details={get_blog_post_details}
-                              />
+                              <Link href={`/${ title }/edit`}>
+                                <a className="flex flex-row items-center space-x-2 focus:outline-none">
+                                  <svg className="w-4 h-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-5 17l1.006-4.036 3.106 3.105-4.112.931zm5.16-1.879l-3.202-3.202 5.841-5.919 3.201 3.2-5.84 5.921z"/>
+                                  </svg>
+                                  <span className="font-light text-xs text-gray-400">Edit</span>
+                                </a>
+                              </Link>
                               <span className="text-xs text-gray-400">&bull;</span>
                               <DeleteBlog
                                 online_user={online_user}
@@ -121,11 +125,13 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
                       <img src={ get_blog_post_details.image } alt="blog_image" className="w-full h-full max-h-[24rem] object-cover object-center bg-gray-400 dark:bg-[#151820]" />
                     </div>
                     <div className="flex flex-row w-full">
-                      <div className="w-full bg-white bg-opacity-95 px-5 py-3">
-                        <article className="font-sans text-xl text-[#333] prose lg:prose-xl">
-                          <ReactMarkdown>
-                            {!get_blog_post_details.content ? 'No content available' : get_blog_post_details.content}
-                          </ReactMarkdown>
+                      <div className="w-full">
+                        <article className="font-sans">
+                          <RichTextEditor
+                            readOnly
+                            className="w-full border-none bg-white text-[#333] dark:bg-[#222632] dark:text-white"
+                            value={!get_blog_post_details.content ? 'No content available' : get_blog_post_details.content}
+                          />
                         </article>
                       </div>
                     </div>
