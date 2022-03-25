@@ -129,7 +129,7 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
                         <article className="font-sans">
                           <RichTextEditor
                             readOnly
-                            className="w-full border-none bg-white text-[#333] dark:bg-[#222632] dark:text-white"
+                            className="w-full border-none text-lg bg-white text-[#333] dark:bg-[#222632] dark:text-white"
                             value={!get_blog_post_details.content ? 'No content available' : get_blog_post_details.content}
                           />
                         </article>
