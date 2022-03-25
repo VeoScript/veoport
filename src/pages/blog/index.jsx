@@ -7,8 +7,6 @@ import Layout from '~/layouts/default'
 import ProfileDisplay from '~/components/profile_display'
 import MenuDisplay from '~/components/menu_display'
 import Moment from 'react-moment'
-import ReactMarkdown from 'react-markdown'
-import RichTextEditor from '~/lib/richtexteditor'
 import Scrollbar from 'react-smooth-scrollbar'
 import useSWR from 'swr'
 import withSession from '~/lib/session'
@@ -99,13 +97,6 @@ export default function Blog({ online_user, get_published_posts }) {
                               </div>
                               <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ title }</span>
                               <span className="font-light text-sm line-clamp-2">
-                                {/* <RichTextEditor
-                                  readOnly
-                                  className={{
-                                    root: 'font-light text-sm w-full border-none bg-white text-[#333] dark:bg-[#222632] dark:text-white'
-                                  }}
-                                  value={!content ? 'No content available' : content}
-                                /> */}
                                 <div dangerouslySetInnerHTML={{
                                   __html: !content ? 'No content available' : content
                                 }} />
@@ -154,11 +145,9 @@ export default function Blog({ online_user, get_published_posts }) {
                               </div>
                               <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ blog.title }</span>
                               <span className="font-light text-sm line-clamp-2">
-                                <RichTextEditor
-                                  readOnly
-                                  className="font-light text-sm w-full border-none bg-white text-[#333] dark:bg-[#222632] dark:text-white"
-                                  value={!blog.content ? 'No content available' : blog.content}
-                                />
+                                <div dangerouslySetInnerHTML={{
+                                  __html: !blog.content ? 'No content available' : blog.content
+                                }} />
                               </span>
                               <div className="flex flex-row items-center text-gray-400 space-x-1">
                                 <span className="font-medium text-[10px]">Updated <Moment date={ blog.date } format='LL' /></span>
