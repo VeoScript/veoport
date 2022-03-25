@@ -166,7 +166,7 @@ export default function CreateBlog({ online_user }) {
                         render={({ field: { onChange, onBlur, value } }) => (
                           <RichTextEditor
                             classNames={{
-                              root: 'border border-[#B6B6B6] dark:border-[#111319] bg-white text-[#333] dark:bg-[#222632] dark:text-white',
+                              root: 'border border-[#B6B6B6] dark:border-[#111319] bg-white text-lg text-[#333] dark:bg-[#222632] dark:text-white',
                               toolbar: 'border-b border-[#B6B6B6] dark:border-[#111319] bg-gray-50 text-[#333] dark:bg-[#111319] dark:text-white',
                               toolbarControl: 'border border-[#B6B6B6] dark:border-[#111319] bg-white text-[#333] dark:bg-[#222632] dark:text-white'
                             }}
