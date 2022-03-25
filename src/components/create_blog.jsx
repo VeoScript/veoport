@@ -1,6 +1,4 @@
-import ReactMde from 'react-mde'
-import Markdown from 'react-markdown'
-import 'react-mde/lib/styles/css/react-mde-all.css' 
+import RichTextEditor from '~/lib/richtexteditor'
 import { useRouter } from 'next/router'
 import { useForm, Controller } from 'react-hook-form'
 import { Dialog, Transition } from '@headlessui/react'
@@ -12,9 +10,6 @@ export default function CreateBlog({ online_user }) {
 
   const { register, handleSubmit, reset, control, formState: { errors, isSubmitting } } = useForm()
 
-  //For RichText selectedTab useState
-  const [selectedTab, setSelectedTab] = useState('write')
-
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -25,6 +20,20 @@ export default function CreateBlog({ online_user }) {
   function openModal() {
     setIsOpen(true)
   }
+
+  const handleImageUpload = (file) => new Promise((resolve, reject) => {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
+      method: 'POST',
+      body: formData,
+    })
+
+    .then((response) => response.json())
+    .then((result) => resolve(result.data.url))
+    .catch(() => reject(new Error('Upload failed')))
+  })
 
   async function handleCreateBlog(formData) {
     const userId = parseInt(online_user.id)
@@ -39,7 +48,7 @@ export default function CreateBlog({ online_user }) {
       return
     }
 
-    await fetch('/api/posts/create_post', {
+    const res = await fetch('/api/posts/create_post', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -52,7 +61,8 @@ export default function CreateBlog({ online_user }) {
         status,
         userId
       })
-    })    
+    })   
+    
     closeModal()
     router.replace('/blog')
   }
@@ -153,14 +163,17 @@ export default function CreateBlog({ online_user }) {
                       <Controller
                         control={control}
                         name="content"
-                        render={({field}) => (
-                          <ReactMde 
-                            {...field}
-                            selectedTab={selectedTab}
-                            onTabChange={setSelectedTab}
-                            generateMarkdownPreview={markdown => 
-                              Promise.resolve(<Markdown children={markdown} />)
-                            }
+                        render={({ field: { onChange, onBlur, value } }) => (
+                          <RichTextEditor
+                            classNames={{
+                              root: 'border border-[#B6B6B6] dark:border-[#111319] bg-white text-[#333] dark:bg-[#222632] dark:text-white',
+                              toolbar: 'border-b border-[#B6B6B6] dark:border-[#111319] bg-gray-50 text-[#333] dark:bg-[#111319] dark:text-white',
+                              toolbarControl: 'border border-[#B6B6B6] dark:border-[#111319] bg-white text-[#333] dark:bg-[#222632] dark:text-white'
+                            }}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            value={value}
+                            onImageUpload={handleImageUpload}
                           />
                         )}
                       />

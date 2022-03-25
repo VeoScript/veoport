@@ -61,11 +61,11 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
           setLike(!like)
         }}>
           {like ? (
-            <svg className="w-5 h-5 fill-current text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 fill-current text-yellow-300 focus:text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
             </svg>
           ) : (
-            <svg className="w-5 h-5 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 fill-current text-gray-600 focus:text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M9.417 0h6.958l-3.375 8h7l-13 16 4.375-11h-7.375z"/>
             </svg>
           )}
