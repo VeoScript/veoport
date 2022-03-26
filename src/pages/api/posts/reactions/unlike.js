@@ -3,7 +3,7 @@ import prisma from '~/lib/prisma'
 export default async function handler(req, res) {
   const send_unlike = await prisma.likes.deleteMany({
     where: {
-      postTitle: req.body.postTitle,
+      postSlug: req.body.postSlug,
       userId: req.body.userId
     }
   })

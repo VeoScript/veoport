@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import withSession from '~/lib/session'
 import prisma from '~/lib/prisma'
 
-const EditBlogPage = ({ online_user, get_blog_post_details }) => {
+const EditBlogPage = ({ slug, online_user, get_blog_post_details }) => {
   const defaultValues = {
     image: get_blog_post_details.image,
     title: get_blog_post_details.title,
@@ -64,7 +64,7 @@ const EditBlogPage = ({ online_user, get_blog_post_details }) => {
       })
     })
     reset()
-    router.push(`/${formData.title}`)
+    router.push(`/${formData.title.replace(/\s+/g, '-').toLowerCase()}`)
 
     toast.success('Updated Successfully. Thank you for your blogging.', {
       style: {
@@ -78,7 +78,7 @@ const EditBlogPage = ({ online_user, get_blog_post_details }) => {
   return (
     <Fragment>
       <Head>
-        <title>Edit Blog ({ get_blog_post_details.title })</title>
+        <title>Edit Blog ({ slug })</title>
       </Head>
       <Toaster
         position="top-right"
@@ -159,7 +159,7 @@ const EditBlogPage = ({ online_user, get_blog_post_details }) => {
                     type="button"
                     className="w-full max-w-[8rem] px-3 py-3 rounded-md transition ease-in-out duration-200 text-white bg-[#4d4d4d] hover:bg-opacity-80 focus:outline-none"
                     disabled={ isSubmitting }
-                    onClick={() => router.push(`/${get_blog_post_details.title}`)}
+                    onClick={() => router.push(`/${get_blog_post_details.slug}`)}
                   >
                     Cancel
                   </button>
@@ -181,7 +181,7 @@ const EditBlogPage = ({ online_user, get_blog_post_details }) => {
 }
 
 export const getServerSideProps = withSession(async function ({ req, query }) {
-  const { title } = query
+  const { slug } = query
 
   const user_session = req.session.get('user')
   
@@ -193,12 +193,13 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
 
   const get_blog_post_details = await prisma.posts.findFirst({
     where: {
-      title: title
+      slug: slug
     },
     select: {
       id: true,
       image: true,
       title: true,
+      slug: true,
       content: true,
       date: true,
       published: true,
@@ -213,41 +214,6 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
           bio: true
         }
       }
-    }
-  })
-
-  const get_post_comments = await prisma.comments.findMany({
-    where: {
-      postTitle: title
-    },
-    orderBy: [
-      {
-        id: 'desc'
-      }
-    ],
-    select: {
-      id: true,
-      comment: true,
-      date: true,
-      user: {
-        select: {
-          id: true,
-          image: true,
-          name: true,
-          bio: true
-        }
-      }
-    }
-  })
-
-  const get_post_likes = await prisma.likes.findMany({
-    where: {
-      postTitle: title,
-    },
-    select: {
-      id: true,
-      postTitle: true,
-      userId: true
     }
   })
 
@@ -274,11 +240,9 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
 
   return {
     props: {
-      title,
+      slug,
       online_user,
-      get_blog_post_details,
-      get_post_comments,
-      get_post_likes
+      get_blog_post_details
     }
   }
 })

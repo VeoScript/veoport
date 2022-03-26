@@ -6,7 +6,7 @@ export default async function handler(req, res) {
       data: {
         comment: req.body.comment,
         date: new Date(),
-        postTitle: req.body.postTitle,
+        postSlug: req.body.postSlug,
         userId: req.body.userId
       }
     })

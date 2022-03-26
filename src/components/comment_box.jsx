@@ -14,7 +14,7 @@ export default function CommentBox({ online_user, get_blog_post_details }) {
   }, [register])
 
   async function handleComment(formData) {
-    const postTitle = get_blog_post_details.title
+    const postSlug = get_blog_post_details.slug
     const userId = parseInt(online_user.id)
     const comment = formData.comment_box
 
@@ -30,7 +30,7 @@ export default function CommentBox({ online_user, get_blog_post_details }) {
       },
       body: JSON.stringify({
         comment,
-        postTitle,
+        postSlug,
         userId
       })
     })

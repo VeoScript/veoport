@@ -6,6 +6,7 @@ export default async function handler(req, res) {
       data: {
         image: req.body.image,
         title: req.body.title,
+        slug: req.body.title.replace(/\s+/g, '-').toLowerCase(),
         content: req.body.content,
         date: new Date(),
         published: req.body.status,

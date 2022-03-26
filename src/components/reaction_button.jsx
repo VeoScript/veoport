@@ -3,11 +3,11 @@ import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function ReactionTriggerButton({ title, online_user, get_post_likes }) {
+export default function ReactionTriggerButton({ slug, online_user, get_post_likes }) {
 
   const initialData = get_post_likes
 
-  const { data } = useSWR(`/api/posts/reactions/get_reactions/${ title }`, fetcher, { 
+  const { data } = useSWR(`/api/posts/reactions/get_reactions/${ slug }`, fetcher, { 
     initialData,
     refreshInterval: 1000 
   })
@@ -22,8 +22,8 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
   }, [detectLiked])
 
   //function for liking the post
-  async function onLike(title) {    
-    const postTitle = title
+  async function onLike(slug) {    
+    const postSlug = slug
     const userId = online_user.id
 
     await fetch('/api/posts/reactions/like', {
@@ -31,15 +31,15 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ postTitle, userId })
+      body: JSON.stringify({ postSlug, userId })
     })
     setLike(true)
     return
   }
 
   //function for unliking the post
-  async function onUnlike(title) {    
-    const postTitle = title
+  async function onUnlike(slug) {    
+    const postSlug = slug
     const userId = online_user.id
 
     await fetch('/api/posts/reactions/unlike', {
@@ -47,7 +47,7 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ postTitle, userId })
+      body: JSON.stringify({ postSlug, userId })
     })
     setLike(false)
     return
@@ -57,7 +57,7 @@ export default function ReactionTriggerButton({ title, online_user, get_post_lik
     <>
       {online_user && (
         <button className="outline-none" onClick={async () => {
-          like ? await onUnlike(title) : await onLike(title)
+          like ? await onUnlike(slug) : await onLike(slug)
           setLike(!like)
         }}>
           {like ? (

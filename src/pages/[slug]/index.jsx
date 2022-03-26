@@ -17,11 +17,13 @@ import prisma from '~/lib/prisma'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function BlogContent({ title, online_user, get_blog_post_details, get_post_comments, get_post_likes }) {
+export default function BlogContent({ slug, online_user, get_blog_post_details, get_post_comments, get_post_likes }) {
+
+  const title = get_blog_post_details.title
 
   const initialData = get_post_comments
 
-  const { data } = useSWR(`/api/comment/get_comments/${ title }`, fetcher, { 
+  const { data } = useSWR(`/api/comment/get_comments/${ slug }`, fetcher, { 
     initialData,
     refreshInterval: 1000 
   })
@@ -33,7 +35,7 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
         <meta name="description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
         <meta name="og:title" content={`${title}`} />
         <meta name="og:description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
-        <meta name="og:url" content={`https://www.jeromevillaruel.ml/${title}`} />
+        <meta name="og:url" content={`https://www.jeromevillaruel.ml/${slug}`} />
         <meta name="og:type" content="website" />
       </Head>
       <Layout>
@@ -80,7 +82,7 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
                             <>
                               <div className="flex flex-row items-center space-x-1">
                                 <ReactionTriggerButton
-                                  title={title}
+                                  slug={slug}
                                   online_user={online_user}
                                   get_post_likes={get_post_likes}
                                 />
@@ -100,7 +102,7 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
                           {online_user && online_user.username === get_blog_post_details.user.username && (
                             <>
                               <span className="text-xs text-gray-400">&bull;</span>
-                              <Link href={`/${ title }/edit`}>
+                              <Link href={`/${ slug }/edit`}>
                                 <a className="flex flex-row items-center space-x-2 focus:outline-none">
                                   <svg className="w-4 h-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-5 17l1.006-4.036 3.106 3.105-4.112.931zm5.16-1.879l-3.202-3.202 5.841-5.919 3.201 3.2-5.84 5.921z"/>
@@ -130,7 +132,7 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
                           <RichTextEditor
                             readOnly
                             className="w-full border-none text-lg bg-white text-[#333] dark:bg-[#222632] dark:text-white"
-                            value={!get_blog_post_details.content ? 'No content available' : get_blog_post_details.content}
+                            value={!get_blog_post_details.content || get_blog_post_details.content === '<p><br></p>' ? 'No content available' : get_blog_post_details.content}
                           />
                         </article>
                       </div>
@@ -200,7 +202,7 @@ export default function BlogContent({ title, online_user, get_blog_post_details,
 }
 
 export const getServerSideProps = withSession(async function ({ req, query }) {
-  const { title } = query
+  const { slug } = query
 
   const user_session = req.session.get('user')
   
@@ -212,12 +214,13 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
 
   const get_blog_post_details = await prisma.posts.findFirst({
     where: {
-      title: title
+      slug: slug
     },
     select: {
       id: true,
       image: true,
       title: true,
+      slug: true,
       content: true,
       date: true,
       published: true,
@@ -237,7 +240,7 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
 
   const get_post_comments = await prisma.comments.findMany({
     where: {
-      postTitle: title
+      postSlug: slug
     },
     orderBy: [
       {
@@ -261,11 +264,11 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
 
   const get_post_likes = await prisma.likes.findMany({
     where: {
-      postTitle: title,
+      postSlug: slug,
     },
     select: {
       id: true,
-      postTitle: true,
+      postSlug: true,
       userId: true
     }
   })
@@ -293,7 +296,7 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
 
   return {
     props: {
-      title,
+      slug,
       online_user,
       get_blog_post_details,
       get_post_comments,

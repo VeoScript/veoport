@@ -95,8 +95,8 @@ export default function UserBlogs({ online_user, user_published_posts, user_draf
                               </div>
                             </div>
                           )}
-                          {user_published_posts.map(({ image, title, content, date, tags, user, likes, comment }, i) => (
-                            <Link href={`/${ title }`} key={i}>
+                          {user_published_posts.map(({ image, title, slug, content, date, tags, user, likes, comment }, i) => (
+                            <Link href={`/${ slug }`} key={i}>
                               <a className="flex flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-gray-300 dark:border-gray-700">
                                 <div className="flex flex-col w-full max-w-full md:max-w-sm text-gray-600 dark:text-white px-5 py-3 space-y-2">
                                   <div className="flex flex-row items-center w-full space-x-2">
@@ -108,9 +108,9 @@ export default function UserBlogs({ online_user, user_published_posts, user_draf
                                   </div>
                                   <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ title }</span>
                                   <span className="font-light text-sm line-clamp-2">
-                                    <ReactMarkdown>
-                                      {!content ? 'No content available' : content}
-                                    </ReactMarkdown> 
+                                    <div dangerouslySetInnerHTML={{
+                                      __html: !content || content === '<p><br></p>' ? 'No content available' : content
+                                    }} />
                                   </span>
                                   <div className="flex flex-row items-center text-gray-400 space-x-1">
                                     <span className="font-medium text-[10px]">Updated <Moment date={ date } format='LL' /></span>
@@ -150,8 +150,8 @@ export default function UserBlogs({ online_user, user_published_posts, user_draf
                               </div>
                             </div>
                           )}
-                          {user_draft_posts.map(({ image, title, content, date, tags, user }, i) => (
-                            <Link href={`/${ title }`} key={i}>
+                          {user_draft_posts.map(({ image, title, slug, content, date, tags, user }, i) => (
+                            <Link href={`/${ slug }`} key={i}>
                               <a className="flex flex-col-reverse md:flex-row items-center justify-between w-full h-full max-h-auto md:max-h-60 overflow-hidden border border-gray-300 dark:border-gray-700">
                                 <div className="flex flex-col w-full max-w-full md:max-w-sm text-gray-600 dark:text-white px-5 py-3 space-y-2">
                                   <div className="flex flex-row items-center w-full space-x-2">
@@ -163,9 +163,9 @@ export default function UserBlogs({ online_user, user_published_posts, user_draf
                                   </div>
                                   <span className="font-semibold uppercase text-lg text-[#62A9FF]">{ title }</span>
                                   <span className="font-light text-sm line-clamp-2">
-                                    <ReactMarkdown>
-                                      {!content ? 'No content available' : content}
-                                    </ReactMarkdown> 
+                                    <div dangerouslySetInnerHTML={{
+                                      __html: !content || content === '<p><br></p>' ? 'No content available' : content
+                                    }} />
                                   </span>
                                   <div className="flex flex-row items-center text-gray-400 space-x-1">
                                     <span className="font-medium text-[10px]">Updated <Moment date={ date } format='LL' /></span>
@@ -237,6 +237,7 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
     select: {
       image: true,
       title: true,
+      slug: true,
       content: true,
       date: true,
       published: true,
@@ -269,6 +270,7 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
     select: {
       image: true,
       title: true,
+      slug: true,
       content: true,
       date: true,
       published: true,
