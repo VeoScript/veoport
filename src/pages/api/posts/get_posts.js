@@ -15,6 +15,7 @@ export default async function handler(req, res) {
         id: true,
         image: true,
         title: true,
+        slug: true,
         content: true,
         date: true,
         published: true,

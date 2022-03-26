@@ -2,14 +2,14 @@ import prisma from '~/lib/prisma'
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    const { title } = req.query
+    const { slug } = req.query
     const get_reactions = await prisma.likes.findMany({
       where: {
-        postTitle: title
+        postSlug: slug
       },
       select: {
         id: true,
-        postTitle: true,
+        postSlug: true,
         userId: true
       }
     })

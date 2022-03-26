@@ -2,10 +2,10 @@ import prisma from '~/lib/prisma'
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    const { title } = req.query
+    const { slug } = req.query
     const get_comments = await prisma.comments.findMany({
       where: {
-        postTitle: title
+        postSlug: slug
       },
       orderBy: [
         {

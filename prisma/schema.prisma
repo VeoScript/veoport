@@ -30,6 +30,7 @@ model Posts {
   id              Int              @id       @default(autoincrement())
   image           String
   title           String           @unique
+  slug            String?          @unique  
   content         String
   date            String
   published       String
@@ -44,8 +45,8 @@ model Comments {
   id              Int              @id       @default(autoincrement())
   comment         String
   date            String
-  post            Posts?           @relation(fields: [postTitle], references: [title])
-  postTitle       String?
+  post            Posts?           @relation(fields: [postSlug], references: [slug])
+  postSlug        String?
   user            User?            @relation(fields: [userId], references: [id])
   userId          Int?
 }
@@ -53,8 +54,8 @@ model Comments {
 model Likes {
   id              Int              @id     @default(autoincrement())
   date            String
-  post            Posts?           @relation(fields: [postTitle], references: [title])
-  postTitle       String?
+  post            Posts?           @relation(fields: [postSlug], references: [slug])
+  postSlug        String?
   user            User?            @relation(fields: [userId], references: [id])
   userId          Int?
 }
