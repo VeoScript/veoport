@@ -30,7 +30,7 @@ model Posts {
   id              Int              @id       @default(autoincrement())
   image           String
   title           String           @unique
-  slug            String?          @unique  
+  slug            String           @unique  
   content         String
   date            String
   published       String
