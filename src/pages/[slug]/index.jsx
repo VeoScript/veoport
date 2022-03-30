@@ -34,6 +34,7 @@ export default function BlogContent({ slug, online_user, get_blog_post_details, 
         <title>{ title }</title>
         <meta name="description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
         <meta name="og:title" content={`${title}`} />
+        <meta name="og:image" content={`${get_blog_post_details.image}`} />
         <meta name="og:description" content={`${title} - Jerome Villaruel VEOPORTAL`} />
         <meta name="og:url" content={`https://www.jeromevillaruel.ml/${slug}`} />
         <meta name="og:type" content="website" />
