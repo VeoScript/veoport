@@ -46,12 +46,11 @@ export default function Home() {
               <Link href="/about">
                 <a className="rounded-sm font-bold text-white text-center md:text-sm text-xs bg-gray-900 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 hover:opacity-50">Know More</a>
               </Link>
-              <Link href="/files/jeromevillaruel-resume.pdf">
+              <Link href="/files/jeromevillaruel.pdf">
                 <a target="_blank" className="rounded-sm font-bold text-[#333] text-center md:text-sm text-xs bg-gray-200 md:w-40 w-32 md:px-5 px-3 md:py-3 py-2 transition duration-300 hover:bg-opacity-50">Resume</a>
               </Link>
             </div>
             <div className="flex flex-col items-center py-1 space-y-0.5">
-              {/* <div className="flex font-medium md:text-lg text-sm">Welcome to my Landing Page ✈️</div> */}
               <div className="flex flex-col w-full md:max-w-lg max-w-xs  text-center md:text-base text-sm">
                 <span>
                   "Let's keep it simple and focus on what matters. Don't let yourself be overwhelmed."
