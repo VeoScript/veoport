@@ -15,7 +15,7 @@ export default function About() {
             <div className="flex justify-center w-full max-w-full md:max-w-xs px-5">
               <img
                 className="w-52 h-52 object-cover rounded-full bg-gray-100 dark:bg-[#1E212D]"
-                src="https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/53518789_359264474666074_8114702310443057152_n.jpg?alt=media&token=e23aa87c-789d-4d65-8120-792e4e359750"
+                src="https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/prof.jpg?alt=media&token=a388f2df-a032-4aec-9c1b-d73ad5aac159"
                 alt="veo"
               />
             </div>
