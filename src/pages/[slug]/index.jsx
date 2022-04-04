@@ -274,6 +274,15 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
     }
   })
 
+  if (!slug || !get_blog_post_details) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      }
+    }
+  }
+
   // redirect to blog page if the blog post is draft even if there is an user logged in... syempre di pwedeng makita yung post kase nga naka DRAFT.
   // it will display if the draft post is created by logged in user... syempre sa kanya yun sya may karapatan makakita.
   if (online_user && online_user.username !== get_blog_post_details.user.username && get_blog_post_details.published === 'draft') {
