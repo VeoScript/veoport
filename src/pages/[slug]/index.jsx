@@ -57,7 +57,7 @@ export default function BlogContent({ slug, online_user, get_blog_post_details, 
                   <div className="flex flex-row items-center justify-between w-full space-x-5">
                     <div className="flex flex-col-reverse md:flex-col w-full max-w-full space-y-0 md:space-y-3">
                       <div className="flex justify-center md:justify-start w-full max-w-full px-3 md:px-0 md:max-w-2xl mt-5 md:mt-0">
-                        <span className="font-bold text-3xl text-center capitalize">{ title }</span>
+                        <span className="font-bold text-3xl text-center md:text-left capitalize">{ title }</span>
                       </div>
                       <div className="flex flex-col md:flex-row items-center justify-between w-full">
                         <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
