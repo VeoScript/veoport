@@ -1,10 +1,17 @@
 export const experience = [
   {
+    company: 'Halcyon Digital Media Design, Inc.',
+    icon: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/viber_image_2022-06-24_10-42-21-783.jpg?alt=media&token=90de0033-50b0-4ba5-ac49-de80fca9e3e2',
+    website: 'https://halcyonwebdesign.com.ph/',
+    position: 'Software Engineer',
+    hired: 'June 2022 - Present'
+  },
+  {
     company: 'Specialty Pulp Manufacturing, Inc.',
     icon: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/spmi_icon.svg?alt=media&token=9a8bc5d0-2b5d-4dee-93ff-278e46248f6c',
     website: 'https://www.spmi-pulp.com/',
     position: 'IT Specialist',
-    hired: 'February 2020 - Present'
+    hired: 'February 2020 - June 2022'
   },
   {
     company: 'Puregold Price Club, Inc.',
