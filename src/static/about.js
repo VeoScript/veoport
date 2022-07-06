@@ -1,7 +1,7 @@
 export const experience = [
   {
     company: 'Halcyon Digital Media Design, Inc.',
-    icon: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/viber_image_2022-06-24_10-42-21-783.jpg?alt=media&token=90de0033-50b0-4ba5-ac49-de80fca9e3e2',
+    icon: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/44977563_1502404626526285_6391029430868770816_n.jpg?alt=media&token=6abef4e3-5415-4337-9178-96da70db20dd',
     website: 'https://halcyonwebdesign.com.ph/',
     position: 'Software Engineer',
     hired: 'June 2022 - Present'
