@@ -132,7 +132,7 @@ export default function BlogContent({ slug, online_user, get_blog_post_details, 
                         <article className="font-sans">
                           <RichTextEditor
                             readOnly
-                            className="w-full border-none text-lg bg-white text-[#333] dark:bg-[#232733] dark:text-white"
+                            className="w-full border-none font-poppins text-lg bg-white text-[#333] dark:bg-[#232733] dark:text-white"
                             value={!get_blog_post_details.content || get_blog_post_details.content === '<p><br></p>' ? 'No content available' : get_blog_post_details.content}
                           />
                         </article>
