@@ -2,7 +2,7 @@ export const projects = [
   {
     name: 'tomatochat',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/tomatochat.png?alt=media&token=b3c169b4-60fc-4242-a9e6-ccc0ed54d271',
-    description: 'Tomatochat - Aesthetic social media with messenger featuring minimal designs. Discover the world of simplicity. Start your convo, with fun and aesthetic conversations. Using Next JS and Prisma ORM, and PlanetScale',
+    description: 'Tomatochat - Aesthetic social media with messenger featuring minimal designs. Discover the world of simplicity. Start your convo, with fun and aesthetic conversations. Using Next JS, Prisma, and PlanetScale',
     link: 'https://github.com/VeoScript/tomatochat',
     demo: 'https://tomatochat.vercel.app/'
   },
