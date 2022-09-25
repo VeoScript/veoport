@@ -25,7 +25,7 @@ export default function Home() {
             <div className="my-5">
               <img
                 className="w-52 h-52 rounded-full bg-gray-100 dark:bg-[#1E212D] object-cover"
-                src="https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/prof.jpg?alt=media&token=a388f2df-a032-4aec-9c1b-d73ad5aac159"
+                src="https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/viber_image_2022-09-25_20-25-33-952.jpg?alt=media&token=e8896f22-aa3a-40b1-b8f2-b357474b65f6"
                 alt="Picture of the author"
               />
             </div>
