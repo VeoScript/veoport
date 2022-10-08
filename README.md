@@ -1,6 +1,6 @@
 ## VEOSCRIPT PORTAL
 This is my official blog page and portfolio, where you can also share your thoughts and create your own blog post.
-This project is using Next JS as front-end and back-end by Prisma and PostgreSQL.
+This project is using Next JS as front-end and back-end by Prisma, MySQL and PlanetScale.
 
 ## Website Features
 - Create blog post such as articles or other discussion
