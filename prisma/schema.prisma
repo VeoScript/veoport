@@ -1,13 +1,15 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 model User {
@@ -31,31 +33,37 @@ model Posts {
   image           String
   title           String           @unique
   slug            String           @unique  
-  content         String
+  content         String           @db.LongText
   date            String
   published       String
   tags            String
   likes           Likes[]
   comment         Comments[]
-  user            User?            @relation(fields: [userId], references: [id])
+  user            User?            @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId          Int?
+
+  @@index([userId])
 }
 
 model Comments {
   id              Int              @id       @default(autoincrement())
   comment         String
   date            String
-  post            Posts?           @relation(fields: [postSlug], references: [slug])
+  post            Posts?           @relation(fields: [postSlug], references: [slug], onDelete: Cascade, onUpdate: Cascade)
   postSlug        String?
-  user            User?            @relation(fields: [userId], references: [id])
+  user            User?            @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId          Int?
+
+  @@index([userId, postSlug])
 }
 
 model Likes {
   id              Int              @id     @default(autoincrement())
   date            String
-  post            Posts?           @relation(fields: [postSlug], references: [slug])
+  post            Posts?           @relation(fields: [postSlug], references: [slug], onDelete: Cascade, onUpdate: Cascade)
   postSlug        String?
-  user            User?            @relation(fields: [userId], references: [id])
+  user            User?            @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId          Int?
+
+  @@index([userId, postSlug])
 }
