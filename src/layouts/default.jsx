@@ -8,8 +8,8 @@ export default function Layout ({ children }) {
       <div className="flex flex-row justify-center w-full max-w-[1401px] h-auto">
         { children }
         <MessengerCustomerChat
-          pageId="101914628707986"
-          appId="3871367752945149"
+          pageId={process.env.MESSENGER_PAGE_ID}
+          appId={process.env.MESSENGER_APP_ID}
         />
       </div>
     </div>
