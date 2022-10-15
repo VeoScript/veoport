@@ -1,15 +1,8 @@
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
-import useSWR from 'swr'
-
-const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function SignUp({ closeModal }) {
-
-  const { data: all_users } = useSWR('/api/auth/users', fetcher, {
-    refreshInterval: 1000
-  })
 
   const router = useRouter()
 
@@ -17,24 +10,8 @@ export default function SignUp({ closeModal }) {
 
   async function handleSignUp(formData) {
     const image = formData.image
-    const email = formData.email
-    const username = formData.username
     const password = formData.password
     const repassword = formData.repassword
-
-    const usernameExist = all_users.some(user => user.username === username)
-    const emailExist = all_users.some(user => user.email === email)
-
-    if (usernameExist || emailExist) {
-      toast.error('This account is already exist.', {
-        style: {
-          borderRadius: '10px',
-          background: '#222222',
-          color: '#fff',
-        }
-      })
-      return
-    }
 
     if (password !== repassword) {
       toast.error('The password did not match, try again.', {
@@ -55,10 +32,24 @@ export default function SignUp({ closeModal }) {
     await fetch('/api/auth/signup', {
       method: 'POST',
       body: JSON.stringify(formData)
+    }).then(async (res) => {
+      if (res.ok) {
+        reset()
+        closeModal()
+        router.replace(router.asPath)
+        return
+      }
+      const response = await res.json()
+      throw new Error(response.message)
+    }).catch((e) => {
+        toast.error(`${e.message}`, {
+        style: {
+          borderRadius: '10px',
+          background: '#222222',
+          color: '#fff',
+        }
+      })
     })
-    reset()
-    closeModal()
-    router.replace(router.asPath)
   }
 
   return (

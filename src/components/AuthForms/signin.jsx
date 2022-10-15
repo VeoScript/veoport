@@ -1,18 +1,9 @@
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
 import toast, { Toaster } from 'react-hot-toast'
-import bcrypt from 'bcryptjs'
-import useSWR from 'swr'
-
-const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function SignIn({ closeModal }) {
-  
-  const { data: all_users } = useSWR('/api/auth/users', fetcher, {
-    refreshInterval: 1000
-  })
 
   const router = useRouter()
 
@@ -22,43 +13,30 @@ export default function SignIn({ closeModal }) {
     const username = formData.username
     const password = formData.password
 
-    const checkUser = all_users.find(user => user.username === username)
-
-    if (!checkUser) {
-      toast.error('This account is not registered!', {
-        style: {
-          borderRadius: '10px',
-          background: '#222222',
-          color: '#fff',
-        }
-      })
-      return
-    }
-
-    const hashPassword = checkUser.password
-    const matchPassword = await bcrypt.compare(password, hashPassword)
-
-    if (!matchPassword) {
-      toast.error('Incorrect password!', {
-        style: {
-          borderRadius: '10px',
-          background: '#222222',
-          color: '#fff',
-        }
-      })
-      return
-    }
-
     await fetch('/api/auth/signin', {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username })
+      body: JSON.stringify({ username, password })
+    }).then(async (res) => {
+      if (res.ok) {
+        reset()
+        closeModal()
+        router.push(router.asPath)
+        return
+      }
+      const response = await res.json()
+      throw new Error(response.message)
+    }).catch((e) => {
+        toast.error(`${e.message}`, {
+        style: {
+          borderRadius: '10px',
+          background: '#222222',
+          color: '#fff',
+        }
+      })
     })
-    reset()
-    closeModal()
-    router.push(router.asPath)
   }
 
   return (
