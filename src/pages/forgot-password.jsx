@@ -6,17 +6,11 @@ import Layout from '~/layouts/default'
 import withSession from '~/lib/session'
 import emailjs from 'emailjs-com'
 import jwt from 'jwt-simple'
-import useSWR from 'swr'
+import prisma from '~/lib/prisma'
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
-
-export default function ForgotPassword() {
+export default function ForgotPassword({ all_users }) {
   
   const router = useRouter()
-
-  const { data: all_users } = useSWR('/api/auth/users', fetcher, {
-    refreshInterval: 1000
-  })
 
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
 
@@ -128,7 +122,7 @@ export default function ForgotPassword() {
   )
 }
 
-export const getServerSideProps = withSession(async function ({ req, query }) {
+export const getServerSideProps = withSession(async function ({ req }) {
   const user_session = req.session.get('user')
   if (user_session) {
     return {
@@ -138,7 +132,16 @@ export const getServerSideProps = withSession(async function ({ req, query }) {
       }
     }
   }
+  const all_users = await prisma.user.findMany({
+    select: {
+      id: true,
+      email: true,
+      username: true
+    }
+  })
   return {
-    props: {}
+    props: {
+      all_users
+    }
   }
 })
