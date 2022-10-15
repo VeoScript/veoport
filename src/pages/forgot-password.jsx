@@ -37,7 +37,7 @@ export default function ForgotPassword({ all_users }) {
 
       const name = checkUser.name
       const message = 'To reset your password in Veo Portal go to this link'
-      const link = `https://www.jeromevillaruel.ml/reset-password/${token}`
+      const link = `${process.env.DOMAIN}/reset-password/${token}`
       // const link = `http://localhost:3000/reset-password/${token}`
 
       const mail = await emailjs.send(
