@@ -14,6 +14,8 @@ module.exports = {
     RP_USER_ID: process.env.RP_USER_ID,
     RP_SERVICE_ID: process.env.RP_SERVICE_ID,
     DATABASE_URL: process.env.DATABASE_URL,
-    IMGBB_API_KEY: process.env.IMGBB_API_KEY
+    IMGBB_API_KEY: process.env.IMGBB_API_KEY,
+    MESSENGER_PAGE_ID: process.env.MESSENGER_PAGE_ID,
+    MESSENGER_APP_ID: process.env.MESSENGER_APP_ID
   }
 }
