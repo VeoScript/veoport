@@ -4,6 +4,7 @@ module.exports = {
     domains: ['firebasestorage.googleapis.com']
   },
   env: {
+    DOMAIN: process.env.DOMAIN,
     GRAPHQL_URL_ENDPOINT: process.env.GRAPHQL_URL_ENDPOINT,
     VEOPORTAL_MUTATIONS: process.env.VEOPORTAL_MUTATIONS,
     GMAIL_SERVICE_ID: process.env.GMAIL_SERVICE_ID,
