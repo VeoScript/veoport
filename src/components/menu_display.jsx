@@ -46,11 +46,10 @@ export default function MenuDisplay({ online_user }) {
                     <div className="flex flex-col w-full pt-3 px-3 space-y-3">
                       <span className="text-xl">What's New?</span>
                       <span className="font-light">
-                        My personal blogs and for everybody
-                        where export and undiscovered voices can share their writing on any topic.
+                        My personal blogs are for everybody, where export and undiscovered voices can share their writing on any topic.
                       </span>
                       <span className="font-light">
-                        Join to start sharing your thoughts and interact here in my portal.
+                        Join to start sharing your thoughts and interacting here on my portal.
                       </span>
                       <div className="flex items-center w-full space-x-2">
                         <Authenticate />
