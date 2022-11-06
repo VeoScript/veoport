@@ -14,6 +14,13 @@ export const projects = [
     demo: 'https://github.com/VeoScript/rekados-mobile/releases/download/pre-release/rekados-android.apk'
   },
   {
+    name: 'rekados-landing-page',
+    image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/rekados-landing.png?alt=media&token=637d9fb3-d1e7-4897-8710-cd3df3dc2518',
+    description: 'Official landing page of Rekados. Using NextJS and TailwindCSS',
+    link: 'https://github.com/veoscript/rekados-landing-page',
+    demo: 'https://rekados-landing-page.vercel.app/'
+  },
+  {
     name: 'tomatochat',
     image: 'https://firebasestorage.googleapis.com/v0/b/veoportfolio.appspot.com/o/tomatochat.png?alt=media&token=b3c169b4-60fc-4242-a9e6-ccc0ed54d271',
     description: 'Tomatochat - Aesthetic social media with messenger featuring minimal designs. Discover the world of simplicity. Start your convo, with fun and aesthetic conversations. Using Next JS, Prisma, and PlanetScale',
